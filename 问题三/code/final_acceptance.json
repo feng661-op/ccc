@@ -1,0 +1,75 @@
+{
+  "all_pass": true,
+  "pass_count": 13,
+  "check_count": 13,
+  "checks": {
+    "base_validation_all_pass": "PASS",
+    "factorial_A_finite": "PASS",
+    "factorial_B_finite": "PASS",
+    "factorial_C_finite": "PASS",
+    "factorial_D_finite": "PASS",
+    "semantic_sunk_full_run": "PASS",
+    "semantic_stepwise_full_run": "PASS",
+    "semantic_revision_time_nonconvex_milp": "PASS",
+    "marginal_deadzone_direction_consistency": "PASS",
+    "figures_complete": "PASS",
+    "paper_material_complete": "PASS",
+    "result3_exists": "PASS",
+    "final_cost_identity": "PASS"
+  },
+  "evidence": {
+    "base_validation_all_pass": {
+      "pass_count": 21,
+      "check_count": 21
+    },
+    "factorial_A_finite": 16189702.090656983,
+    "factorial_B_finite": 16222490.006120872,
+    "factorial_C_finite": 15109651.550416406,
+    "factorial_D_finite": 14786522.562026907,
+    "semantic_sunk_full_run": 15119524.443975281,
+    "semantic_stepwise_full_run": 14802426.825887803,
+    "semantic_revision_time_nonconvex_milp": {
+      "rows": 4,
+      "nonconvex_slots": [
+        7,
+        7,
+        7,
+        7
+      ],
+      "statuses": [
+        "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+        "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      ]
+    },
+    "marginal_deadzone_direction_consistency": {
+      "match": 8,
+      "rows": 8
+    },
+    "figures_complete": {
+      "fig_q3_typical_day.png": 188491,
+      "fig_q3_factorial_abcd.png": 62666,
+      "fig_q3_fee_decomposition.png": 52072,
+      "fig_q3_representative_days.png": 483383,
+      "fig_q3_marginal_deadzone.png": 174861,
+      "fig_q3_semantic_robustness.png": 64257
+    },
+    "paper_material_complete": {
+      "bytes": 13176
+    },
+    "result3_exists": {
+      "bytes": 976371
+    },
+    "final_cost_identity": {
+      "metrics_D": 14786522.562026907,
+      "five_ledger": 14786522.562026907,
+      "diff": 0.0
+    }
+  },
+  "artifact_hashes": {
+    "result3_sha256": "c7899e3ec1d64af43863884ea884daff1aad9a7e9b499121d5686b2ffa20c906",
+    "paper_sha256": "61999a16c344f8f5db97b72194c2f94e52a9ce28846b10530caa337848fa78ea",
+    "metrics_final_sha256": "e3e42360d840e3bbc4db184527bacba3adadeb029d995db4fac47d41914cb33c"
+  }
+}

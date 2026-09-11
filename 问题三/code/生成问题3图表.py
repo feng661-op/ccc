@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+from pathlib import Path
+from datetime import datetime
+import sys,json,csv
+import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib import font_manager
+HERE=Path(__file__).resolve().parent; sys.path.insert(0,str(HERE))
+from q3_data import load_q3_inputs,EVAL_START
+ROOT=HERE.parent.parent; FIG=ROOT/'问题三'/'figures'; FIG.mkdir(parents=True,exist_ok=True)
+data=load_q3_inputs(ROOT); m=json.loads((HERE/'metrics.json').read_text(encoding='utf-8')); sem=json.loads((HERE/'semantic_robustness.json').read_text(encoding='utf-8')); marg=json.loads((HERE/'marginal_deadzone_summary.json').read_text(encoding='utf-8')); z=np.load(HERE/'run_D.npz')
+B=z['B'];A=z['A'];AS=z['A_stage'];soc=z['soc_path']; em=z['emergency']
+# Prefer a CJK font on Windows.
+for f in ('Microsoft YaHei','SimHei','Noto Sans CJK SC'):
+    if any(x.name==f for x in font_manager.fontManager.ttflist): plt.rcParams['font.sans-serif']=[f]; break
+plt.rcParams['axes.unicode_minus']=False
+
+def finish(name):
+    plt.tight_layout(); plt.savefig(FIG/name,dpi=220,bbox_inches='tight'); plt.close()
+
+# 1) Representative day: June 21 plan contract and actual net load.
+d=next(i for i,x in enumerate(data.dates) if x.date()==datetime(2025,6,21).date()); x=np.arange(144)/6+1/6
+plt.figure(figsize=(11,5.4)); plt.plot(x,data.net_plan_kwh[d],label='实际净负荷',linewidth=1.4); plt.plot(x,B[d],label='0点原始合同 B',linewidth=1.15); plt.plot(x,A[d],label='最终生效合同 A',linewidth=1.15)
+for h in (6,12,18): plt.axvline(h,linestyle='--',linewidth=.9,alpha=.7)
+plt.xlabel('计划日时刻 / h'); plt.ylabel('10分钟电量 / kWh'); plt.title('问题3代表日合同滚动调整（2025-06-21）'); plt.xlim(0,24); plt.xticks(range(0,25,3)); plt.legend(ncol=3); plt.grid(alpha=.2); finish('fig_q3_typical_day.png')
+
+# 2) A/B/C/D cost comparison.
+labels=['A\n零点预测+冻结','B\n更新预测+冻结','C\n零点预测+可调','D\n更新预测+可调']; vals=np.array([m[k]['total_cost_yuan'] for k in ('A','B','C','D')])/1e6
+plt.figure(figsize=(8.6,5.3)); bars=plt.bar(labels,vals); plt.ylabel('正式期总费用 / 百万元'); plt.title('2×2 因子对照：信息更新与合同灵活性'); plt.grid(axis='y',alpha=.2)
+for b,v in zip(bars,vals): plt.text(b.get_x()+b.get_width()/2,v+.03,f'{v:.3f}',ha='center',va='bottom',fontsize=9)
+plt.ylim(0,max(vals)*1.12); finish('fig_q3_factorial_abcd.png')
+
+# 3) Main D five-ledger fee decomposition.
+sums={'F_plan':0.,'F_cancel':0.,'F_add':0.,'F_emergency':0.}
+with open(HERE/'five_ledger.csv',encoding='utf-8-sig') as f:
+    for r in csv.DictReader(f):
+        for k in sums:sums[k]+=float(r[k])
+keys=['保留计划电量','下调取消费用','上调追加费用','紧急购电']; vv=[sums[k]/1e6 for k in sums]
+plt.figure(figsize=(8.3,5.3)); bars=plt.bar(keys,vv); plt.ylabel('费用 / 百万元'); plt.title('主模型 D 正式期费用分解'); plt.grid(axis='y',alpha=.2)
+for b,v in zip(bars,vv): plt.text(b.get_x()+b.get_width()/2,v+.02,f'{v:.3f}',ha='center',fontsize=9)
+finish('fig_q3_fee_decomposition.png')
+
+# 4) Four representative days, B vs A vs actual net load.
+fig,axs=plt.subplots(2,2,figsize=(12,7.5),sharex=True)
+for ax,ds in zip(axs.ravel(),('2025-03-20','2025-06-21','2025-09-23','2025-12-21')):
+    di=next(i for i,x0 in enumerate(data.dates) if x0.date()==datetime.fromisoformat(ds).date()); ax.plot(x,data.net_plan_kwh[di],label='实际净负荷',linewidth=1.0); ax.plot(x,B[di],label='B',linewidth=1.0); ax.plot(x,A[di],label='A',linewidth=1.0)
+    for h in (6,12,18):ax.axvline(h,linestyle='--',linewidth=.7,alpha=.55)
+    ax.set_title(ds);ax.set_xlim(0,24);ax.grid(alpha=.18);ax.set_ylabel('kWh/10min')
+axs[1,0].set_xlabel('时刻 / h');axs[1,1].set_xlabel('时刻 / h');axs[0,0].legend(ncol=3,fontsize=8)
+fig.suptitle('四个季节代表日：原始合同、最终合同与实际净负荷',y=1.01); finish('fig_q3_representative_days.png')
+
+# 5) Marginal value / dead-zone threshold audit.
+rows=marg['rows_data']; xx=np.arange(len(rows)); mu=np.array([r['mu_fd'] for r in rows]); lo=np.array([r['deadzone_low_0.5p'] for r in rows]); hi=np.array([r['deadzone_high_1.5p'] for r in rows]); names=[r['date'][5:]+'\n'+str(r['event_hour'])+'h' for r in rows]
+plt.figure(figsize=(10.5,5.2)); plt.plot(xx,mu,'o-',label='边际价值 μ'); plt.plot(xx,lo,'s--',label='0.5p 下调阈值'); plt.plot(xx,hi,'^--',label='1.5p 上调阈值'); plt.xticks(xx,names); plt.ylabel('元/kWh'); plt.title(f'合同调整死区边际价值审计（方向一致 {marg["direction_match_count"]}/{marg["rows"]}）'); plt.grid(alpha=.2); plt.legend(ncol=3); finish('fig_q3_marginal_deadzone.png')
+
+# 6) Semantic robustness.
+sv=[m['D']['total_cost_yuan'],sem['sunk_plan_plus_penalty']['total_cost_yuan'],sem['stepwise_revision']['total_cost_yuan'],sem['revision_time']['total_cost_yuan']]; sl=['主语义','sunk','stepwise','revision-time*']; sv=np.array(sv)/1e6
+plt.figure(figsize=(8.8,5.2));bars=plt.bar(sl,sv);plt.ylabel('正式期总费用 / 百万元');plt.title('结算语义鲁棒性（一开关）');plt.grid(axis='y',alpha=.2)
+for b,v in zip(bars,sv):plt.text(b.get_x()+b.get_width()/2,v+.025,f'{v:.3f}',ha='center',fontsize=9)
+plt.figtext(.5,.01,'* revision-time 为全年主策略重计，并以代表日精确非凸 MILP 验证。',ha='center',fontsize=8);finish('fig_q3_semantic_robustness.png')
+print('\n'.join(str(p) for p in sorted(FIG.glob('fig_q3_*.png'))))
