@@ -1,0 +1,87 @@
+{
+  "all_pass": true,
+  "pass_count": 13,
+  "check_count": 13,
+  "checks": {
+    "complete_output_documents": "PASS",
+    "symbol_table_core_coverage": "PASS",
+    "final_metrics_referenced": "PASS",
+    "master_paper_stale_values_removed": "PASS",
+    "master_paper_symbol_index": "PASS",
+    "model_validation_still_pass": "PASS",
+    "final_acceptance_still_pass": "PASS",
+    "paper_figures_complete": "PASS",
+    "robustness_evidence_complete": "PASS",
+    "robustness_copy_validation.json": "PASS",
+    "robustness_copy_final_acceptance.json": "PASS",
+    "factorial_metric_identity": "PASS",
+    "result3_exists": "PASS"
+  },
+  "evidence": {
+    "complete_output_documents": {
+      "expected": 18,
+      "missing": []
+    },
+    "symbol_table_core_coverage": {
+      "symbols": 20,
+      "missing": []
+    },
+    "final_metrics_referenced": {
+      "required_values": [
+        "14,786,522.56",
+        "16,189,702.09",
+        "16,222,490.01",
+        "15,109,651.55",
+        "21,512,141.84",
+        "20,967,445.42",
+        "1,428,411.00",
+        "883,714.57",
+        "5,990,848.22",
+        "5,394,838.83",
+        "2,643,667.52",
+        "15,119,524.44",
+        "14,802,426.83",
+        "14,720,004.19"
+      ],
+      "missing": []
+    },
+    "master_paper_stale_values_removed": {
+      "remaining": []
+    },
+    "master_paper_symbol_index": null,
+    "model_validation_still_pass": {
+      "pass": 21,
+      "count": 21
+    },
+    "final_acceptance_still_pass": {
+      "pass": 13,
+      "count": 13
+    },
+    "paper_figures_complete": {
+      "count": 10,
+      "bad": [],
+      "sizes": {
+        "图14_问题3事件驱动滚动调度框架.png": 110492,
+        "图15_问题3典型日合同滚动调整.png": 188491,
+        "图16_问题3ABCD因子对照.png": 62666,
+        "图17_问题3主模型费用分解.png": 52072,
+        "图18_问题3四季代表日合同与净负荷.png": 483383,
+        "图19_合同调整死区边际价值.png": 174861,
+        "图20_问题3结算语义鲁棒性.png": 64257,
+        "表7_指定日期原始与最终合同.png": 92836,
+        "表8_指定日期储能充放电.png": 86622,
+        "表9_指定日期紧急购电.png": 76307
+      }
+    },
+    "robustness_evidence_complete": {
+      "count": 11,
+      "missing": []
+    },
+    "robustness_copy_validation.json": null,
+    "robustness_copy_final_acceptance.json": null,
+    "factorial_metric_identity": null,
+    "result3_exists": {
+      "bytes": 976371
+    }
+  }
+}
