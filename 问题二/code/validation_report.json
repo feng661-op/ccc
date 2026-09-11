@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "checks": {
+    "plan_shape_334x144": true,
+    "plan_dates_exact": true,
+    "plan_time_boundary_exact": true,
+    "plan_nonnegative_finite": true,
+    "daily_total_reconciled": true,
+    "plan_array_reconciled": true,
+    "fee_array_reconciled": true,
+    "charge_sheet_full_334x6": true,
+    "charge_block_reconciled": true,
+    "discharge_block_reconciled": true,
+    "emergency_all_dates_present": true,
+    "emergency_sum_reconciled": true,
+    "soc_bounds": true,
+    "soc_cross_day_continuity": true,
+    "charge_power_bound": true,
+    "discharge_power_bound": true,
+    "leakage_audit_365_pass": true
+  },
+  "diagnostics": {
+    "plan_total_max_abs_error_kwh": 9.999996109399945e-06,
+    "plan_npz_max_abs_error_kwh": 5.000000555810402e-07,
+    "fee_npz_max_abs_error_yuan": 4.984904080629349e-07,
+    "charge_block_max_abs_error_kwh": 5.000001692678779e-07,
+    "discharge_block_max_abs_error_kwh": 5.000001692678779e-07,
+    "emergency_workbook_sum_kwh": 292198.340815,
+    "emergency_array_sum_kwh": 292198.3408076019,
+    "soc_min_kwh": 2606.2702793484596,
+    "soc_max_kwh": 10800.0,
+    "soc_continuity_max_abs_error_kwh": 0.0,
+    "max_charge_10min_kwh": 833.3333333333333,
+    "max_discharge_10min_kwh": 833.3333333333333
+  }
+}
