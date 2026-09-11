@@ -16,8 +16,8 @@ def event_args(d,eh):
     raise ValueError(eh)
 
 def shifted_objective(d,eh,target_t,delta):
-    def wrapper(data0,day_idx,event_hour,horizon=145,use_new_vintage=True,max_scenarios=3,history_window=56):
-        b=orig(data0,day_idx,event_hour,horizon,use_new_vintage,max_scenarios,history_window)
+    def wrapper(data0,day_idx,event_hour,horizon=None,use_new_vintage=True,max_scenarios=3,history_window=56,disabled_vintage_hours=()):
+        b=orig(data0,day_idx,event_hour,horizon,use_new_vintage,max_scenarios,history_window,disabled_vintage_hours=disabled_vintage_hours)
         sc=b.scenarios.copy();pt=b.point_net.copy();sc[:,target_t]+=delta;pt[target_t]+=delta
         return replace(b,point_net=pt,scenarios=sc)
     q3_opt.build_scenarios=wrapper

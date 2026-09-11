@@ -1,5 +1,5 @@
 ﻿date,event_hour,objective,solve_seconds,nonconvex_delivery_slots,up_branch_slots,down_branch_slots,q_min,q_max,status
-2025-03-20,12,0.0,0.0313873291015625,7,0,18,0.0,0.0,Optimization terminated successfully. (HiGHS Status 7: Optimal)
-2025-06-21,12,0.0,0.011828184127807617,7,0,18,0.0,0.0,Optimization terminated successfully. (HiGHS Status 7: Optimal)
-2025-09-23,12,130.58430492613354,0.012002944946289062,7,0,18,0.0,0.0,Optimization terminated successfully. (HiGHS Status 7: Optimal)
-2025-12-21,12,2217.8284355503906,0.09960293769836426,7,1,17,-2.2737367544323206e-13,796.92545,Optimization terminated successfully. (HiGHS Status 7: Optimal)
+2025-03-20,12,562.139319829758,0.02957463264465332,7,0,18,0.0,0.0,Optimization terminated successfully. (HiGHS Status 7: Optimal)
+2025-06-21,12,0.0,0.004009246826171875,7,0,18,0.0,0.0,Optimization terminated successfully. (HiGHS Status 7: Optimal)
+2025-09-23,12,61.401030182222165,0.004998445510864258,7,0,18,0.0,0.0,Optimization terminated successfully. (HiGHS Status 7: Optimal)
+2025-12-21,12,2734.3840810757147,0.20068836212158203,7,4,14,-9.065818642261169e-13,942.5035250000001,Optimization terminated successfully. (HiGHS Status 7: Optimal)

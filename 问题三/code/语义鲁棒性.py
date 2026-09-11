@@ -89,14 +89,8 @@ def exact_revision_time_milp_12(day_idx,zD):
     qv=np.asarray([res.x[q[int(j)]] for j in js]); zv=np.asarray([round(res.x[zz[int(j)]]) for j in js],int)
     return {'date':data.dates[day_idx].date().isoformat(),'event_hour':12,'objective':float(res.fun),'solve_seconds':secs,'nonconvex_delivery_slots':int(nonconvex),'up_branch_slots':int(zv.sum()),'down_branch_slots':int(len(zv)-zv.sum()),'q_min':float(qv.min()),'q_max':float(qv.max()),'status':str(res.message)}
 
-if (HERE/'run_D_sunk.npz').exists():
-    print('USE completed sunk full-year run',flush=True); sunk_m=cached_run_metrics('D_sunk')
-else:
-    print('RUN sunk semantics',flush=True); t=time.time(); sunk=simulate_strategy(data,name='D_sunk',use_new_vintage=True,allow_revision=True,scenario_count=3,down_settlement='sunk_plan_plus_penalty',revision_anchor='original_anchor',end_day=365,verbose=True); sunk_m=save_run('D_sunk',sunk); sunk_m['runtime_seconds']=time.time()-t
-if (HERE/'run_D_stepwise.npz').exists():
-    print('USE completed stepwise full-year run',flush=True); step_m=cached_run_metrics('D_stepwise')
-else:
-    print('RUN stepwise semantics',flush=True); t=time.time(); step=simulate_strategy(data,name='D_stepwise',use_new_vintage=True,allow_revision=True,scenario_count=3,down_settlement='cancel_settlement',revision_anchor='stepwise_revision',end_day=365,verbose=True); step_m=save_run('D_stepwise',step); step_m['runtime_seconds']=time.time()-t
+sunk_m=json.loads((HERE/'metric_D_sunk.json').read_text(encoding='utf-8'))
+step_m=json.loads((HERE/'metric_D_stepwise.json').read_text(encoding='utf-8'))
 # revision_time: one-switch full-year endpoint repricing on the main D trajectory.
 zD=np.load(HERE/'run_D.npz'); slotfees=np.zeros((365,144))
 for d in range(365):slotfees[d]=revision_time_fee_slots(zD['B'][d],zD['A_stage'][d])

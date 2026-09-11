@@ -10,7 +10,7 @@ import openpyxl
 DT=1/6; CAP=12000.0; PMAX=5000.0; XMAX=PMAX*DT
 SOC0=6000.0; SOC_MIN=1200.0; SOC_MAX=10800.0
 ETA_C=float(np.sqrt(0.9)); ETA_D=float(np.sqrt(0.9))
-EVENT_HOURS=(0,6,12,18); EVENT_PLAN_START={0:0,6:35,12:71,18:107}; EVAL_START=31
+EVENT_HOURS=(0,6,12,18); EVENT_PLAN_START={0:0,6:35,12:71,18:107}; EVENT_PLAN_HORIZON={0:145,6:109,12:73,18:37}; EVAL_START=31
 
 @dataclass(frozen=True)
 class ForecastRecord:
@@ -92,9 +92,21 @@ def completed_actual_kw(data:Q3Data,t:datetime,kind:str)->Optional[float]:
     return None if not np.isfinite(v) else float(v/DT)
 
 def historical_profile_kw(data:Q3Data,issue:datetime,kind:str,horizon:int)->np.ndarray:
+    """Strictly causal historical forecast.
+
+    Load uses a 7-day seasonal-naive baseline whenever the target's same slot
+    one week earlier is available. This choice is fixed using January only; the
+    formal-period comparison is reporting, not tuning. PV keeps the robust
+    historical fallback used outside the official-vintage support.
+    """
     arr=data.pv_cal_kwh if kind=='pv' else data.load_cal_kwh; dcur=(issue.date()-data.dates[0].date()).days; out=np.zeros(horizon)
     for k in range(horizon):
-        t=issue+timedelta(minutes=10*k); si=(t.hour*60+t.minute)//10; vals=[]; same=[]
+        t=issue+timedelta(minutes=10*k); si=(t.hour*60+t.minute)//10; target_d=(t.date()-data.dates[0].date()).days
+        if kind=='load':
+            j=target_d-7
+            if 0<=j<365 and j<dcur and np.isfinite(arr[j,si]):
+                out[k]=max(0,float(arr[j,si])/DT); continue
+        vals=[]; same=[]
         for lag in range(1,8):
             j=dcur-lag
             if 0<=j<365 and np.isfinite(arr[j,si]): vals.append(float(arr[j,si]))
@@ -104,6 +116,17 @@ def historical_profile_kw(data:Q3Data,issue:datetime,kind:str,horizon:int)->np.n
         if same: base=.75*base+.25*float(np.median(same[-4:]))
         out[k]=max(0,base/DT)
     return out
+
+def _selected_vintage_hour(event_hour:int,use_new_vintage:bool,disabled_vintage_hours:Sequence[int]=())->int:
+    if not use_new_vintage: return 0
+    disabled=set(int(x) for x in disabled_vintage_hours)
+    if event_hour not in disabled: return event_hour
+    return max(h for h in EVENT_HOURS if h<event_hour and h not in disabled) if event_hour>0 else 0
+
+def _previous_used_vintage_hour(event_hour:int,disabled_vintage_hours:Sequence[int]=())->int:
+    disabled=set(int(x) for x in disabled_vintage_hours)
+    prev=[h for h in EVENT_HOURS if h<event_hour and h not in disabled]
+    return max(prev) if prev else 0
 
 def official_pv_kw(data:Q3Data,current_issue:datetime,vintage_issue:datetime,times:Sequence[datetime])->np.ndarray:
     fallback=historical_profile_kw(data,current_issue,'pv',len(times)); mp=data.forecasts.get(vintage_issue)
@@ -115,11 +138,12 @@ def official_pv_kw(data:Q3Data,current_issue:datetime,vintage_issue:datetime,tim
         out[k]=np.interp(rel,xs,ys) if 0<=rel<=24 else fallback[k]
     return np.maximum(out,0)
 
-def event_point_forecast(data:Q3Data,day_idx:int,event_hour:int,horizon:int,use_new_vintage:bool=True)->Tuple[np.ndarray,List[datetime],np.ndarray]:
+def event_point_forecast(data:Q3Data,day_idx:int,event_hour:int,horizon:int,use_new_vintage:bool=True,disabled_vintage_hours:Sequence[int]=())->Tuple[np.ndarray,List[datetime],np.ndarray]:
     day=data.dates[day_idx]; issue=datetime(day.year,day.month,day.day)+timedelta(hours=event_hour)
     times=[issue+timedelta(minutes=10*k) for k in range(horizon)]
     load=historical_profile_kw(data,issue,'load',horizon)
-    vint=datetime(day.year,day.month,day.day)+timedelta(hours=event_hour if use_new_vintage else 0)
+    vh=_selected_vintage_hour(event_hour,use_new_vintage,disabled_vintage_hours)
+    vint=datetime(day.year,day.month,day.day)+timedelta(hours=vh)
     pv=official_pv_kw(data,issue,vint,times)
     if event_hour>0:
         rs=[]
@@ -138,7 +162,7 @@ def actual_horizon(data:Q3Data,issue:datetime,horizon:int)->Optional[np.ndarray]
         out[k]=float(data.net_cal_kwh[d,i])
     return out
 
-def prefix_signal(data:Q3Data,day_idx:int,event_hour:int,use_new_vintage:bool)->np.ndarray:
+def prefix_signal(data:Q3Data,day_idx:int,event_hour:int,use_new_vintage:bool,disabled_vintage_hours:Sequence[int]=())->np.ndarray:
     day=data.dates[day_idx]; base=datetime(day.year,day.month,day.day); vals=[]
     if event_hour>0:
         issue=base+timedelta(hours=event_hour)
@@ -146,8 +170,9 @@ def prefix_signal(data:Q3Data,day_idx:int,event_hour:int,use_new_vintage:bool)->
             t=issue-timedelta(minutes=10*back); d=(t.date()-data.dates[0].date()).days; i=(t.hour*60+t.minute)//10
             if 0<=d<365 and np.isfinite(data.net_cal_kwh[d,i]): vals.append(float(data.net_cal_kwh[d,i]))
     out=[float(np.mean(vals)) if vals else 0.0]
-    if use_new_vintage and event_hour>0:
-        old=base+timedelta(hours=event_hour-6); new=base+timedelta(hours=event_hour); a=data.forecasts.get(old,{}); b=data.forecasts.get(new,{})
+    disabled=set(int(x) for x in disabled_vintage_hours)
+    if use_new_vintage and event_hour>0 and event_hour not in disabled:
+        oldh=_previous_used_vintage_hour(event_hour,disabled); old=base+timedelta(hours=oldh); new=base+timedelta(hours=event_hour); a=data.forecasts.get(old,{}); b=data.forecasts.get(new,{})
         shared=[t for t in b if t in a and t>new]
         if shared:
             inn=np.asarray([b[t]-a[t] for t in shared]); out += [float(np.mean(inn)),float(np.mean(np.abs(inn)))]

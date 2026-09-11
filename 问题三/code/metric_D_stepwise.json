@@ -1,0 +1,18 @@
+{
+  "name": "D_stepwise",
+  "mode": "stepwise",
+  "total_cost_yuan": 25597127.02785757,
+  "regular_cost_yuan": 22387427.358736146,
+  "emergency_cost_yuan": 3209699.6691214256,
+  "emergency_kwh": 718906.566623343,
+  "soc_min_kwh": 1200.0,
+  "soc_max_kwh": 9026.339947052234,
+  "changed_slot_count_formal": 20476,
+  "adjusted_event_count_formal": 999,
+  "runtime_seconds": 145.61606311798096,
+  "charge_kwh": 3102544.5268308846,
+  "discharge_kwh": 2792295.493093362,
+  "curtail_kwh": 8903601.65142904,
+  "projection_soc_increment_max_error": 7.105427357601002e-15,
+  "max_simultaneous_charge_discharge_kwh": 0.0
+}
