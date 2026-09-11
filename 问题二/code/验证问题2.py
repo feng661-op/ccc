@@ -10,6 +10,7 @@ HERE = Path(__file__).resolve().parent
 Q2 = HERE.parent
 XMAX = 5000.0 / 6.0
 SOC_MIN, SOC_MAX = 1200.0, 10800.0
+ETA = float(np.sqrt(0.9))
 
 
 def main():
@@ -52,8 +53,21 @@ def main():
     with (HERE / 'leakage_audit.csv').open(encoding='utf-8-sig', newline='') as f:
         leakage = list(csv.DictReader(f))
 
-    soc_min = float(min(z['soc00'].min(), z['soc24'].min()))
-    soc_max = float(max(z['soc00'].max(), z['soc24'].max()))
+    endpoint_soc_min = float(min(z['soc00'].min(), z['soc24'].min()))
+    endpoint_soc_max = float(max(z['soc00'].max(), z['soc24'].max()))
+    # 不能只检查每日端点：按真实10分钟充放电重构完整SOC轨迹。
+    realtime_soc_min = float('inf')
+    realtime_soc_max = float('-inf')
+    realtime_end_error = 0.0
+    for d in range(365):
+        s = float(z['soc00'][d])
+        realtime_soc_min = min(realtime_soc_min, s)
+        realtime_soc_max = max(realtime_soc_max, s)
+        for t in range(144):
+            s += ETA * float(z['charge'][d, t]) - float(z['discharge'][d, t]) / ETA
+            realtime_soc_min = min(realtime_soc_min, s)
+            realtime_soc_max = max(realtime_soc_max, s)
+        realtime_end_error = max(realtime_end_error, abs(s - float(z['soc24'][d])))
     soc_cont = float(np.max(np.abs(z['soc24'][:-1] - z['soc00'][1:])))
     max_charge = float(z['charge'].max())
     max_discharge = float(z['discharge'].max())
@@ -71,7 +85,7 @@ def main():
         'discharge_block_reconciled': max_discharge_block_error <= 1e-5,
         'emergency_all_dates_present': len(edates) == 334 and len(set(edates)) == 334,
         'emergency_sum_reconciled': abs(workbook_emergency_sum - array_emergency_sum) <= 1e-4,
-        'soc_bounds': soc_min >= SOC_MIN - 1e-6 and soc_max <= SOC_MAX + 1e-6,
+        'soc_bounds': realtime_soc_min >= SOC_MIN - 1e-6 and realtime_soc_max <= SOC_MAX + 1e-6 and realtime_end_error <= 1e-6,
         'soc_cross_day_continuity': soc_cont <= 1e-8,
         'charge_power_bound': max_charge <= XMAX + 1e-6,
         'discharge_power_bound': max_discharge <= XMAX + 1e-6,
@@ -88,8 +102,11 @@ def main():
             'discharge_block_max_abs_error_kwh': max_discharge_block_error,
             'emergency_workbook_sum_kwh': workbook_emergency_sum,
             'emergency_array_sum_kwh': array_emergency_sum,
-            'soc_min_kwh': soc_min,
-            'soc_max_kwh': soc_max,
+            'soc_realtime_min_kwh': realtime_soc_min,
+            'soc_realtime_max_kwh': realtime_soc_max,
+            'soc_endpoint_min_kwh': endpoint_soc_min,
+            'soc_endpoint_max_kwh': endpoint_soc_max,
+            'soc_realtime_end_reconcile_max_abs_error_kwh': realtime_end_error,
             'soc_continuity_max_abs_error_kwh': soc_cont,
             'max_charge_10min_kwh': max_charge,
             'max_discharge_10min_kwh': max_discharge,

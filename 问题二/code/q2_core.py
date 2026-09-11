@@ -263,6 +263,8 @@ def build_net_scenarios(
     day: int,
     data: InputData,
     forecasts: ForecastBundle,
+    scenario_quantiles: Sequence[float] = SCENARIO_QUANTILES,
+    window_days: int = SCENARIO_WINDOW_DAYS,
 ) -> np.ndarray:
     """构造lead+当前日+下一日的经验残差场景，形状(K,289)。
 
@@ -280,7 +282,12 @@ def build_net_scenarios(
     centers = [j for j in range(1, day - 2) if (j - 1 in residuals and j in residuals and j + 1 in residuals)]
     if not centers:
         return point[None, :]
-    centers = centers[-SCENARIO_WINDOW_DAYS:]
+    if window_days < 1:
+        raise ValueError('window_days必须为正整数')
+    quantiles = tuple(float(q) for q in scenario_quantiles)
+    if not quantiles or any(q < 0.0 or q > 1.0 for q in quantiles):
+        raise ValueError('scenario_quantiles必须是[0,1]内的非空分位点')
+    centers = centers[-int(window_days):]
 
     # 按“高价时段正残差风险”给历史情景排序，再取经验分位，保留相关的整日误差形状。
     scores = []
@@ -294,14 +301,14 @@ def build_net_scenarios(
 
     picked: List[int] = []
     m = len(ranked)
-    for q in SCENARIO_QUANTILES:
+    for q in quantiles:
         idx = int(round(q * (m - 1)))
         j = ranked[idx]
         if j not in picked:
             picked.append(j)
     # 样本过少时把未选的最近情景补齐；不重复虚构。
     for j in reversed(centers):
-        if len(picked) >= min(len(SCENARIO_QUANTILES), len(centers)):
+        if len(picked) >= min(len(quantiles), len(centers)):
             break
         if j not in picked:
             picked.append(j)
@@ -318,6 +325,34 @@ def build_net_scenarios(
         s = np.clip(s, -2000.0, 2500.0)
         scenarios.append(s)
     return np.asarray(scenarios, dtype=float)
+
+
+def empirical_cvar_equal_prob(costs: Sequence[float], alpha: float) -> float:
+    """等概率离散样本的精确经验CVaR（上尾损失）。
+
+    允许尾部概率 ``(1-alpha)K`` 不是整数。例如 K=9、alpha=0.8 时，
+    尾部质量为1.8个场景，故取最坏1个完整场景和次坏场景的0.8份质量，
+    而不是简单平均最坏两个场景。
+    """
+    z = np.asarray(costs, dtype=float).reshape(-1)
+    if z.size == 0:
+        raise ValueError('costs不能为空')
+    if not np.all(np.isfinite(z)):
+        raise ValueError('costs包含非有限值')
+    if not (0.0 <= alpha < 1.0):
+        raise ValueError('alpha必须满足0<=alpha<1')
+    if alpha <= 0.0:
+        return float(np.mean(z))
+
+    tail_mass = (1.0 - float(alpha)) * z.size
+    desc = np.sort(z)[::-1]
+    full = int(np.floor(tail_mass + 1e-12))
+    frac = float(tail_mass - full)
+    numer = float(np.sum(desc[:full])) if full > 0 else 0.0
+    if frac > 1e-12 and full < desc.size:
+        numer += frac * float(desc[full])
+    # alpha非常接近1时，tail_mass<1，公式自然退化为最坏场景损失。
+    return numer / tail_mass
 
 
 def solve_stochastic_mpc(
@@ -468,9 +503,7 @@ def solve_stochastic_mpc(
         ee[k] = v[e:e + H]
         scenario_costs[k] = float(np.dot(5.0 * p_h[:145], ee[k, :145]))
     expected_emergency = float(np.mean(scenario_costs))
-    sorted_costs = np.sort(scenario_costs)
-    tail_n = max(1, int(np.ceil((1.0 - alpha) * K)))
-    cvar = float(np.mean(sorted_costs[-tail_n:]))
+    cvar = empirical_cvar_equal_prob(scenario_costs, alpha)
     return DayPlanSolution(
         q_current=q_current,
         scenario_soc=ss,

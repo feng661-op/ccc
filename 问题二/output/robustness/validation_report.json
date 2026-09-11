@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "checks": {
+    "frozen_main_files_unchanged": true,
+    "prediction_3models_x_3targets": true,
+    "k_sensitivity_5_7_9_12_15": true,
+    "soc_reserve_4_policies": true,
+    "terminal_values_0_04_08_12": true,
+    "window_28_42_56": true,
+    "risk_budget_reuse_3_levels": true,
+    "exact_fractional_cvar": true,
+    "main_reproduction_total_cost": true,
+    "main_reproduction_emergency": true,
+    "paper_markdown_exists": true,
+    "image_图13_鲁棒性与消融验证.png": true,
+    "image_表6_预测基线对比.png": true
+  },
+  "frozen_hashes": {
+    "result2.xlsx": true,
+    "code\\metrics.json": true,
+    "code\\run_data.npz": true
+  },
+  "diagnostics": {
+    "exact_cvar_test": 8.555555555555555,
+    "expected_cvar_test": 8.555555555555555,
+    "main_reproduction_check": {
+      "total_cost_abs_diff_yuan": 0.0,
+      "emergency_abs_diff_kwh": 1.1641532182693481e-10,
+      "replicate_end_soc_kwh": 7107.244602388408
+    }
+  }
+}

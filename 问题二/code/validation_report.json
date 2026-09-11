@@ -27,8 +27,11 @@
     "discharge_block_max_abs_error_kwh": 5.000001692678779e-07,
     "emergency_workbook_sum_kwh": 565008.444383,
     "emergency_array_sum_kwh": 565008.4443916262,
-    "soc_min_kwh": 1839.5706782819932,
-    "soc_max_kwh": 10800.0,
+    "soc_realtime_min_kwh": 1200.0,
+    "soc_realtime_max_kwh": 10800.0,
+    "soc_endpoint_min_kwh": 1839.5706782819932,
+    "soc_endpoint_max_kwh": 10800.0,
+    "soc_realtime_end_reconcile_max_abs_error_kwh": 0.0,
     "soc_continuity_max_abs_error_kwh": 0.0,
     "max_charge_10min_kwh": 833.3333333333333,
     "max_discharge_10min_kwh": 833.3333333333333
