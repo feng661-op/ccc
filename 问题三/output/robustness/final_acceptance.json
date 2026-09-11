@@ -1,7 +1,7 @@
 {
   "all_pass": true,
-  "pass_count": 13,
-  "check_count": 13,
+  "pass_count": 15,
+  "check_count": 15,
   "checks": {
     "base_validation_all_pass": "PASS",
     "factorial_A_finite": "PASS",
@@ -15,19 +15,21 @@
     "figures_complete": "PASS",
     "paper_material_complete": "PASS",
     "result3_exists": "PASS",
-    "final_cost_identity": "PASS"
+    "final_cost_identity": "PASS",
+    "physical_matrix_all_11_pass": "PASS",
+    "physical_targeted_regressions_pass": "PASS"
   },
   "evidence": {
     "base_validation_all_pass": {
-      "pass_count": 28,
-      "check_count": 28
+      "pass_count": 36,
+      "check_count": 36
     },
-    "factorial_A_finite": 42997784.66262383,
-    "factorial_B_finite": 41658240.331672564,
-    "factorial_C_finite": 26464523.935577128,
-    "factorial_D_finite": 25529819.40149909,
-    "semantic_sunk_full_run": 25424651.00203213,
-    "semantic_stepwise_full_run": 25597127.02785757,
+    "factorial_A_finite": 31904641.11414478,
+    "factorial_B_finite": 32294150.592298966,
+    "factorial_C_finite": 19590852.52772674,
+    "factorial_D_finite": 20097740.110834062,
+    "semantic_sunk_full_run": 19887258.03952366,
+    "semantic_stepwise_full_run": 20146384.833388995,
     "semantic_revision_time_nonconvex_milp": {
       "rows": 4,
       "nonconvex_slots": [
@@ -48,28 +50,36 @@
       "rows": 8
     },
     "figures_complete": {
-      "fig_q3_typical_day.png": 192010,
-      "fig_q3_factorial_abcd.png": 60376,
-      "fig_q3_fee_decomposition.png": 51753,
-      "fig_q3_representative_days.png": 495431,
-      "fig_q3_marginal_deadzone.png": 162072,
-      "fig_q3_semantic_robustness.png": 62868
+      "fig_q3_typical_day.png": 186732,
+      "fig_q3_factorial_abcd.png": 62386,
+      "fig_q3_fee_decomposition.png": 51773,
+      "fig_q3_representative_days.png": 498865,
+      "fig_q3_marginal_deadzone.png": 160216,
+      "fig_q3_semantic_robustness.png": 71827
     },
     "paper_material_complete": {
-      "bytes": 12424
+      "bytes": 12063
     },
     "result3_exists": {
-      "bytes": 1146764
+      "bytes": 986521
     },
     "final_cost_identity": {
-      "metrics_D": 25529819.40149909,
-      "five_ledger": 25529819.4014989,
-      "diff": -1.8998980522155762e-07
+      "metrics_D": 20097740.110834062,
+      "five_ledger": 20097740.110834084,
+      "diff": 2.2351741790771484e-08
+    },
+    "physical_matrix_all_11_pass": {
+      "pass": 176,
+      "count": 176
+    },
+    "physical_targeted_regressions_pass": {
+      "tests": 12,
+      "failures_or_errors": 0
     }
   },
   "artifact_hashes": {
-    "result3_sha256": "5af6f16fd65203c75ec70f63ce3135abca5e5e8b9e89d0f1bae7d8688e6921bf",
-    "paper_sha256": "6ce3184901fed0b7e24a20d0c21d98e3ba6317fb8ad6900abd8433e4fd10f22b",
-    "metrics_final_sha256": "b07f48416293d090839e84a4340632658e1bea67ee0c460a165cc5b57ef5ea38"
+    "result3_sha256": "ef85dd76b9d7083242061d535b69983ed0b048aaa32d57a1f4ee8a956b7be267",
+    "paper_sha256": "1e579ea587ff94797e36b4010fcc8aa1de63b2d44030a164f7039d1fe75b6adc",
+    "metrics_final_sha256": "d3c6313c927cf54f446d0c9cf77b1567d5afff98587276f3ff8c7527bea32b24"
   }
 }

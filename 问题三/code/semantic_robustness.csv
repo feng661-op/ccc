@@ -1,5 +1,5 @@
 ﻿semantics,total_cost_yuan,delta_vs_main_yuan,method
-main,25529819.40149909,0,full_reoptimization
-sunk_plan_plus_penalty,25424651.00203213,-105168.3994669579,full_reoptimization
-stepwise_revision,25597127.02785757,67307.62635848299,full_reoptimization
-revision_time,25148143.460339263,-381675.9411598258,full_year_fixed_policy_repricing_plus_exact_local_MILP
+main,20097740.110834062,0,full_reoptimization
+sunk_plan_plus_penalty,19887258.03952366,-210482.07131040096,full_reoptimization
+stepwise_revision,20146384.833388995,48644.72255493328,full_reoptimization
+revision_time,19931537.95375057,-166202.15708349273,full_year_fixed_policy_repricing_plus_exact_local_MILP

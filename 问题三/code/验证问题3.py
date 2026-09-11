@@ -38,11 +38,20 @@ soc_cont=float(np.max(np.abs(s24[:-1]-s00[1:])));soc_min=float(sp[EVAL_START:].m
 soc_res=float(np.max(np.abs(sp[:,1:]-sp[:,:-1]-ETA_C*ch+dis/ETA_D)));power=max(float(ch.max()),float(dis.max()));simultaneous=float(np.max(np.minimum(ch,dis)))
 check('soc_continuity',soc_cont<tol,{'max_error_kwh':soc_cont});check('soc_bounds',soc_min>=SOC_MIN-tol and soc_max<=SOC_MAX+tol,{'min':soc_min,'max':soc_max})
 check('soc_conservation',soc_res<tol,{'max_residual_kwh':soc_res});check('charge_discharge_power',power<=XMAX+tol,{'max_interval_energy_kwh':power,'limit':XMAX});check('no_simultaneous_charge_discharge',simultaneous<tol,{'max_min_xy':simultaneous})
-max_bal=0.;min_slack=1e99
-for d in range(EVAL_START,365):
-    for i in range(144):
-        q=float(A[d-1,143] if i==0 else A[d,i-1]);slack=q+dis[d,i]+em[d,i]-float(data.net_cal_kwh[d,i])-ch[d,i];max_bal=max(max_bal,abs(slack-cur[d,i]));min_slack=min(min_slack,slack)
-check('physical_energy_balance',max_bal<tol and min_slack>=-tol,{'max_slack_minus_curtail':max_bal,'min_slack':min_slack})
+assert int(z['physical_schema_version'])==2, 'Full physical replay required'
+gi=z['grid_import'];unused=z['unused_contract'];surplus=z['supply_surplus'];dump=z['battery_dump']
+qcal=np.zeros_like(A);qcal[:,1:]=A[:,:143];qcal[1:,0]=A[:-1,143]
+sl=slice(EVAL_START,None); net=data.net_cal_kwh[sl];pv=data.pv_cal_kwh[sl]
+res=gi[sl]+dis[sl]+em[sl]-net-ch[sl]-cur[sl]
+check('physical_energy_balance',np.max(np.abs(res))<tol,{'max_physical_residual_kwh':float(np.max(np.abs(res)))})
+check('actual_import_within_contract',np.min(gi[sl])>=-tol and np.max(gi[sl]-qcal[sl])<tol,{'max_excess_kwh':float(np.max(gi[sl]-qcal[sl]))})
+check('contract_import_unused_identity',np.max(np.abs(gi[sl]+unused[sl]-qcal[sl]))<tol,{'max_residual_kwh':float(np.max(np.abs(gi[sl]+unused[sl]-qcal[sl])))})
+check('pv_curtailment_source_bound',np.min(cur[sl])>=-tol and np.max(cur[sl]-pv)<tol,{'max_curtail_minus_pv_kwh':float(np.max(cur[sl]-pv))})
+check('no_pv_curtailment_without_pv',np.max(cur[sl][pv<tol],initial=0)<tol,{'night_curtail_kwh':float(cur[sl][pv<tol].sum())})
+check('no_battery_dump',np.max(np.abs(dump[sl]))<tol,{'battery_dump_kwh':float(dump[sl].sum())})
+check('no_discharge_while_supply_surplus',not np.any((dis[sl]>tol)&(surplus[sl]>tol)),{'violating_slots':int(np.sum((dis[sl]>tol)&(surplus[sl]>tol)))})
+check('no_emergency_funded_charging',not np.any((ch[sl]>tol)&(em[sl]>tol)),{'violating_slots':int(np.sum((ch[sl]>tol)&(em[sl]>tol)))})
+check('surplus_source_identity',np.max(np.abs(surplus[sl]-unused[sl]-cur[sl]-dump[sl]))<tol,{'max_residual_kwh':float(np.max(np.abs(surplus[sl]-unused[sl]-cur[sl]-dump[sl])))})
 
 # 5) Event audit: no clairvoyant cross-day qcont; each event horizon ends at next-day 00:10.
 events=list(csv.DictReader(open(HERE/'event_audit.csv',encoding='utf-8-sig')));maxeq=max(float(r['max_eq_residual']) for r in events);maxub=max(float(r['max_ub_violation']) for r in events)
@@ -93,7 +102,7 @@ for ds in ('2025-03-20','2025-06-21','2025-09-23','2025-12-21'):
 with open(HERE/'future_perturbation_audit.csv','w',newline='',encoding='utf-8-sig') as f:
     w=csv.writer(f);w.writerow(['date','event_hour','max_contract_change_kwh']);w.writerows(samples)
 check('future_perturbation_contract_invariance',max(x[2] for x in samples)<1e-7,{'samples':len(samples),'max_change':max(x[2] for x in samples)})
-check('realtime_dispatch_future_actual_invariance',max(x[2] for x in dispatch_samples)<1e-7,{'samples':len(dispatch_samples),'max_action_change':max(x[2] for x in dispatch_samples)})
+check('nominal_forecast_dispatch_future_actual_invariance',max(x[2] for x in dispatch_samples)<1e-7,{'samples':len(dispatch_samples),'max_action_change':max(x[2] for x in dispatch_samples)})
 
 # 9) Revision log legal-only.
 revs=list(csv.DictReader(open(HERE/'revision_log.csv',encoding='utf-8-sig')));illegal=[r for r in revs if str(r['legal']).lower() not in ('true','1')]

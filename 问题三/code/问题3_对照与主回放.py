@@ -13,7 +13,7 @@ def save_csv(path,rows):
         w=csv.DictWriter(f,fieldnames=list(rows[0].keys()));w.writeheader();w.writerows(rows)
 
 def save_sim(s):
-    np.savez_compressed(OUT/f'run_{s.name}.npz',B=s.B,A=s.A,A_stage=s.A_stage,charge=s.charge,discharge=s.discharge,emergency=s.emergency,curtail=s.curtail,soc00=s.soc00,soc24=s.soc24,soc_path=s.soc_path,plan_fee=s.plan_fee,adjusted_fee=s.adjusted_fee,natural_regular_fee=s.natural_regular_fee,emergency_fee=s.emergency_fee)
+    np.savez_compressed(OUT/f'run_{s.name}.npz',B=s.B,A=s.A,A_stage=s.A_stage,charge=s.charge,discharge=s.discharge,emergency=s.emergency,curtail=s.curtail,grid_import=s.grid_import,unused_contract=s.unused_contract,supply_surplus=s.supply_surplus,battery_dump=s.battery_dump,execution_mode=np.asarray(s.execution_mode),physical_schema_version=np.asarray(2),soc00=s.soc00,soc24=s.soc24,soc_path=s.soc_path,plan_fee=s.plan_fee,adjusted_fee=s.adjusted_fee,natural_regular_fee=s.natural_regular_fee,emergency_fee=s.emergency_fee)
     if s.name=='D':
         save_csv(OUT/'event_audit.csv',s.event_rows); save_csv(OUT/'revision_log.csv',s.revision_rows); save_csv(OUT/'dispatch_audit.csv',s.dispatch_rows)
     sl=slice(EVAL_START,365); comp=settlement_components(s.B[sl],s.A[sl],data.price_plan[None,:],s.down_settlement)

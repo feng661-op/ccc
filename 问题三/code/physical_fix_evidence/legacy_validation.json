@@ -1,0 +1,169 @@
+{
+  "all_pass": true,
+  "checks": {
+    "forecast_vintage_absolute_target_alignment": "PASS",
+    "event_information_cutoff": "PASS",
+    "contract_frozen_prefixes": "PASS",
+    "factorial_A_contract_frozen": "PASS",
+    "factorial_B_contract_frozen": "PASS",
+    "soc_continuity": "PASS",
+    "soc_bounds": "PASS",
+    "soc_conservation": "PASS",
+    "charge_discharge_power": "PASS",
+    "no_simultaneous_charge_discharge": "PASS",
+    "physical_energy_balance": "PASS",
+    "solver_residuals": "PASS",
+    "cross_day_continuation_no_clairvoyance": "PASS",
+    "scenario_weights_sum_to_one": "PASS",
+    "scenario_clipping_rate_reported": "PASS",
+    "terminal_penalty_binding_rate_reported": "PASS",
+    "warmup_formal_event_counts": "PASS",
+    "revision_statistics_explicit": "PASS",
+    "deterministic_baseline_is_point_forecast": "PASS",
+    "representative_scenario_weights_normalized": "PASS",
+    "future_perturbation_contract_invariance": "PASS",
+    "realtime_dispatch_future_actual_invariance": "PASS",
+    "revision_log_legal_only": "PASS",
+    "settlement_extreme_cases": "PASS",
+    "result3_contract_readback": "PASS",
+    "result3_physical_readback": "PASS",
+    "natural_day_bridge": "PASS",
+    "five_ledger_total": "PASS"
+  },
+  "evidence": {
+    "forecast_vintage_absolute_target_alignment": {
+      "rows": 26262,
+      "example": [
+        "2025-01-01 00:00:00",
+        "2025-01-01 06:00:00",
+        "2025-01-01 07:00:00",
+        "7",
+        "1"
+      ]
+    },
+    "event_information_cutoff": {
+      "events": 1460,
+      "scenario_error_rule": "day<=d-2"
+    },
+    "contract_frozen_prefixes": {
+      "max_error_kwh": 0.0,
+      "starts": {
+        "0": 0,
+        "6": 35,
+        "12": 71,
+        "18": 107
+      }
+    },
+    "factorial_A_contract_frozen": {
+      "max_B_A_error": 0.0
+    },
+    "factorial_B_contract_frozen": {
+      "max_B_A_error": 0.0
+    },
+    "soc_continuity": {
+      "max_error_kwh": 0.0
+    },
+    "soc_bounds": {
+      "min": 1200.0,
+      "max": 9026.339947052234
+    },
+    "soc_conservation": {
+      "max_residual_kwh": 9.094947017729282e-13
+    },
+    "charge_discharge_power": {
+      "max_interval_energy_kwh": 833.3333333333335,
+      "limit": 833.3333333333333
+    },
+    "no_simultaneous_charge_discharge": {
+      "max_min_xy": 0.0
+    },
+    "physical_energy_balance": {
+      "max_slack_minus_curtail": 4.547473508864641e-13,
+      "min_slack": -1.1368683772161603e-13
+    },
+    "solver_residuals": {
+      "max_eq": 5.4569682106375694e-12,
+      "max_ub": 3.609557097661309e-12
+    },
+    "cross_day_continuation_no_clairvoyance": {
+      "bad_count": 0,
+      "terminal_expected": "next day 00:10",
+      "sample": []
+    },
+    "scenario_weights_sum_to_one": {
+      "max_error": 2.220446049250313e-16
+    },
+    "scenario_clipping_rate_reported": {
+      "mean": 0.0,
+      "max": 0.0
+    },
+    "terminal_penalty_binding_rate_reported": {
+      "event_binding_rate": 0.4602739726027397,
+      "binding_events": 672,
+      "events": 1460
+    },
+    "warmup_formal_event_counts": {
+      "total": 1460,
+      "warmup": 124,
+      "formal": 1336
+    },
+    "revision_statistics_explicit": {
+      "changed_slots_total": 43031,
+      "warmup_changed_slots": 3936,
+      "formal_changed_slots": 39095,
+      "formal_adjusted_events": 1002,
+      "formal_adjusted_event_rate": 1.0
+    },
+    "deterministic_baseline_is_point_forecast": {
+      "samples": 16,
+      "max_error_kwh": 0.0
+    },
+    "representative_scenario_weights_normalized": {
+      "samples": 16,
+      "max_error": 0.0
+    },
+    "future_perturbation_contract_invariance": {
+      "samples": 16,
+      "max_change": 0.0
+    },
+    "realtime_dispatch_future_actual_invariance": {
+      "samples": 12,
+      "max_action_change": 0.0
+    },
+    "revision_log_legal_only": {
+      "rows": 43031,
+      "illegal": 0
+    },
+    "settlement_extreme_cases": {
+      "main_100_to_80": 90.0,
+      "sunk": 110.0,
+      "equal": 100.0,
+      "A0": 50.0,
+      "B0_A100": 150.0
+    },
+    "result3_contract_readback": {
+      "max_B": 4.547473508864641e-13,
+      "max_A": 4.547473508864641e-13,
+      "max_daily_sum": 4.3655745685100555e-11,
+      "max_fee": 7.275957614183426e-12
+    },
+    "result3_physical_readback": {
+      "charge_rows": 2005,
+      "emergency_rows": 6788,
+      "charge_diff": 3.259629011154175e-09,
+      "discharge_diff": 0.0,
+      "emergency_diff": -2.561137080192566e-09
+    },
+    "natural_day_bridge": {
+      "natural_regular": 22333133.81710957,
+      "plan_day_regular": 22333206.727898236,
+      "bridge": -72.91078866666663
+    },
+    "five_ledger_total": {
+      "ledger_total": 25529819.4014989,
+      "metrics_total": 25529819.40149909
+    }
+  },
+  "pass_count": 28,
+  "check_count": 28
+}

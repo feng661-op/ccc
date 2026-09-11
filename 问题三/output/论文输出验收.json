@@ -28,36 +28,36 @@
     },
     "current_metrics_referenced": {
       "required": [
-        "25,529,819.40",
-        "715,323.67",
-        "17,467,965.26",
-        "305,681.98"
+        "20,097,740.11",
+        "115,464.31",
+        "11,806,901.00",
+        "-301,692.37"
       ],
       "missing": []
     },
     "stale_invalid_baseline_removed_from_paper": null,
     "master_paper_symbol_index": null,
     "model_validation_pass": {
-      "pass": 28,
-      "count": 28
+      "pass": 36,
+      "count": 36
     },
     "final_acceptance_pass": {
-      "pass": 13,
-      "count": 13
+      "pass": 15,
+      "count": 15
     },
     "paper_figures_complete": {
       "bad": [],
       "sizes": {
-        "图14_问题3事件驱动滚动调度框架.png": 110492,
-        "图15_问题3典型日合同滚动调整.png": 192010,
-        "图16_问题3ABCD因子对照.png": 60376,
-        "图17_问题3主模型费用分解.png": 51753,
-        "图18_问题3四季代表日合同与净负荷.png": 495431,
-        "图19_合同调整死区边际价值.png": 162072,
-        "图20_问题3结算语义鲁棒性.png": 62868,
-        "表7_指定日期原始与最终合同.png": 88111,
-        "表8_指定日期储能充放电.png": 76419,
-        "表9_指定日期紧急购电.png": 79898
+        "图14_问题3事件驱动滚动调度框架.png": 229945,
+        "图15_问题3典型日合同滚动调整.png": 186732,
+        "图16_问题3ABCD因子对照.png": 62386,
+        "图17_问题3主模型费用分解.png": 51773,
+        "图18_问题3四季代表日合同与净负荷.png": 498865,
+        "图19_合同调整死区边际价值.png": 160216,
+        "图20_问题3结算语义鲁棒性.png": 71827,
+        "表7_指定日期原始与最终合同.png": 87951,
+        "表8_指定日期储能充放电.png": 81270,
+        "表9_指定日期紧急购电.png": 79692
       }
     },
     "robustness_evidence_complete": {
@@ -67,10 +67,10 @@
     "robustness_copy_final_acceptance.json": null,
     "factorial_metric_identity": null,
     "result3_exists": {
-      "bytes": 1146764
+      "bytes": 986521
     },
     "paper_material_size": {
-      "bytes": 12424
+      "bytes": 12063
     }
   }
 }

@@ -1,0 +1,69 @@
+RUN D_no6 {'use_new_vintage': True, 'allow_revision': True, 'scenario_count': 3, 'disabled_vintage_hours': (6,)}
+[D_no6] 1/365 2025-01-01 SOC=6000.0->3411.6 B=85771.6 A=108680.7 emg=9508.9
+[D_no6] 32/365 2025-02-01 SOC=1775.3->1445.4 B=40630.4 A=54471.6 emg=250.5
+[D_no6] 63/365 2025-03-04 SOC=1203.0->1200.0 B=73144.4 A=84285.5 emg=218.8
+[D_no6] 94/365 2025-04-04 SOC=1476.7->1631.2 B=26760.7 A=33845.1 emg=110.1
+[D_no6] 125/365 2025-05-05 SOC=1200.0->1200.0 B=54394.4 A=73788.1 emg=589.3
+[D_no6] 156/365 2025-06-05 SOC=1200.0->1200.0 B=64926.6 A=87518.3 emg=200.0
+[D_no6] 187/365 2025-07-06 SOC=1200.0->1200.0 B=61739.4 A=89350.1 emg=3702.8
+[D_no6] 218/365 2025-08-06 SOC=1594.8->1429.5 B=72971.2 A=89245.0 emg=1281.6
+[D_no6] 249/365 2025-09-06 SOC=2135.7->2721.0 B=39092.7 A=40752.2 emg=54.6
+[D_no6] 280/365 2025-10-07 SOC=1781.8->2416.0 B=60086.9 A=77918.2 emg=155.1
+[D_no6] 311/365 2025-11-07 SOC=1206.3->1444.4 B=32372.4 A=47408.2 emg=242.0
+[D_no6] 342/365 2025-12-08 SOC=1209.2->1333.8 B=94447.1 A=105458.9 emg=0.0
+[D_no6] 365/365 2025-12-31 SOC=1251.5->1322.0 B=92413.3 A=107857.3 emg=28.1
+{
+  "execution_mode": "measured_current_mpc",
+  "measurement_model": "ideal_piecewise_constant_current_slot",
+  "curtail_semantics": "pv_only",
+  "grid_import_kwh": 20684432.821232535,
+  "unused_contract_kwh": 3878126.9406042965,
+  "supply_surplus_kwh": 6446050.117885662,
+  "battery_dump_kwh": 0.0,
+  "name": "D_no6",
+  "use_new_vintage": true,
+  "allow_revision": true,
+  "scenario_count": 3,
+  "disabled_vintage_hours": [
+    6
+  ],
+  "down_settlement": "cancel_settlement",
+  "formal_days": 334,
+  "total_cost_yuan": 19981152.824415416,
+  "regular_cost_yuan": 19425189.11071107,
+  "emergency_cost_yuan": 555963.7137043478,
+  "planned_B_kwh": 19766358.48379412,
+  "final_A_kwh": 24562730.273503494,
+  "down_adjust_kwh": 236926.77445550237,
+  "up_adjust_kwh": 5033298.564164879,
+  "charge_kwh": 3045264.086707347,
+  "discharge_kwh": 2741167.733509426,
+  "emergency_kwh": 126540.50088008573,
+  "curtail_kwh": 2567923.1772813657,
+  "soc_min_kwh": 1200.0,
+  "soc_max_kwh": 10800.0,
+  "max_soc_continuity_error_kwh": 0.0,
+  "event_count_total": 1460,
+  "warmup_event_count": 124,
+  "formal_event_count": 1336,
+  "changed_slot_count_total": 41322,
+  "warmup_changed_slot_count": 3706,
+  "formal_changed_slot_count": 37616,
+  "warmup_adjusted_event_count": 93,
+  "formal_adjusted_event_count": 1002,
+  "formal_adjusted_event_rate": 1.0,
+  "dispatch_count_total": 52559,
+  "warmup_dispatch_count": 4463,
+  "formal_dispatch_count": 48096,
+  "solver_max_eq_residual": 5.4569682106375694e-12,
+  "solver_max_ub_violation": 3.801403636316536e-12,
+  "max_tree_nodes": 9,
+  "max_scenarios": 3,
+  "scenario_weight_sum_max_error": 2.220446049250313e-16,
+  "scenario_clip_rate_mean": 0.0,
+  "scenario_clip_rate_max": 0.0,
+  "terminal_shortfall_binding_event_count": 1418,
+  "terminal_shortfall_binding_event_rate": 0.9712328767123287,
+  "terminal_shortfall_expected_kwh_mean": 1610.5743608575049,
+  "runtime_seconds": 138.3244390487671
+}

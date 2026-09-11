@@ -1,0 +1,90 @@
+{
+  "main_D_total_cost_yuan": 20097740.110834062,
+  "sunk_plan_plus_penalty": {
+    "name": "D_sunk",
+    "mode": "sunk",
+    "total_cost_yuan": 19887258.03952366,
+    "regular_cost_yuan": 19388572.58535188,
+    "emergency_cost_yuan": 498685.4541717798,
+    "emergency_kwh": 116392.45410559856,
+    "soc_min_kwh": 1200.0,
+    "soc_max_kwh": 10747.416456085572,
+    "changed_slot_count_formal": 37304,
+    "adjusted_event_count_formal": 1002,
+    "runtime_seconds": 141.93912720680237
+  },
+  "stepwise_revision": {
+    "name": "D_stepwise",
+    "mode": "stepwise",
+    "total_cost_yuan": 20146384.833388995,
+    "regular_cost_yuan": 19644656.284171622,
+    "emergency_cost_yuan": 501728.5492173733,
+    "emergency_kwh": 116393.00625387205,
+    "soc_min_kwh": 1200.0,
+    "soc_max_kwh": 10768.97846848463,
+    "changed_slot_count_formal": 17746,
+    "adjusted_event_count_formal": 998,
+    "runtime_seconds": 139.06084513664246
+  },
+  "revision_time": {
+    "method": "full_year_fixed_policy_repricing_plus_exact_local_MILP",
+    "regular_cost_yuan": 19435454.688007392,
+    "emergency_cost_yuan": 496083.2657431768,
+    "total_cost_yuan": 19931537.95375057
+  },
+  "revision_time_exact_milp_audit": [
+    {
+      "date": "2025-03-20",
+      "event_hour": 12,
+      "objective": 560.2135099238841,
+      "solve_seconds": 0.019973039627075195,
+      "nonconvex_delivery_slots": 7,
+      "up_branch_slots": 0,
+      "down_branch_slots": 18,
+      "q_min": 0.0,
+      "q_max": 0.0,
+      "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+    },
+    {
+      "date": "2025-06-21",
+      "event_hour": 12,
+      "objective": 0.0,
+      "solve_seconds": 0.005000591278076172,
+      "nonconvex_delivery_slots": 7,
+      "up_branch_slots": 0,
+      "down_branch_slots": 18,
+      "q_min": 0.0,
+      "q_max": 0.0,
+      "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+    },
+    {
+      "date": "2025-09-23",
+      "event_hour": 12,
+      "objective": 61.401030182222165,
+      "solve_seconds": 0.00599980354309082,
+      "nonconvex_delivery_slots": 7,
+      "up_branch_slots": 1,
+      "down_branch_slots": 17,
+      "q_min": -0.0,
+      "q_max": -0.0,
+      "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+    },
+    {
+      "date": "2025-12-21",
+      "event_hour": 12,
+      "objective": 2714.094515705473,
+      "solve_seconds": 0.07413697242736816,
+      "nonconvex_delivery_slots": 7,
+      "up_branch_slots": 4,
+      "down_branch_slots": 14,
+      "q_min": -3.410605131648481e-13,
+      "q_max": 942.5035250000013,
+      "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+    }
+  ],
+  "deltas_vs_main": {
+    "sunk": -210482.07131040096,
+    "stepwise": 48644.72255493328,
+    "revision_time_fixed_policy": -166202.15708349273
+  }
+}

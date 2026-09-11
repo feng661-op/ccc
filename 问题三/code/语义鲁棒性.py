@@ -12,7 +12,7 @@ from q3_sim import simulate_strategy
 ROOT=HERE.parent.parent; data=load_q3_inputs(ROOT); E=EVAL_START
 
 def save_run(name,s):
-    np.savez_compressed(HERE/f'run_{name}.npz',B=s.B,A=s.A,A_stage=s.A_stage,charge=s.charge,discharge=s.discharge,emergency=s.emergency,curtail=s.curtail,soc00=s.soc00,soc24=s.soc24,soc_path=s.soc_path,plan_fee=s.plan_fee,adjusted_fee=s.adjusted_fee,natural_regular_fee=s.natural_regular_fee,emergency_fee=s.emergency_fee)
+    np.savez_compressed(HERE/f'run_{name}.npz',B=s.B,A=s.A,A_stage=s.A_stage,charge=s.charge,discharge=s.discharge,emergency=s.emergency,curtail=s.curtail,grid_import=s.grid_import,unused_contract=s.unused_contract,supply_surplus=s.supply_surplus,battery_dump=s.battery_dump,execution_mode=np.asarray(s.execution_mode),physical_schema_version=np.asarray(2),soc00=s.soc00,soc24=s.soc24,soc_path=s.soc_path,plan_fee=s.plan_fee,adjusted_fee=s.adjusted_fee,natural_regular_fee=s.natural_regular_fee,emergency_fee=s.emergency_fee)
     return {'total_cost_yuan':float(np.sum(s.natural_regular_fee[E:]+s.emergency_fee[E:])), 'regular_cost_yuan':float(np.sum(s.natural_regular_fee[E:])), 'emergency_cost_yuan':float(np.sum(s.emergency_fee[E:])), 'emergency_kwh':float(np.sum(s.emergency[E:])), 'soc_min_kwh':float(np.min(s.soc_path[E:])), 'soc_max_kwh':float(np.max(s.soc_path[E:])), 'solver_max_eq_residual':float(max(r['max_eq_residual'] for r in s.event_rows)), 'solver_max_ub_violation':float(max(r['max_ub_violation'] for r in s.event_rows)), 'revision_count':len(s.revision_rows)}
 
 def cached_run_metrics(name):

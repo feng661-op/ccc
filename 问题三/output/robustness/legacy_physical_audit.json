@@ -1,0 +1,13 @@
+{
+  "source_commit": "855713e123e2095c9b31314f955255c9d2416cf7",
+  "formal_slots": 48096,
+  "supply_surplus_kwh": 8907258.460335463,
+  "w_above_pv_slots": 17066,
+  "sum_w_excess_above_pv": 3524355.903020582,
+  "w_at_zero_pv": 2803054.1595923323,
+  "discharge_and_surplus_slots": 7792,
+  "sum_positive_pv_minus_load": 3058159.9162,
+  "battery_exceeds_all_demand_slots": 655,
+  "battery_excess_over_load_kwh": 78638.8615763,
+  "judgment": "mixed surplus mislabeled as PV curtailment; physical control repair required; current-measurement availability remains an explicit modeling assumption"
+}

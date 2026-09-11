@@ -12,6 +12,14 @@
     "charge_discharge_power": "PASS",
     "no_simultaneous_charge_discharge": "PASS",
     "physical_energy_balance": "PASS",
+    "actual_import_within_contract": "PASS",
+    "contract_import_unused_identity": "PASS",
+    "pv_curtailment_source_bound": "PASS",
+    "no_pv_curtailment_without_pv": "PASS",
+    "no_battery_dump": "PASS",
+    "no_discharge_while_supply_surplus": "PASS",
+    "no_emergency_funded_charging": "PASS",
+    "surplus_source_identity": "PASS",
     "solver_residuals": "PASS",
     "cross_day_continuation_no_clairvoyance": "PASS",
     "scenario_weights_sum_to_one": "PASS",
@@ -22,7 +30,7 @@
     "deterministic_baseline_is_point_forecast": "PASS",
     "representative_scenario_weights_normalized": "PASS",
     "future_perturbation_contract_invariance": "PASS",
-    "realtime_dispatch_future_actual_invariance": "PASS",
+    "nominal_forecast_dispatch_future_actual_invariance": "PASS",
     "revision_log_legal_only": "PASS",
     "settlement_extreme_cases": "PASS",
     "result3_contract_readback": "PASS",
@@ -65,21 +73,44 @@
     },
     "soc_bounds": {
       "min": 1200.0,
-      "max": 9026.339947052234
+      "max": 10768.978468484624
     },
     "soc_conservation": {
       "max_residual_kwh": 9.094947017729282e-13
     },
     "charge_discharge_power": {
-      "max_interval_energy_kwh": 833.3333333333335,
+      "max_interval_energy_kwh": 833.3333333333333,
       "limit": 833.3333333333333
     },
     "no_simultaneous_charge_discharge": {
       "max_min_xy": 0.0
     },
     "physical_energy_balance": {
-      "max_slack_minus_curtail": 4.547473508864641e-13,
-      "min_slack": -1.1368683772161603e-13
+      "max_physical_residual_kwh": 3.410605131648481e-13
+    },
+    "actual_import_within_contract": {
+      "max_excess_kwh": 0.0
+    },
+    "contract_import_unused_identity": {
+      "max_residual_kwh": 2.2737367544323206e-13
+    },
+    "pv_curtailment_source_bound": {
+      "max_curtail_minus_pv_kwh": 0.0
+    },
+    "no_pv_curtailment_without_pv": {
+      "night_curtail_kwh": 0.0
+    },
+    "no_battery_dump": {
+      "battery_dump_kwh": 0.0
+    },
+    "no_discharge_while_supply_surplus": {
+      "violating_slots": 0
+    },
+    "no_emergency_funded_charging": {
+      "violating_slots": 0
+    },
+    "surplus_source_identity": {
+      "max_residual_kwh": 1.1368683772161603e-13
     },
     "solver_residuals": {
       "max_eq": 5.4569682106375694e-12,
@@ -98,8 +129,8 @@
       "max": 0.0
     },
     "terminal_penalty_binding_rate_reported": {
-      "event_binding_rate": 0.4602739726027397,
-      "binding_events": 672,
+      "event_binding_rate": 0.9664383561643836,
+      "binding_events": 1411,
       "events": 1460
     },
     "warmup_formal_event_counts": {
@@ -108,9 +139,9 @@
       "formal": 1336
     },
     "revision_statistics_explicit": {
-      "changed_slots_total": 43031,
-      "warmup_changed_slots": 3936,
-      "formal_changed_slots": 39095,
+      "changed_slots_total": 41793,
+      "warmup_changed_slots": 3768,
+      "formal_changed_slots": 38025,
       "formal_adjusted_events": 1002,
       "formal_adjusted_event_rate": 1.0
     },
@@ -126,12 +157,12 @@
       "samples": 16,
       "max_change": 0.0
     },
-    "realtime_dispatch_future_actual_invariance": {
+    "nominal_forecast_dispatch_future_actual_invariance": {
       "samples": 12,
       "max_action_change": 0.0
     },
     "revision_log_legal_only": {
-      "rows": 43031,
+      "rows": 41793,
       "illegal": 0
     },
     "settlement_extreme_cases": {
@@ -149,21 +180,21 @@
     },
     "result3_physical_readback": {
       "charge_rows": 2005,
-      "emergency_rows": 6788,
-      "charge_diff": 3.259629011154175e-09,
+      "emergency_rows": 1377,
+      "charge_diff": -1.862645149230957e-09,
       "discharge_diff": 0.0,
-      "emergency_diff": -2.561137080192566e-09
+      "emergency_diff": 5.820766091346741e-11
     },
     "natural_day_bridge": {
-      "natural_regular": 22333133.81710957,
-      "plan_day_regular": 22333206.727898236,
+      "natural_regular": 19601656.84509088,
+      "plan_day_regular": 19601729.75587955,
       "bridge": -72.91078866666663
     },
     "five_ledger_total": {
-      "ledger_total": 25529819.4014989,
-      "metrics_total": 25529819.40149909
+      "ledger_total": 20097740.110834084,
+      "metrics_total": 20097740.110834062
     }
   },
-  "pass_count": 28,
-  "check_count": 28
+  "pass_count": 36,
+  "check_count": 36
 }

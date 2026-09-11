@@ -18,7 +18,12 @@ out={
     'main_scenario_count':3,
     'terminal_value':0.45,
     'load_forecast':'7-day seasonal-naive when available; selected on January only',
-    'dispatch':'strictly causal 10-min receding-horizon LP; current realized interval not used before action'
+    'dispatch':'current-measurement 10-min receding-horizon LP; only current entry observed, all future entries forecast',
+    'measurement_model':'ideal_piecewise_constant_current_slot; not actual zero-delay sensor validation',
+    'contract_information':'completed history and released forecasts only',
+    'physical_schema_version':2,
+    'curtail_semantics':'PV-only; unused paid contract is separate',
+    'event_storage_recoursing':'scenario estimate; not a full nonanticipative multistage optimum'
   },
   'factorial':{k:m[k] for k in ('A','B','C','D')},
   'factorial_effects':m['factorial_effects'],
@@ -28,6 +33,7 @@ out={
   'marginal_deadzone':{'epsilon_kwh':d['epsilon_kwh'],'rows':d['rows'],'direction_match_count':d['direction_match_count']},
   'validation_summary':{'all_pass':v['all_pass'],'pass_count':v['pass_count'],'check_count':v['check_count']},
   'main_D':m['D'],
+  'physical_fix':json.loads((HERE/'physical_fix_evidence'/'physical_matrix_validation.json').read_text(encoding='utf-8')),
 }
 (HERE/'metrics_final.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')
 # metrics_partial is a tracked progress artifact; keep it synchronized rather than leaving stale aborted-run values.

@@ -6,6 +6,8 @@ HERE=Path(__file__).resolve().parent;sys.path.insert(0,str(HERE))
 from q3_data import *
 ROOT=HERE.parent.parent;data=load_q3_inputs(ROOT);E=EVAL_START
 names=['A','B','C','D','D_point','D_no6','D_no12','D_no18','D_K5','D_sunk','D_stepwise']
+if (HERE/'run_D.npz').exists() and 'physical_schema_version' in np.load(HERE/'run_D.npz').files:
+    raise SystemExit('Schema-2 replay already uses one-way actions and split physical flows; legacy projection refused to overwrite it.')
 
 def project(x,y):
     delta=ETA_C*x-y/ETA_D

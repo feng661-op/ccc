@@ -1,0 +1,79 @@
+[
+  {
+    "name": "A",
+    "exit_code": 0,
+    "seconds": 125.54228568077087,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_A.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "B",
+    "exit_code": 0,
+    "seconds": 128.92560243606567,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_B.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D",
+    "exit_code": 0,
+    "seconds": 146.04581546783447,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D_point",
+    "exit_code": 0,
+    "seconds": 115.01233196258545,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_point.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "C",
+    "exit_code": 0,
+    "seconds": 144.18647050857544,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_C.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D_no6",
+    "exit_code": 0,
+    "seconds": 139.92252206802368,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_no6.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D_no12",
+    "exit_code": 0,
+    "seconds": 143.68056917190552,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_no12.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D_no18",
+    "exit_code": 0,
+    "seconds": 144.9094796180725,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_no18.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D_K5",
+    "exit_code": 0,
+    "seconds": 185.7176902294159,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_K5.log",
+    "source_script_sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127"
+  },
+  {
+    "name": "D_sunk",
+    "exit_code": 0,
+    "seconds": 143.80119800567627,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_sunk.log",
+    "source_script_sha256": "b6fe052abff75bfd14555ba2e448ae779eba24e071da3d57c8c35bf7739ac41c"
+  },
+  {
+    "name": "D_stepwise",
+    "exit_code": 0,
+    "seconds": 140.7949035167694,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\replay_D_stepwise.log",
+    "source_script_sha256": "b6fe052abff75bfd14555ba2e448ae779eba24e071da3d57c8c35bf7739ac41c"
+  }
+]

@@ -1,0 +1,132 @@
+[
+  {
+    "index": 0,
+    "args": [
+      "汇总主结果.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.0645301342010498,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_00.log"
+  },
+  {
+    "index": 1,
+    "args": [
+      "扩展建议验证.py"
+    ],
+    "exit_code": 0,
+    "seconds": 32.48531198501587,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_01.log"
+  },
+  {
+    "index": 2,
+    "args": [
+      "语义鲁棒性.py"
+    ],
+    "exit_code": 0,
+    "seconds": 3.1761221885681152,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_02.log"
+  },
+  {
+    "index": 3,
+    "args": [
+      "边际价值审计.py"
+    ],
+    "exit_code": 0,
+    "seconds": 2.5240890979766846,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_03.log"
+  },
+  {
+    "index": 4,
+    "args": [
+      "写出result3.py"
+    ],
+    "exit_code": 0,
+    "seconds": 4.995170593261719,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_04.log"
+  },
+  {
+    "index": 5,
+    "args": [
+      "验证问题3.py"
+    ],
+    "exit_code": 0,
+    "seconds": 13.39633321762085,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_05.log"
+  },
+  {
+    "index": 6,
+    "args": [
+      "验证物理修复矩阵.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.0682718753814697,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_06.log"
+  },
+  {
+    "index": 7,
+    "args": [
+      "-m",
+      "pytest",
+      "-q",
+      "test_physical_semantics.py",
+      "--junitxml=physical_fix_evidence/targeted_pytest.xml"
+    ],
+    "exit_code": 0,
+    "seconds": 2.9698143005371094,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_07.log"
+  },
+  {
+    "index": 8,
+    "args": [
+      "汇总最终指标.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.08383059501647949,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_08.log"
+  },
+  {
+    "index": 9,
+    "args": [
+      "同步问题3论文输出.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.0138790607452393,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_09.log"
+  },
+  {
+    "index": 10,
+    "args": [
+      "生成问题3图表.py"
+    ],
+    "exit_code": 0,
+    "seconds": 2.3231215476989746,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_10.log"
+  },
+  {
+    "index": 11,
+    "args": [
+      "同步问题3图表.py"
+    ],
+    "exit_code": 0,
+    "seconds": 1.602320671081543,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_11.log"
+  },
+  {
+    "index": 12,
+    "args": [
+      "最终总验收.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.17646384239196777,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_12.log"
+  },
+  {
+    "index": 13,
+    "args": [
+      "验证问题3论文输出.py"
+    ],
+    "exit_code": 0,
+    "seconds": 0.05473899841308594,
+    "log": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题三\\code\\physical_fix_evidence\\post_13.log"
+  }
+]

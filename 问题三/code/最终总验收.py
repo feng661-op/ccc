@@ -25,6 +25,13 @@ D=float(metrics['main_D']['total_cost_yuan']); led=0.0
 with open(HERE/'five_ledger.csv',encoding='utf-8-sig') as f:
     for r in csv.DictReader(f):led+=float(r['F_total'])
 ck('final_cost_identity',abs(D-led)<1e-5,{'metrics_D':D,'five_ledger':led,'diff':led-D})
+# Physical semantics, whole matrix, and executed targeted test suite.
+phys=json.loads((HERE/'physical_fix_evidence'/'physical_matrix_validation.json').read_text(encoding='utf-8'))
+ck('physical_matrix_all_11_pass',phys.get('all_pass') and phys.get('strategy_count')==11 and phys.get('pass_count')==phys.get('check_count'),{'pass':phys['pass_count'],'count':phys['check_count']})
+import xml.etree.ElementTree as ET
+jt=ET.parse(HERE/'physical_fix_evidence'/'targeted_pytest.xml').getroot()
+suites=list(jt.iter('testsuite')); nt=sum(int(x.attrib.get('tests',0)) for x in suites);nf=sum(int(x.attrib.get('failures',0))+int(x.attrib.get('errors',0)) for x in suites)
+ck('physical_targeted_regressions_pass',nt>=12 and nf==0,{'tests':nt,'failures_or_errors':nf})
 # Hash final user-facing artifacts for traceability.
 def sha(p):
     h=hashlib.sha256();

@@ -7,6 +7,8 @@ HERE=Path(__file__).resolve().parent; sys.path.insert(0,str(HERE))
 from q3_data import *
 ROOT=HERE.parent.parent; Q3=ROOT/'问题三'; data=load_q3_inputs(ROOT); z=np.load(HERE/'run_D.npz')
 B=z['B'];A=z['A'];ch=z['charge'];dis=z['discharge'];em=z['emergency'];cur=z['curtail'];sp=z['soc_path']
+assert int(z['physical_schema_version'])==2, 'Physical replay required before export'
+grid_import=z['grid_import'];unused=z['unused_contract'];surplus=z['supply_surplus'];dump=z['battery_dump']
 sl=range(EVAL_START,365); out=Q3/'result3.xlsx'; shutil.copy2(ROOT/'26C题'/'附件'/'附件5'/'result3.xlsx',out)
 wb=openpyxl.load_workbook(out)
 for sn,arr in [('计划购电量',B),('调整购电量',A)]:
@@ -48,10 +50,10 @@ with open(HERE/'five_ledger.csv','w',newline='',encoding='utf-8-sig') as f:
             w.writerow([data.dates[d].date().isoformat(),i,data.dates[pd].date().isoformat(),j,p,B[pd,j],A[pd,j],comp['keep_kwh'][0],comp['down_kwh'][0],comp['up_kwh'][0],comp['F_plan'][0],comp['F_cancel'][0],comp['F_add'][0],femg,float(comp['F_regular'][0]+femg)])
 # Natural-day physical audit.
 with open(HERE/'physical_10min.csv','w',newline='',encoding='utf-8-sig') as f:
-    w=csv.writer(f); w.writerow(['date','slot_i','start','price','contract_kwh','net_actual_kwh','charge_kwh','discharge_kwh','emergency_kwh','curtail_kwh','soc_start','soc_end','soc_balance_residual','power_balance_slack'])
+    w=csv.writer(f); w.writerow(['date','slot_i','start','price','contract_kwh','net_actual_kwh','charge_kwh','discharge_kwh','emergency_kwh','curtail_kwh','soc_start','soc_end','soc_balance_residual','power_balance_slack','grid_import_kwh','unused_contract_kwh','pv_curtail_kwh','supply_surplus_kwh','battery_dump_kwh','physical_balance_residual','execution_mode'])
     for d in sl:
         for i in range(144):
             q=float(A[d-1,143] if i==0 else A[d,i-1]); net=float(data.net_cal_kwh[d,i]); s0=float(sp[d,i]); s1=float(sp[d,i+1]); r=s1-s0-ETA_C*ch[d,i]+dis[d,i]/ETA_D; slack=q+dis[d,i]+em[d,i]-net-ch[d,i]
             t=calendar_slot_start(data.dates[d],i)
-            w.writerow([data.dates[d].date().isoformat(),i,t.strftime('%H:%M'),data.price_calendar[i],q,net,ch[d,i],dis[d,i],em[d,i],cur[d,i],s0,s1,r,slack])
+            w.writerow([data.dates[d].date().isoformat(),i,t.strftime('%H:%M'),data.price_calendar[i],q,net,ch[d,i],dis[d,i],em[d,i],cur[d,i],s0,s1,r,slack,grid_import[d,i],unused[d,i],cur[d,i],surplus[d,i],dump[d,i],grid_import[d,i]+dis[d,i]+em[d,i]-net-ch[d,i]-cur[d,i],str(z['execution_mode'])])
 print(out)

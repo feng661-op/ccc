@@ -104,13 +104,15 @@ def execute_actual_interval(soc,contract,net_actual,target_after):
         x=min(margin,XMAX,max(0,(SOC_MAX-soc)/ETA_C)); return soc+ETA_C*x,x,0.0,0.0,max(0,margin-x)
     deficit=-margin; floor=float(np.clip(target_after,SOC_MIN,SOC_MAX)); y=min(deficit,XMAX,max(0,(soc-floor)*ETA_D)); return soc-y/ETA_D,0.0,y,max(0,deficit-y),0.0
 
-def solve_dispatch_mpc(soc0,contracts,net_forecast,prices,terminal_value=.45):
-    """Strictly causal deterministic 10-min receding-horizon storage dispatch.
+def solve_dispatch_mpc(soc0,contracts,net_forecast,prices,terminal_value=.45,*,current_balance_limits=False):
+    """Deterministic 10-min receding-horizon storage command.
 
     Contracts are fixed until the next 0/6/12/18 contract event. Future net load
     is the latest causal point forecast; only the first slot is replaced by the
     causal forecast available before the interval starts. The LP is re-solved every 10 minutes, so no
-    current/future realized aggregate load or expected-SOC floor enters the current action.
+    future realized aggregate load or expected-SOC floor enters the action.
+    With current_balance_limits=True the caller explicitly supplies the current
+    measured net load; this uses the documented within-slot measurement model.
     """
     q=np.maximum(0,np.asarray(contracts,float)); net=np.asarray(net_forecast,float).copy(); pr=np.asarray(prices,float); H=len(q)
     if H<1 or len(net)<H or len(pr)<H: raise ValueError('dispatch MPC horizon mismatch')
@@ -132,6 +134,11 @@ def solve_dispatch_mpc(soc0,contracts,net_forecast,prices,terminal_value=.45):
             for j,v in d.items(): A[r,j]=v
         return A
     bounds=[(0,XMAX)]*(2*H)+[(0,None)]*H+[(SOC_MIN,SOC_MAX)]*(H+1)+[(0,None)]
+    if current_balance_limits:
+        # Current measurement only. Avoid wasting battery output and using
+        # emergency power to charge. Future entries remain causal forecasts.
+        bounds[0]=(0.0,min(XMAX,max(0.0,float(q[0]-net[0]))))
+        bounds[H]=(0.0,min(XMAX,max(0.0,float(net[0]-q[0]))))
     res=linprog(c,A_ub=dense(ubr),b_ub=np.asarray(ubb),A_eq=dense(eqr),b_eq=np.asarray(eqb),bounds=bounds,method='highs',options={'presolve':True})
     if not res.success: raise RuntimeError(f'dispatch MPC failed: {res.status} {res.message}')
     # Project any LP-degenerate simultaneous charge/discharge to the unique
