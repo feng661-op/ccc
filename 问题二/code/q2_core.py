@@ -32,7 +32,11 @@ ETA_C = float(np.sqrt(0.9))
 ETA_D = float(np.sqrt(0.9))
 
 # 风险/MPC参数
-SCENARIO_QUANTILES = (0.10, 0.30, 0.50, 0.70, 0.90)
+# 9个等概率经验分位场景：单个尾部场景概率1/9<20%。
+# 这点很关键：紧急购电是5倍电价，若只用5个等概率场景，
+# “最坏1个场景缺1 kWh”的期望紧急成本恰好=提前计划多买1 kWh的成本，
+# 会造成风险中性目标与CVaR项的边际退化。9场景可形成真实的期望-尾部风险权衡。
+SCENARIO_QUANTILES = (0.05, 0.15, 0.25, 0.35, 0.50, 0.65, 0.75, 0.85, 0.95)
 SCENARIO_WINDOW_DAYS = 42
 CVAR_ALPHA = 0.80
 TERMINAL_RESERVE = 6000.0

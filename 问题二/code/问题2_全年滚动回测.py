@@ -40,7 +40,8 @@ from q2_core import (  # noqa: E402
 )
 
 EVAL_START = 31  # 2025-02-01
-RISK_CANDIDATES = (0.05, 0.15, 0.30)
+RISK_CANDIDATES = (0.0, 0.005, 0.01, 0.02, 0.03, 0.05, 0.15, 0.30)
+RISK_BUDGET_PCT = 0.002  # 仅允许用1月风险中性成本的0.2%作为可靠性保险预算
 
 
 @dataclass
@@ -162,7 +163,13 @@ def simulate_strategy(
 
 
 def calibrate_risk(data: InputData, fc: ForecastBundle) -> Tuple[float, List[Dict[str, float]]]:
-    """只用1月暖启动数据选择正的CVaR权重；正式2-12月结果完全不参与调参。"""
+    """只用1月暖启动数据选择CVaR权重；正式2-12月结果完全不参与调参。
+
+    规则不是强制使用风险厌恶：先以lambda=0作为风险中性基准，只允许总成本
+    最多增加0.2%作为可靠性保险预算；在预算内的正lambda候选中，选择“每增加
+    1元成本所减少的紧急购电kWh”最高的Pareto点。若没有正权重带来真实改善，
+    自动回退lambda=0。
+    """
     rows: List[Dict[str, float]] = []
     for lam in RISK_CANDIDATES:
         sim = simulate_strategy(data, fc, lam, end_day=EVAL_START, verbose=False)
@@ -176,13 +183,44 @@ def calibrate_risk(data: InputData, fc: ForecastBundle) -> Tuple[float, List[Dic
             'january_total_cost': pc + ec,
             'january_emergency_kwh': ee,
         })
-        print(f'[Jan校准] lambda={lam:.2f}: total={pc+ec:.2f}, emergency={ee:.2f} kWh')
+        print(f'[Jan校准] lambda={lam:.3f}: total={pc+ec:.2f}, emergency={ee:.2f} kWh')
 
-    min_cost = min(r['january_total_cost'] for r in rows)
-    # 先控制经济性：进入最低成本+0.5%的集合；集合内优先更少紧急购电，再取较小lambda防过度保守。
-    shortlist = [r for r in rows if r['january_total_cost'] <= min_cost * 1.005 + 1e-9]
-    best = min(shortlist, key=lambda r: (r['january_emergency_kwh'], r['risk_lambda']))
-    print(f"[Jan校准] 选择 lambda={best['risk_lambda']:.2f}")
+    neutral = next(r for r in rows if abs(r['risk_lambda']) < 1e-12)
+    base_cost = neutral['january_total_cost']
+    base_emg = neutral['january_emergency_kwh']
+    for r in rows:
+        premium = r['january_total_cost'] - base_cost
+        reduction = base_emg - r['january_emergency_kwh']
+        r['cost_premium_vs_neutral_yuan'] = premium
+        r['cost_premium_vs_neutral_pct'] = premium / base_cost if base_cost else 0.0
+        r['emergency_reduction_vs_neutral_kwh'] = reduction
+        r['emergency_reduction_per_premium_kwh_per_yuan'] = (
+            reduction / premium if premium > 1e-9 and reduction > 1e-9 else 0.0
+        )
+
+    shortlist = [
+        r for r in rows
+        if r['risk_lambda'] > 0.0
+        and r['cost_premium_vs_neutral_yuan'] > 1e-9
+        and r['cost_premium_vs_neutral_pct'] <= RISK_BUDGET_PCT + 1e-12
+        and r['emergency_reduction_vs_neutral_kwh'] > 1e-9
+    ]
+    if shortlist:
+        best = max(
+            shortlist,
+            key=lambda r: (
+                r['emergency_reduction_per_premium_kwh_per_yuan'],
+                r['emergency_reduction_vs_neutral_kwh'],
+                -r['risk_lambda'],
+            ),
+        )
+    else:
+        best = neutral
+    print(
+        f"[Jan校准] 风险预算={RISK_BUDGET_PCT:.2%}，选择 lambda={best['risk_lambda']:.3f}; "
+        f"premium={best['cost_premium_vs_neutral_pct']:.3%}, "
+        f"emergency_reduction={best['emergency_reduction_vs_neutral_kwh']:.2f} kWh"
+    )
     return float(best['risk_lambda']), rows
 
 
@@ -424,7 +462,7 @@ def save_npz(out_path: Path, main: SimulationResult, baseline: SimulationResult,
 
 def write_reports(out_dir: Path, metrics: Dict) -> None:
     fm = metrics['forecast_metrics']
-    text = f"""# 问题2模型与结果说明\n\n## 1. 模型定位\n\n问题2不是把附件2全年真实值一次性代入全年LP，而是模拟每天0:00的信息集，形成“历史信息 → 预测 → 场景风险优化 → 实际运行 → 5倍紧急购电结算 → 数据进入历史”的walk-forward闭环。\n\n正式评价区间严格按result2模板为 **2025-02-01至2025-12-31（334天）**；1月只作暖启动和风险参数校准。储能从2025-01-01给定的6000 kWh开始连续运行，2月1日不重置。\n\n## 2. 10分钟边界与信息集\n\nresult2计划列从`0:10-0:20`开始，最后为`0:00-0:10+1`。因此每天0:00发布的新计划在0:10起生效，0:00-0:10仍执行昨日计划最后一段。程序显式保留这个lead interval。\n\n在第d天0:00：\n- 最晚完整可用数据行是d-2；\n- d-1行只允许使用0:10至24:00前的143个已发生点；\n- d-1行最后的`0:00+1`对应未来0:00-0:10，强制掩码，不参与当天0:00预测；\n- 场景残差也只使用d-2及以前完整误差。\n\n这比简单“使用昨天整行”更严格，避免最后10分钟的隐藏look-ahead。\n\n## 3. 预测与场景\n\n负载和光伏分别用因果历史模拟集成：上一日已观测部分、7日滞后、同星期历史和最近7日中位曲线加权。没有天气数据，因此不引入不可获得的未来天气特征。场景采用最近历史预测残差的整日相关曲线，按高价时段正净负荷残差风险分位抽取，保留时序相关性。\n\n正式评价期预测误差：\n- 负载 MAE = {fm['load_mae_kw']:.2f} kW，NMAE = {fm['load_nmae']:.4f}\n- 光伏 MAE = {fm['pv_mae_kw']:.2f} kW，NMAE = {fm['pv_nmae']:.4f}\n- 净负荷 MAE = {fm['net_mae_kw']:.2f} kW，NMAE = {fm['net_nmae']:.4f}\n\n## 4. 两阶段随机MPC + CVaR\n\n每天优化窗口包括：已经承诺的0:00-0:10 lead段 + 当天新计划144段 + 下一天144段辅助视野。当天144段计划购电量为所有场景共享的一阶段变量；下一天购电量允许按场景自适应，只作为MPC续期变量，第二天0:00会重新求解。\n\n储能状态方程使用与问题1统一的对称往返效率拆分：\n\n`eta_c = eta_d = sqrt(0.9)`，\n\n`S[t+1] = S[t] + eta_c*C[t] - D[t]/eta_d`。\n\n目标包括：计划购电费 + 场景期望5倍紧急购电费 + `lambda*CVaR`尾部风险 + 48小时末低于6000 kWh的软终端储备价值。终端不是硬性回到6000，因此避免“每天电池自动复位”；扩展视野与软终端价值共同抑制12月31日末端放空。\n\n1月仅用暖启动数据在正的CVaR权重候选中选择：最终 `lambda = {metrics['risk_lambda']:.2f}`，`alpha = {metrics['cvar_alpha']:.2f}`。\n\n## 5. 实时执行\n\n计划购电量一旦发布即按计划计费。实际运行每10分钟只读取当前已实现净负荷：若计划电量与光伏有富余，则在功率/SOC约束内充电；若不足，则只在场景SOC风险储备底线以上放电，其余缺口按该时刻电价5倍紧急购电。该规则不读取未来实际值。\n\n## 6. 正式评价结果\n\n- 计划购电量：{metrics['plan_purchase_kwh']:.2f} kWh\n- 计划购电费：{metrics['plan_purchase_cost_yuan']:.2f} 元\n- 紧急购电量：{metrics['emergency_purchase_kwh']:.2f} kWh\n- 紧急购电费：{metrics['emergency_purchase_cost_yuan']:.2f} 元\n- 总购电费用：**{metrics['total_purchase_cost_yuan']:.2f} 元**\n- 紧急购电占全部外网购电量：{metrics['emergency_share_of_grid_energy']:.4%}\n- SOC范围：{metrics['soc_min_kwh']:.2f}–{metrics['soc_max_kwh']:.2f} kWh\n- SOC跨日连续最大误差：{metrics['soc_continuity_max_abs_error_kwh']:.3e} kWh\n- 最大10分钟充电量：{metrics['max_charge_per_10min_kwh']:.2f} kWh（约束上限 {XMAX:.2f}）\n- 最大10分钟放电量：{metrics['max_discharge_per_10min_kwh']:.2f} kWh（约束上限 {XMAX:.2f}）\n\n与风险中性（lambda=0）同场景滚动基线相比：\n- 成本变化：{metrics['risk_cost_change_vs_neutral_yuan']:.2f} 元（{metrics['risk_cost_change_vs_neutral_pct']:.3%}）\n- 紧急购电减少：{metrics['risk_emergency_reduction_kwh']:.2f} kWh（{metrics['risk_emergency_reduction_pct']:.3%}）\n\n## 7. 输出文件\n\n- `result2.xlsx`：官方模板完整结果\n- `code/metrics.json`：核心指标\n- `code/daily_summary.csv`：逐日结算与SOC\n- `code/leakage_audit.csv`：逐日信息集/防泄漏审计\n- `code/run_data.npz`：可复核数值数组\n- `output/模型与结果说明.md`：本说明\n"""
+    text = f"""# 问题2模型与结果说明\n\n## 1. 模型定位\n\n问题2不是把附件2全年真实值一次性代入全年LP，而是模拟每天0:00的信息集，形成“历史信息 → 预测 → 场景风险优化 → 实际运行 → 5倍紧急购电结算 → 数据进入历史”的walk-forward闭环。\n\n正式评价区间严格按result2模板为 **2025-02-01至2025-12-31（334天）**；1月只作暖启动和风险参数校准。储能从2025-01-01给定的6000 kWh开始连续运行，2月1日不重置。\n\n## 2. 10分钟边界与信息集\n\nresult2计划列从`0:10-0:20`开始，最后为`0:00-0:10+1`。因此每天0:00发布的新计划在0:10起生效，0:00-0:10仍执行昨日计划最后一段。程序显式保留这个lead interval。\n\n在第d天0:00：\n- 最晚完整可用数据行是d-2；\n- d-1行只允许使用0:10至24:00前的143个已发生点；\n- d-1行最后的`0:00+1`对应未来0:00-0:10，强制掩码，不参与当天0:00预测；\n- 场景残差也只使用d-2及以前完整误差。\n\n这比简单“使用昨天整行”更严格，避免最后10分钟的隐藏look-ahead。\n\n## 3. 预测与场景\n\n负载和光伏分别用因果历史模拟集成：上一日已观测部分、7日滞后、同星期历史和最近7日中位曲线加权。没有天气数据，因此不引入不可获得的未来天气特征。场景采用最近历史预测残差的整日相关曲线，按高价时段正净负荷残差风险分位抽取，保留时序相关性。正式期使用9个等概率经验分位场景；之所以不采用5个等概率场景，是因为题设紧急购电恰为5倍电价，5场景下“仅最坏1个场景缺1 kWh”的期望惩罚正好等于提前多买1 kWh的计划成本，会造成边际退化。9场景使尾部场景概率降至1/9，期望成本与CVaR形成真实风险—成本权衡。\n\n正式评价期预测误差：\n- 负载 MAE = {fm['load_mae_kw']:.2f} kW，NMAE = {fm['load_nmae']:.4f}\n- 光伏 MAE = {fm['pv_mae_kw']:.2f} kW，NMAE = {fm['pv_nmae']:.4f}\n- 净负荷 MAE = {fm['net_mae_kw']:.2f} kW，NMAE = {fm['net_nmae']:.4f}\n\n## 4. 两阶段随机MPC + CVaR\n\n每天优化窗口包括：已经承诺的0:00-0:10 lead段 + 当天新计划144段 + 下一天144段辅助视野。当天144段计划购电量为所有场景共享的一阶段变量；下一天购电量允许按场景自适应，只作为MPC续期变量，第二天0:00会重新求解。\n\n储能状态方程使用与问题1统一的对称往返效率拆分：\n\n`eta_c = eta_d = sqrt(0.9)`，\n\n`S[t+1] = S[t] + eta_c*C[t] - D[t]/eta_d`。\n\n目标包括：计划购电费 + 场景期望5倍紧急购电费 + `lambda*CVaR`尾部风险 + 48小时末低于6000 kWh的软终端储备价值。终端不是硬性回到6000，因此避免“每天电池自动复位”；扩展视野与软终端价值共同抑制12月31日末端放空。\n\n1月仅用暖启动数据事前校准风险权重：以 `lambda=0` 为风险中性基准，风险保险预算上限为基准成本的 {RISK_BUDGET_PCT:.2%}；在预算内选择“每增加1元成本所减少的紧急购电量”最高的 Pareto 点，无有效改善则回退风险中性。最终 `lambda = {metrics['risk_lambda']:.3f}`，`alpha = {metrics['cvar_alpha']:.2f}`。\n\n## 5. 实时执行\n\n计划购电量一旦发布即按计划计费。实际运行每10分钟只读取当前已实现净负荷：若计划电量与光伏有富余，则在功率/SOC约束内充电；若不足，则只在场景SOC风险储备底线以上放电，其余缺口按该时刻电价5倍紧急购电。该规则不读取未来实际值。\n\n## 6. 正式评价结果\n\n- 计划购电量：{metrics['plan_purchase_kwh']:.2f} kWh\n- 计划购电费：{metrics['plan_purchase_cost_yuan']:.2f} 元\n- 紧急购电量：{metrics['emergency_purchase_kwh']:.2f} kWh\n- 紧急购电费：{metrics['emergency_purchase_cost_yuan']:.2f} 元\n- 总购电费用：**{metrics['total_purchase_cost_yuan']:.2f} 元**\n- 紧急购电占全部外网购电量：{metrics['emergency_share_of_grid_energy']:.4%}\n- SOC范围：{metrics['soc_min_kwh']:.2f}–{metrics['soc_max_kwh']:.2f} kWh\n- SOC跨日连续最大误差：{metrics['soc_continuity_max_abs_error_kwh']:.3e} kWh\n- 最大10分钟充电量：{metrics['max_charge_per_10min_kwh']:.2f} kWh（约束上限 {XMAX:.2f}）\n- 最大10分钟放电量：{metrics['max_discharge_per_10min_kwh']:.2f} kWh（约束上限 {XMAX:.2f}）\n\n与风险中性（lambda=0）同场景滚动基线相比：\n- 成本变化：{metrics['risk_cost_change_vs_neutral_yuan']:.2f} 元（{metrics['risk_cost_change_vs_neutral_pct']:.3%}）\n- 紧急购电减少：{metrics['risk_emergency_reduction_kwh']:.2f} kWh（{metrics['risk_emergency_reduction_pct']:.3%}）\n\n注意：0.2%的风险保险预算仅用于1月暖启动期的事前参数选择，不是2-12月外推期的硬成本约束；正式评价期的风险溢价应按上面的实际结果如实报告。\n\n## 7. 输出文件\n\n- `result2.xlsx`：官方模板完整结果\n- `code/metrics.json`：核心指标\n- `code/daily_summary.csv`：逐日结算与SOC\n- `code/leakage_audit.csv`：逐日信息集/防泄漏审计\n- `code/run_data.npz`：可复核数值数组\n- `output/模型与结果说明.md`：本说明\n"""
     (out_dir / '模型与结果说明.md').write_text(text, encoding='utf-8')
 
 
