@@ -1,0 +1,31 @@
+{
+  "chosen": {
+    "model": "lag7",
+    "block_scheme": "global",
+    "ridge_alpha": 1.0,
+    "history_days": 42,
+    "min_samples": 48
+  },
+  "selection_rule": "minimum January causal walk-forward MAE; RMSE then q95 tie-break; model complexity only after predictive ties",
+  "selected_metrics": {
+    "mae": 0.03866289251207729,
+    "rmse": 0.0488873244527634,
+    "q95_abs_error": 0.09508999999999995,
+    "cvar95_abs_error": 0.11813115942028997
+  },
+  "runner_up": {
+    "model": "lag7_R",
+    "block_scheme": "global",
+    "alpha": 1.0,
+    "mae": 0.03891050920334586,
+    "rmse": 0.048944408090026086
+  },
+  "six_block_stable": false,
+  "six_block_improved_blocks": 4,
+  "ridge_vs_lag7_mae_relative_gain": -0.48762711921465063,
+  "winner_vs_best_ridge_mae_relative_gain": 0.32778853848273426,
+  "ridge_prespecified_unique_main": false,
+  "predictive_ablation_warning": false,
+  "selection_window": "2025-01-09..2025-01-31 walk-forward; formal Feb-Dec unseen",
+  "history_rule": "expanding then cap42"
+}

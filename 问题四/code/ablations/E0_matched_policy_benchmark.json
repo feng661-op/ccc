@@ -1,0 +1,43 @@
+{
+  "artifact": "e0_fixed_price_bridge.json",
+  "role": "diagnostic fixed-vs-variable tariff bridge plus matched causal policy benchmark",
+  "matched_no_price_adaptation": {
+    "cash_total_yuan": 19283169.442770902,
+    "cash_mean_yuan_per_day": 57734.04024781707,
+    "cash_cvar95_yuan_per_day": 156043.3036364365,
+    "cash_worst_day_yuan": 198630.99474636692,
+    "emergency_total_kwh": 1090873.3859376875,
+    "emergency_days": 243,
+    "curtailment_total_kwh": 1372162.4781097402,
+    "unused_contract_total_kwh": 835333.2027230347,
+    "soc_end_kwh": 5900.735858716783,
+    "max_physics_residual": 1.8189894035458565e-12
+  },
+  "formal_price_adaptive": {
+    "cash_total_yuan": 19324185.811747298,
+    "cash_mean_yuan_per_day": 57856.8437477464,
+    "cash_cvar95_yuan_per_day": 154803.61282401782,
+    "cash_worst_day_yuan": 197235.6375261584,
+    "emergency_total_kwh": 1094259.0453667096,
+    "emergency_days": 255,
+    "curtailment_total_kwh": 1372336.9014591426,
+    "unused_contract_total_kwh": 846963.5054057061,
+    "soc_end_kwh": 5947.059649917024,
+    "max_physics_residual": 1.8189894035458565e-12
+  },
+  "adaptive_cash_gain_pct": -0.2127055362870976,
+  "paired_daily_cash_difference_adaptive_minus_C0": {
+    "mean_yuan_per_day": 122.80349992932328,
+    "median_yuan_per_day": 206.875963406128,
+    "weekly_block_bootstrap_95pct_CI_yuan_per_day": [
+      1.2000844698088067,
+      245.9246801910626
+    ],
+    "bootstrap_seed": 2026,
+    "block_days": 7,
+    "replicates": 5000,
+    "interpretation": "interpret the paired weekly-block bootstrap interval by sign: entirely positive means adaptive is more expensive; entirely negative means adaptive is cheaper; crossing zero means no robust cash dominance",
+    "conclusion": "price-adaptive policy is slightly but robustly more expensive than matched C0 over the formal period; do not claim Q4-2 savings from price adaptation"
+  },
+  "claim_boundary": "matched policy benchmark; unlike R0 it shares the Q4 state, physics and information process and changes only the decision tariff"
+}

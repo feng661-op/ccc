@@ -1,0 +1,54 @@
+{
+  "head": "c2864f3899685674419c9b209c800b6c89f4b8d6",
+  "python": "3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 13:03:39) [MSC v.1935 64 bit (AMD64)]",
+  "price_config": {
+    "model": "lag7",
+    "block_scheme": "global",
+    "ridge_alpha": 1.0,
+    "history_days": 42,
+    "min_samples": 48
+  },
+  "frozen_selection": {
+    "q4_2": "B0",
+    "q4_3": "B1"
+  },
+  "physical_schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+  "formal": {
+    "q4_2": {
+      "n_days": 334,
+      "cash_total_yuan": 19324185.811747298,
+      "cash_mean_yuan_per_day": 57856.8437477464,
+      "cash_median_yuan_per_day": 51554.32471951217,
+      "cash_p95_yuan_per_day": 133645.47920620572,
+      "cash_cvar90_yuan_per_day": 138196.23444793854,
+      "cash_cvar95_yuan_per_day": 154803.61282401782,
+      "cash_worst_day_yuan": 197235.6375261584,
+      "emergency_total_kwh": 1094259.0453667096,
+      "emergency_days": 255,
+      "emergency_worst_day_kwh": 29910.3524029758,
+      "curtailment_total_kwh": 1372336.9014591426,
+      "unused_contract_total_kwh": 846963.5054057061,
+      "soc_end_kwh": 5947.059649917024,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "q4_3": {
+      "n_days": 334,
+      "cash_total_yuan": 16370299.289312504,
+      "cash_mean_yuan_per_day": 49012.87212369013,
+      "cash_median_yuan_per_day": 49138.11591031919,
+      "cash_p95_yuan_per_day": 86742.77466141037,
+      "cash_cvar90_yuan_per_day": 89942.87397034487,
+      "cash_cvar95_yuan_per_day": 98401.36440127784,
+      "cash_worst_day_yuan": 123973.32134672384,
+      "emergency_total_kwh": 295316.02674145857,
+      "emergency_days": 201,
+      "emergency_worst_day_kwh": 8418.44802764728,
+      "curtailment_total_kwh": 1316566.1812534945,
+      "unused_contract_total_kwh": 1767365.5584367933,
+      "soc_end_kwh": 5860.769011131398,
+      "max_physics_residual": 1.8189894035458565e-12
+    }
+  },
+  "oracle_file": "cc7bbd87e485432221ce6ed98f770eab3ba5701c89ee9c393cc2a79357a79636",
+  "validation_sha256": "3ffbe547fe6d211f4fd6f85557890fb98038beb2f736354018589f8562b8a01e"
+}

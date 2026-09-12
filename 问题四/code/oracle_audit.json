@@ -1,0 +1,144 @@
+{
+  "q4_2": {
+    "causal": {
+      "n_days": 334,
+      "cash_total_yuan": 19324185.811747298,
+      "cash_mean_yuan_per_day": 57856.8437477464,
+      "cash_median_yuan_per_day": 51554.32471951217,
+      "cash_p95_yuan_per_day": 133645.47920620572,
+      "cash_cvar90_yuan_per_day": 138196.23444793854,
+      "cash_cvar95_yuan_per_day": 154803.61282401782,
+      "cash_worst_day_yuan": 197235.6375261584,
+      "emergency_total_kwh": 1094259.0453667096,
+      "emergency_days": 255,
+      "emergency_worst_day_kwh": 29910.3524029758,
+      "curtailment_total_kwh": 1372336.9014591426,
+      "unused_contract_total_kwh": 846963.5054057061,
+      "soc_end_kwh": 5947.059649917024,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "price_oracle": {
+      "n_days": 334,
+      "cash_total_yuan": 19201901.15094691,
+      "cash_mean_yuan_per_day": 57490.72200882309,
+      "cash_median_yuan_per_day": 51688.28437427905,
+      "cash_p95_yuan_per_day": 132985.78485530117,
+      "cash_cvar90_yuan_per_day": 137794.38331493002,
+      "cash_cvar95_yuan_per_day": 154613.92609373564,
+      "cash_worst_day_yuan": 197333.4727511053,
+      "emergency_total_kwh": 1112434.5804208901,
+      "emergency_days": 256,
+      "emergency_worst_day_kwh": 29108.140835534927,
+      "curtailment_total_kwh": 1358151.9476015575,
+      "unused_contract_total_kwh": 875796.8200758,
+      "soc_end_kwh": 6573.651154835679,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "full_information": {
+      "success": true,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "strict_cash_lower_bound_yuan": 12302435.762994772,
+      "variable_lp_cash_yuan": 12302019.994314896,
+      "locked_lead_regular_fee_yuan": 415.768679875,
+      "final_soc_target_kwh": 5947.059649917024,
+      "initial_soc_kwh": 5209.430584957905,
+      "locked_lead_B_kwh": 1345.5297083333332,
+      "locked_lead_A_kwh": 1345.5297083333332,
+      "emergency_kwh": 0.0,
+      "contract_kwh": 19787447.6132272,
+      "solve_seconds": 9.496052600006806,
+      "max_eq_residual": 1.8189894035458565e-12,
+      "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+      "scope": "STRICT cash lower bound: same q4_flow physics; same original-B settlement for locked first lead; identical initial/final SOC; same formal natural-day cash objective; future information/nonanticipativity relaxed"
+    },
+    "audit": {
+      "Price_Oracle": {
+        "cash_yuan": 19201901.15094691,
+        "claim": "diagnostic information-value comparator only; NOT a theoretical lower bound"
+      },
+      "Full_information_Oracle": {
+        "cash_yuan": 12302435.762994772,
+        "claim": "strict cash lower bound only under the matched conditions recorded in FIResult",
+        "success": true,
+        "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+        "scope": "STRICT cash lower bound: same q4_flow physics; same original-B settlement for locked first lead; identical initial/final SOC; same formal natural-day cash objective; future information/nonanticipativity relaxed"
+      },
+      "main_cash_yuan": 19324185.811747298,
+      "strict_lower_bound_check_pass": true,
+      "main_minus_FI_yuan": 7021750.048752526,
+      "PO_minus_FI_yuan": 6899465.38795214
+    },
+    "price_oracle_boundary": "Actual Attachment-4 prices replace causal price forecasts on every scored/available slot. The Dec-31 contractual +1 tail lies outside Attachment 4 and outside scored execution, so that one unobserved terminal slot retains the causal point forecast rather than fabricated 2026 information."
+  },
+  "q4_3": {
+    "causal": {
+      "n_days": 334,
+      "cash_total_yuan": 16370299.289312504,
+      "cash_mean_yuan_per_day": 49012.87212369013,
+      "cash_median_yuan_per_day": 49138.11591031919,
+      "cash_p95_yuan_per_day": 86742.77466141037,
+      "cash_cvar90_yuan_per_day": 89942.87397034487,
+      "cash_cvar95_yuan_per_day": 98401.36440127784,
+      "cash_worst_day_yuan": 123973.32134672384,
+      "emergency_total_kwh": 295316.02674145857,
+      "emergency_days": 201,
+      "emergency_worst_day_kwh": 8418.44802764728,
+      "curtailment_total_kwh": 1316566.1812534945,
+      "unused_contract_total_kwh": 1767365.5584367933,
+      "soc_end_kwh": 5860.769011131398,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "price_oracle": {
+      "n_days": 334,
+      "cash_total_yuan": 16154889.855760984,
+      "cash_mean_yuan_per_day": 48367.933699883186,
+      "cash_median_yuan_per_day": 48463.52509129093,
+      "cash_p95_yuan_per_day": 85844.99415479957,
+      "cash_cvar90_yuan_per_day": 89164.5410217874,
+      "cash_cvar95_yuan_per_day": 97207.0398705743,
+      "cash_worst_day_yuan": 122417.6624279106,
+      "emergency_total_kwh": 304784.3604987543,
+      "emergency_days": 209,
+      "emergency_worst_day_kwh": 10212.437267226309,
+      "curtailment_total_kwh": 1307037.4580108798,
+      "unused_contract_total_kwh": 1841104.7862076014,
+      "soc_end_kwh": 5793.24169159318,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "full_information": {
+      "success": true,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "strict_cash_lower_bound_yuan": 12302399.796875054,
+      "variable_lp_cash_yuan": 12301980.695634643,
+      "locked_lead_regular_fee_yuan": 419.1012404116667,
+      "final_soc_target_kwh": 5860.769011131398,
+      "initial_soc_kwh": 5212.752884667622,
+      "locked_lead_B_kwh": 1356.314693888889,
+      "locked_lead_A_kwh": 1356.3146938888888,
+      "emergency_kwh": 0.0,
+      "contract_kwh": 19787363.9378816,
+      "solve_seconds": 9.619286700006342,
+      "max_eq_residual": 1.8189894035458565e-12,
+      "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+      "scope": "STRICT cash lower bound: same q4_flow physics; same original-B settlement for locked first lead; identical initial/final SOC; same formal natural-day cash objective; future information/nonanticipativity relaxed"
+    },
+    "audit": {
+      "Price_Oracle": {
+        "cash_yuan": 16154889.855760984,
+        "claim": "diagnostic information-value comparator only; NOT a theoretical lower bound"
+      },
+      "Full_information_Oracle": {
+        "cash_yuan": 12302399.796875054,
+        "claim": "strict cash lower bound only under the matched conditions recorded in FIResult",
+        "success": true,
+        "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+        "scope": "STRICT cash lower bound: same q4_flow physics; same original-B settlement for locked first lead; identical initial/final SOC; same formal natural-day cash objective; future information/nonanticipativity relaxed"
+      },
+      "main_cash_yuan": 16370299.289312504,
+      "strict_lower_bound_check_pass": true,
+      "main_minus_FI_yuan": 4067899.49243745,
+      "PO_minus_FI_yuan": 3852490.05888593
+    },
+    "price_oracle_boundary": "Actual Attachment-4 prices replace causal price forecasts on every scored/available slot. The Dec-31 contractual +1 tail lies outside Attachment 4 and outside scored execution, so that one unobserved terminal slot retains the causal point forecast rather than fabricated 2026 information."
+  }
+}

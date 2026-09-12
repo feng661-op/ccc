@@ -1,0 +1,14 @@
+{
+  "q4_2": {
+    "original_anchor_main_yuan": 19324185.811747298,
+    "sunk_plan_fee_exposure_yuan": 19324185.811747298,
+    "fixed_strategy_only": true,
+    "claim_boundary": "exposure only; alternative settlement requires reoptimization and is not used to rank/freeze the main model"
+  },
+  "q4_3": {
+    "original_anchor_main_yuan": 16370299.289312504,
+    "sunk_plan_fee_exposure_yuan": 16622681.817937432,
+    "fixed_strategy_only": true,
+    "claim_boundary": "exposure only; alternative settlement requires reoptimization and is not used to rank/freeze the main model"
+  }
+}

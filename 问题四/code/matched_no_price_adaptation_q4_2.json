@@ -1,0 +1,20 @@
+{
+  "benchmark": "matched causal no-price-adaptation: optimize on Attachment-1 tariff, settle on Attachment-4 realized prices",
+  "summary": {
+    "branch": "q4_2",
+    "level": "B0",
+    "label": "C0_decision_fixed_price",
+    "days": 334,
+    "cash_yuan": 19283169.442770902,
+    "regular_yuan": 12319748.52648986,
+    "emergency_yuan": 6963420.916281045,
+    "emergency_kwh": 1090873.3859376875,
+    "curtailment_kwh": 1372162.4781097402,
+    "unused_contract_kwh": 835333.2027230347,
+    "soc_min_kwh": 1200.0,
+    "soc_max_kwh": 10800.0,
+    "soc_end_kwh": 5900.735858716783,
+    "event_solve_p95_sec": 0.060588015000757875,
+    "max_physics_residual": 1.8189894035458565e-12
+  }
+}

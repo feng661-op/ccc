@@ -1,0 +1,20 @@
+{
+  "q4_2": {
+    "events": 23,
+    "max_eq_residual": 1.8189894035458565e-12,
+    "stage1_objective_min": 22207.428732701348,
+    "stage1_objective_max": 70361.23210130037,
+    "selected_level": "B0",
+    "lex_order": "cash/risk -> throughput -> PV curtailment",
+    "note": "event solver preserves stage-1 then stage-2 tolerances before stage-3; validation T27/T29 independently verifies numerical preservation"
+  },
+  "q4_3": {
+    "events": 92,
+    "max_eq_residual": 1.2732925824820995e-11,
+    "stage1_objective_min": 6284.32575888145,
+    "stage1_objective_max": 113422.64338228262,
+    "selected_level": "B1",
+    "lex_order": "cash/risk -> throughput -> PV curtailment",
+    "note": "event solver preserves stage-1 then stage-2 tolerances before stage-3; validation T27/T29 independently verifies numerical preservation"
+  }
+}

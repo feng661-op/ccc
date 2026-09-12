@@ -1,0 +1,80 @@
+{
+  "q4_2": {
+    "simple_frozen": {
+      "cash_total_yuan": 19324185.811747298,
+      "cash_mean_yuan_per_day": 57856.8437477464,
+      "cash_cvar95_yuan_per_day": 154803.61282401782,
+      "cash_worst_day_yuan": 197235.6375261584,
+      "emergency_total_kwh": 1094259.0453667096,
+      "emergency_days": 255,
+      "curtailment_total_kwh": 1372336.9014591426,
+      "unused_contract_total_kwh": 846963.5054057061,
+      "soc_end_kwh": 5947.059649917024,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "zero_terminal_value": {
+      "cash_total_yuan": 19413025.332704924,
+      "cash_mean_yuan_per_day": 58122.83033743989,
+      "cash_cvar95_yuan_per_day": 155773.0869837784,
+      "cash_worst_day_yuan": 198821.4996376601,
+      "emergency_total_kwh": 1155136.5102798692,
+      "emergency_days": 264,
+      "curtailment_total_kwh": 1372869.1452200192,
+      "unused_contract_total_kwh": 834686.4050895786,
+      "soc_end_kwh": 1811.6603194755198,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "dynamic_nu_causal_tail_median": {
+      "cash_total_yuan": 19363464.48408021,
+      "cash_mean_yuan_per_day": 57974.444563114404,
+      "cash_cvar95_yuan_per_day": 154921.21679792108,
+      "cash_worst_day_yuan": 198152.1129144497,
+      "emergency_total_kwh": 1124843.9023052382,
+      "emergency_days": 262,
+      "curtailment_total_kwh": 1372555.1941032852,
+      "unused_contract_total_kwh": 842194.2356416273,
+      "soc_end_kwh": 2156.119763779204,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "execution_horizon_note": "execution remains 10-min one-step; event horizons are inherited Q2/Q3 information horizons and therefore are not tuned on formal data"
+  },
+  "q4_3": {
+    "simple_frozen": {
+      "cash_total_yuan": 16370299.289312504,
+      "cash_mean_yuan_per_day": 49012.87212369013,
+      "cash_cvar95_yuan_per_day": 98401.36440127784,
+      "cash_worst_day_yuan": 123973.32134672384,
+      "emergency_total_kwh": 295316.02674145857,
+      "emergency_days": 201,
+      "curtailment_total_kwh": 1316566.1812534945,
+      "unused_contract_total_kwh": 1767365.5584367933,
+      "soc_end_kwh": 5860.769011131398,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "zero_terminal_value": {
+      "cash_total_yuan": 16604370.76645665,
+      "cash_mean_yuan_per_day": 49713.68492951093,
+      "cash_cvar95_yuan_per_day": 100466.4036136234,
+      "cash_worst_day_yuan": 125122.23328337805,
+      "emergency_total_kwh": 367706.36810151476,
+      "emergency_days": 246,
+      "curtailment_total_kwh": 1318248.4509250189,
+      "unused_contract_total_kwh": 1845986.2626894475,
+      "soc_end_kwh": 1767.3460705122109,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "dynamic_nu_causal_tail_median": {
+      "cash_total_yuan": 16322285.815385407,
+      "cash_mean_yuan_per_day": 48869.11920774074,
+      "cash_cvar95_yuan_per_day": 98612.376605964,
+      "cash_worst_day_yuan": 124579.55772558687,
+      "emergency_total_kwh": 299364.24180898606,
+      "emergency_days": 201,
+      "curtailment_total_kwh": 1315453.115547132,
+      "unused_contract_total_kwh": 1651367.1273683277,
+      "soc_end_kwh": 2840.121292529755,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "execution_horizon_note": "execution remains 10-min one-step; event horizons are inherited Q2/Q3 information horizons and therefore are not tuned on formal data"
+  }
+}

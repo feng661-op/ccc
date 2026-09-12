@@ -1,0 +1,54 @@
+{
+  "q4_2": {
+    "RTE90_symmetric_main": {
+      "cash_total_yuan": 19324185.811747298,
+      "cash_mean_yuan_per_day": 57856.8437477464,
+      "cash_cvar95_yuan_per_day": 154803.61282401782,
+      "cash_worst_day_yuan": 197235.6375261584,
+      "emergency_total_kwh": 1094259.0453667096,
+      "emergency_days": 255,
+      "curtailment_total_kwh": 1372336.9014591426,
+      "unused_contract_total_kwh": 846963.5054057061,
+      "soc_end_kwh": 5947.059649917024,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "two_oneway90_sensitivity": {
+      "cash_total_yuan": 19603299.77444535,
+      "cash_mean_yuan_per_day": 58692.51429474656,
+      "cash_cvar95_yuan_per_day": 154185.67494781755,
+      "cash_worst_day_yuan": 195416.25340876722,
+      "emergency_total_kwh": 1068963.606499054,
+      "emergency_days": 247,
+      "curtailment_total_kwh": 1332293.6640328923,
+      "unused_contract_total_kwh": 868990.2258990139,
+      "soc_end_kwh": 5945.34527362037,
+      "max_physics_residual": 1.8189894035458565e-12
+    }
+  },
+  "q4_3": {
+    "RTE90_symmetric_main": {
+      "cash_total_yuan": 16370299.289312504,
+      "cash_mean_yuan_per_day": 49012.87212369013,
+      "cash_cvar95_yuan_per_day": 98401.36440127784,
+      "cash_worst_day_yuan": 123973.32134672384,
+      "emergency_total_kwh": 295316.02674145857,
+      "emergency_days": 201,
+      "curtailment_total_kwh": 1316566.1812534945,
+      "unused_contract_total_kwh": 1767365.5584367933,
+      "soc_end_kwh": 5860.769011131398,
+      "max_physics_residual": 1.8189894035458565e-12
+    },
+    "two_oneway90_sensitivity": {
+      "cash_total_yuan": 16720909.01878952,
+      "cash_mean_yuan_per_day": 50062.60185266323,
+      "cash_cvar95_yuan_per_day": 98998.21107816878,
+      "cash_worst_day_yuan": 124142.77399930751,
+      "emergency_total_kwh": 283040.7703266818,
+      "emergency_days": 184,
+      "curtailment_total_kwh": 1273066.3135763973,
+      "unused_contract_total_kwh": 1800408.7929800213,
+      "soc_end_kwh": 5771.943164986885,
+      "max_physics_residual": 1.8189894035458565e-12
+    }
+  }
+}

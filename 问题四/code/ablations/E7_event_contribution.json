@@ -1,0 +1,50 @@
+{
+  "main_all_versions": {
+    "cash_total_yuan": 16370299.289312504,
+    "cash_mean_yuan_per_day": 49012.87212369013,
+    "cash_cvar95_yuan_per_day": 98401.36440127784,
+    "cash_worst_day_yuan": 123973.32134672384,
+    "emergency_total_kwh": 295316.02674145857,
+    "emergency_days": 201,
+    "curtailment_total_kwh": 1316566.1812534945,
+    "unused_contract_total_kwh": 1767365.5584367933,
+    "soc_end_kwh": 5860.769011131398,
+    "max_physics_residual": 1.8189894035458565e-12
+  },
+  "disable_06": {
+    "cash_total_yuan": 16592925.554946106,
+    "cash_mean_yuan_per_day": 49679.417829179954,
+    "cash_cvar95_yuan_per_day": 99372.2985203135,
+    "cash_worst_day_yuan": 121172.44105494262,
+    "emergency_total_kwh": 317266.84528373793,
+    "emergency_days": 203,
+    "curtailment_total_kwh": 1376312.2257284722,
+    "unused_contract_total_kwh": 1916824.4010481336,
+    "soc_end_kwh": 5868.550904806946,
+    "max_physics_residual": 1.8189894035458565e-12
+  },
+  "disable_12": {
+    "cash_total_yuan": 16616792.950257577,
+    "cash_mean_yuan_per_day": 49750.87709657957,
+    "cash_cvar95_yuan_per_day": 98582.62992263181,
+    "cash_worst_day_yuan": 125261.11768020403,
+    "emergency_total_kwh": 299999.082156766,
+    "emergency_days": 202,
+    "curtailment_total_kwh": 1334815.1509720697,
+    "unused_contract_total_kwh": 1822886.1445816257,
+    "soc_end_kwh": 5872.834704780221,
+    "max_physics_residual": 1.8189894035458565e-12
+  },
+  "disable_18": {
+    "cash_total_yuan": 16356542.245304175,
+    "cash_mean_yuan_per_day": 48971.68336917418,
+    "cash_cvar95_yuan_per_day": 98707.99751102059,
+    "cash_worst_day_yuan": 123973.32134672385,
+    "emergency_total_kwh": 304859.8749627737,
+    "emergency_days": 205,
+    "curtailment_total_kwh": 1316582.485339493,
+    "unused_contract_total_kwh": 1731706.69092617,
+    "soc_end_kwh": 5860.769011131398,
+    "max_physics_residual": 1.8189894035458565e-12
+  }
+}

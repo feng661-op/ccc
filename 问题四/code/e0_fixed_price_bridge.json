@@ -1,0 +1,41 @@
+{
+  "q4_2": {
+    "fixed": {
+      "cash_yuan": 454397.4106125742,
+      "emergency_kwh": 17673.750208249956,
+      "curtailment_kwh": 4376.152741149931,
+      "soc_end_kwh": 5966.074226351964,
+      "max_physics_residual": 1.8189894035458565e-12,
+      "days": 7
+    },
+    "variable": {
+      "cash_yuan": 518053.8568726603,
+      "emergency_kwh": 17589.60359691664,
+      "curtailment_kwh": 4446.266466445377,
+      "soc_end_kwh": 5989.131212944099,
+      "max_physics_residual": 1.8189894035458565e-12,
+      "days": 7
+    },
+    "difference_variable_minus_fixed_yuan": 63656.446260086086
+  },
+  "q4_3": {
+    "fixed": {
+      "cash_yuan": 405912.9170428271,
+      "emergency_kwh": 6248.326406750415,
+      "curtailment_kwh": 3891.0136244444434,
+      "soc_end_kwh": 5966.075871693763,
+      "max_physics_residual": 1.8189894035458565e-12,
+      "days": 7
+    },
+    "variable": {
+      "cash_yuan": 463472.1922527104,
+      "emergency_kwh": 6162.5700612225555,
+      "curtailment_kwh": 4092.66260749158,
+      "soc_end_kwh": 5989.1311833751215,
+      "max_physics_residual": 1.8189894035458565e-12,
+      "days": 7
+    },
+    "difference_variable_minus_fixed_yuan": 57559.275209883286
+  },
+  "scope": "E0 Jan09-Jan15 bridge; B0 source-flow engine and information permissions identical, only tariff path changes; diagnostic, not formal model selection"
+}

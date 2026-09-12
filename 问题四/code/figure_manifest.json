@@ -1,0 +1,20 @@
+{
+  "appendix_A_price_ablation.pdf": "425c8bbc5043edff18f0de1622b79d270d6e9a75c24a4ab28098876b6f3a3476",
+  "appendix_A_price_ablation.png": "ef1b96fc96335f64e32009676ec2a76d80cea8a2a20798cf4462dad4ed09a02a",
+  "appendix_B_epsilon_drift.pdf": "59f81472f2c7bd58430da96596fc11ad10456b12a7a0333c640d3118d1136072",
+  "appendix_B_epsilon_drift.png": "887347f3d998c2515b963710547173611220556308e7fc2d1ce2a2c1f719aa48",
+  "appendix_C_oracle.pdf": "65a203c6c483752932f5718ab880415439739123e36a32c62c88f721c021a762",
+  "appendix_C_oracle.png": "fd4ffa05141d818246ba7701fe69b205b80c5c1fc28bbce24d1bc1698f3b7f7c",
+  "fig1_structure_evidence.pdf": "7c18ea30110e7fce90611938b0e016f01304fa03562c99aaba0a3e81367783a6",
+  "fig1_structure_evidence.png": "853044d3af369e11dbb8f98ff34525d893af378ab1f5d26a5ce1d007156a7224",
+  "fig2_information_timeline.pdf": "48b5c0e243dbdd56cc4e798827508ba26ee0b8a02d4ca72fe9f121c20d507441",
+  "fig2_information_timeline.png": "a831f5ec0ac86bac5fc73a780172f953dc60c408544a542e7f531774c13d85d1",
+  "fig3_model_structure.pdf": "cd297b0227679ffa9eb1be8fe894c84a33ec132ecff13ca73dc3dbefe39189e0",
+  "fig3_model_structure.png": "deaba78ac72d5b7d0fc3217dc857a59cf51e21a6b775c4d0a11359ba073c6c82",
+  "fig4_cost_risk.pdf": "0e6c3ff1f05c4c27342408055829efffc518c27f9030596559ebe8ce3244dfa1",
+  "fig4_cost_risk.png": "ed468e4ce53f4a6eb116174b13af985fb5c6a6416834856f07e684d6b228abea",
+  "fig5_typical_dispatch.pdf": "0d5b960652cfb65c0fabe539fd010528db4b9d0e4c4caaa834716decebee84a3",
+  "fig5_typical_dispatch.png": "388cefa85d428488d453a89cc9bbdecdf464231c2894019b053a586b6f5b1b2c",
+  "fig6_mechanism_ablation.pdf": "b0f2ad633b236cb43091b41f88dd7c2f91b2cf7369ba01a189cb59f9f270b16a",
+  "fig6_mechanism_ablation.png": "53ab2120a6ddc0f898801a6220d75f95cadd53832227c399687c35eb910ab2f2"
+}

@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "T01_T42": {
+    "passed": 42,
+    "failed": []
+  },
+  "required_next": "final_visual_then_user_review"
+}
