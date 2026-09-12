@@ -177,16 +177,40 @@ symbols=r'''# 问题3统一符号说明
 
 电量均为千瓦时，费用为元，十分钟充放电上限为5000/6千瓦时。
 '''
-dates=['# 指定日期论文表格','']
-for ds in ('2025-03-20','2025-06-21','2025-09-23','2025-12-21'):
-    d=next(i for i,t in enumerate(data.dates) if t.date()==datetime.fromisoformat(ds).date())
-    dates += [f'## {ds}','', '### 表1 指定时段与全天合同','|时段|原计划／千瓦时|最终合同／千瓦时|','|---|---:|---:|']
-    for h in (10,12,14,16,18,20):dates.append(f"|{h}:00—{h}:10|{money(z['B'][d,h*6-1])}|{money(z['A'][d,h*6-1])}|")
-    dates += [f"|全天计划行|{money(z['B'][d].sum())}|{money(z['A'][d].sum())}|",'',f"原计划费{money(z['plan_fee'][d])}元；最终合同计划行费{money(z['adjusted_fee'][d])}元。自然日总费用{money(z['natural_regular_fee'][d]+z['emergency_fee'][d])}元，其中紧急费用{money(z['emergency_fee'][d])}元。",'', '### 表2 储能','|时段|充电／千瓦时|放电／千瓦时|','|---|---:|---:|']
-    for b in range(6):dates.append(f"|{b*4}:00—{(b+1)*4}:00|{money(z['charge'][d,b*24:(b+1)*24].sum())}|{money(z['discharge'][d,b*24:(b+1)*24].sum())}|")
-    dates += ['',f"零点储电量{money(z['soc00'][d])}千瓦时；二十四点储电量{money(z['soc24'][d])}千瓦时。",'', '### 表3 紧急购电','|时间段|电量／千瓦时|','|---|---:|']
-    for t,e in grouped_emergency_periods(z['emergency'][d]) or [('无',0.0)]:dates.append(f'|{t}|{money(e)}|')
-    dates.append(f"|合计|{money(z['emergency'][d].sum())}|")
+spec_dates=('2025-03-20','2025-06-21','2025-09-23','2025-12-21')
+spec_idx={ds:next(i for i,t in enumerate(data.dates) if t.date()==datetime.fromisoformat(ds).date()) for ds in spec_dates}
+q3=lambda x:f'{float(x):.3f}'
+dates=['# 问题3指定日期论文表格','',
+       '> 日期严格采用题面表3指定的四个日期：2025.3.20、2025.6.21、2025.9.23、2025.12.21。电量单位均为 kWh，费用单位为元；全部数值直接来自当前正式主模型 `run_D.npz`，未二次优化或人工改值。','',
+       '## 表1：指定时间段原计划、最终合同及全天量费','',
+       '| 日期 | 10:00-10:10（原/最终） | 12:00-12:10（原/最终） | 14:00-14:10（原/最终） | 16:00-16:10（原/最终） | 18:00-18:10（原/最终） | 20:00-20:10（原/最终） | 全天原计划量 | 全天最终合同量 | 原计划费 | 最终合同计划行费 | 自然日总费用 |',
+       '|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+for ds in spec_dates:
+    d=spec_idx[ds]
+    slots=[]
+    for h in (10,12,14,16,18,20):
+        j=h*6-1
+        slots.append(f"{q3(z['B'][d,j])} / {q3(z['A'][d,j])}")
+    dates.append('| '+' | '.join([ds.replace('-','.'),*slots,q3(z['B'][d].sum()),q3(z['A'][d].sum()),money(z['plan_fee'][d]),money(z['adjusted_fee'][d]),money(z['natural_regular_fee'][d]+z['emergency_fee'][d])])+' |')
+
+dates += ['', '## 表2：储能设备指定时间段充放电量及0:00、24:00储电量','']
+for ds in spec_dates:
+    d=spec_idx[ds]
+    dates += [f'### {ds.replace("-",".")}','','| 时间段 | 充电量 | 放电量 |','|---|---:|---:|']
+    for b in range(6):
+        dates.append(f"| {b*4}:00-{(b+1)*4}:00 | {q3(z['charge'][d,b*24:(b+1)*24].sum())} | {q3(z['discharge'][d,b*24:(b+1)*24].sum())} |")
+    dates += [f"| 0:00 储电量 | {q3(z['soc00'][d])} | — |",f"| 24:00 储电量 | {q3(z['soc24'][d])} | — |",'']
+
+dates += ['## 表3：指定日期紧急购电量','', '| 日期 | 紧急购电时间段 | 紧急购电量 |','|---|---|---:|']
+for ds in spec_dates:
+    d=spec_idx[ds]
+    groups=grouped_emergency_periods(z['emergency'][d]) or [('无',0.0)]
+    for gi,(period,qty) in enumerate(groups):
+        dates.append(f"| {ds.replace('-','.') if gi==0 else ''} | {period} | {q3(qty)} |")
+dates += ['', '### 指定日期紧急购电合计','']
+for ds in spec_dates:
+    d=spec_idx[ds]
+    dates.append(f"- {ds.replace('-','.')}：{q3(z['emergency'][d].sum())} kWh。")
 master='# 2026年第三问：继承第二问的滚动预报与合同调整模型\n\n'+index+audit+assumptions+model+execution+results+sensitivity+validation+limitations
 figindex='''# 图表索引与图注
 
