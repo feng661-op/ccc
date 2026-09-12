@@ -1,58 +1,132 @@
-version: 2026C-Q4-V1.2
-freeze_boundary: "before any 2025-02-01..2025-12-31 formal evaluation"
-formal_period: [2025-02-01, 2025-12-31]
-model_selection_period: [2025-01-09, 2025-01-31]
-physics:
-  eta_rt: 0.9
+version: q4-inheritance-v2
+
+base_q3_head: c2a58e9a4139a88ad18bbb7f191862fddae00802
+
+periods:
+
+  warmup: 2025-01-01..2025-01-08
+
+  selection: 2025-01-09..2025-01-31
+
+  formal: 2025-02-01..2025-12-31
+
+  formal_days: 334
+
+physical:
+
+  capacity_kwh: 12000
+
+  power_kw: 5000
+
+  dt_hours: 0.16666666666666666
+
+  soc_min_kwh: 1200
+
+  soc_max_kwh: 10800
+
+  initial_soc_kwh: 6000
+
+  rte: 0.9
+
   eta_c: 0.9486832980505138
+
   eta_d: 0.9486832980505138
-  soc_min_kwh: 1200.0
-  soc_max_kwh: 10800.0
-  soc_initial_kwh: 6000.0
-  power_limit_kw: 5000.0
-  slot_limit_kwh: 833.3333333333334
-  emergency_main: immediate_load_only
-  emergency_charge: sensitivity_only
-information:
-  history_main_days: 42
-  history_sensitivity_days: [28, 56]
-  q4_2_pv_rights: q2_historical_only
-  q4_3_events_hours: [0, 6, 12, 18]
+
+  efficiency_interpretation: inherited_symmetric_round_trip_assumption
+
+  emergency_to_battery: false
+
+  daily_soc_reset: false
+
+inheritance:
+
+  q2_source: ../../问题二/code/q2_core.py
+
+  q3_source: ../../问题三/code/q3_inheritance.py
+
+  midnight_horizon_intervals: 289
+
+  source_scenarios_max: 9
+
+  source_history_days: 42
+
+  risk_lambda: 0.02
+
+  optimization_cvar_alpha: 0.8
+
+  execution_reserve_quantile: 0.25
+
+  terminal_reserve_kwh: 6000
+
+  terminal_shortage_value_yuan_per_kwh: 0.8
+
+  planning_model: inherited_net_balance_relaxation
+
+  execution_model: native_reserve_feedback_and_full_source_flow_audit
+
+  future_day_variables: valuation_recourse_not_executable_contracts
+
 price:
-  formal_regressor: full_ridge
-  weekly_baseline_coefficient: 1.0
-  grouping: global
-  ridge_alpha: 10.0
-  grouping_ablation: [global, 6block]
-  note: "Ridge family is prespecified unique formal regression family; lag1/lag7/lag7_R/lag7_dN remain ablations even if simpler predictive MAE is lower. Six-block grouping failed January stability and was simplified to global."
-scenarios:
-  medoid_main_k: 3
-  medoid_sensitivity_k: 9
-  joint_residual: same_origin_day
-  distance: "mean L1 standardized path distance on net-load, PV, price with equal positive weights; d_nu=0 within same event-node type"
-risk:
-  alpha_candidates: [0.8, 0.9]
-  lambda_candidates: [0.05, 0.1]
-  epsilon_candidates_rule: [0.0, january_W1_q50, january_W1_q75]
-  epsilon_interpretation: "empirical distribution-drift scale only; no confidence/coverage claim"
-  main_alpha_if_B2: 0.8
-  practical_selection_thresholds:
-    b1_vs_b0_mean_cash_improvement_pct: 1.0
-    b1_vs_b0_daily_cvar95_improvement_pct: 2.0
-    b2_vs_b1_daily_cvar95_improvement_pct: 2.0
-    b2_vs_b1_max_mean_cash_penalty_pct: 1.0
-    paired_moving_block_bootstrap_interval_level: 0.8
-    paired_moving_block_days: 7
-    rule: "complex candidate must be Pareto-nondominated, exceed the applicable practical threshold, and its paired moving-block bootstrap improvement interval must not cross zero; otherwise choose simpler model"
-terminal:
-  reserve_kwh: 6000.0
-  shortage_value_yuan_per_kwh: 0.8
-lexicographic:
-  level1: cash_plus_frozen_risk_and_terminal_value
-  level2: minimize_sum_charge_plus_discharge
-  level3: minimize_sum_pv_curtailment
-  abs_tolerance: 1.0e-7
-  rel_tolerance: 1.0e-9
-oracles:
-  price_oracle: "diagnostic only; not a theoretical lower bound"
-  full_information_oracle: "strict cash lower bound only when physics, contract/settlement, initial/final state and cash objective are matched"
+
+  formal_regressor: lag7
+
+  scope: global
+
+  ridge_alpha_metadata: 1.0
+
+  historical_price_model_comparison: reused_unchanged_january_prediction_task
+
+  current_price_revealed: true
+
+  future_price_known: false
+
+selection:
+
+  B0: nine_net_load_scenarios_plus_point_price
+
+  B1: same_net_load_scenarios_plus_paired_historical_price_errors
+
+  B2: not_run_by_user_request
+
+  uniform_gate_cash_gain_pct: 1.0
+
+  uniform_gate_max_cash_penalty_pct: 1.0
+
+  uniform_gate_tail_gain_pct: 2.0
+
+  paired_block_days: 7
+
+  bootstrap_repetitions: 2000
+
+  confidence_level: 0.8
+
+  formal_period_used_for_selection: false
+
+  q4_2: B0
+
+  q4_3: B1
+
+settlement:
+
+  primary: delivery
+
+  primary_reason: explicit_interpretation_preserving_latest_Q3_semantics
+
+  alternative: adjustment_time
+
+  anchoring: original_midnight_B
+
+  emergency_multiplier: 5.0
+
+validation:
+
+  essential: causal_rights_physics_365_day_bridge_334_day_ledgers_excel_hashes
+
+  robustness: NOT_RUN_BY_USER_REQUEST
+
+  old_ablations: STALE_NOT_RERUN
+
+  old_price_oracle: STALE_NOT_RERUN
+
+  full_information_oracle: NOT_RUN_NO_CURRENT_LOWER_BOUND_CLAIM
+

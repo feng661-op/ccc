@@ -1,0 +1,45 @@
+{
+  "official_inputs": {
+    "C题.pdf": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\C题.pdf",
+      "sha256": "2c098f6ae9dd47ae965aebdec3b9facf3de6c173f999783c1012c08fc5fb9d2d",
+      "bytes": 354389
+    },
+    "附件1.xlsx": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\附件\\附件1.xlsx",
+      "sha256": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+      "bytes": 16003
+    },
+    "附件2.xlsx": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\附件\\附件2.xlsx",
+      "sha256": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+      "bytes": 907128
+    },
+    "附件3.xlsx": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\附件\\附件3.xlsx",
+      "sha256": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
+      "bytes": 293526
+    },
+    "附件4.xlsx": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\附件\\附件4.xlsx",
+      "sha256": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71",
+      "bytes": 409790
+    },
+    "result4-2.xlsx": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\附件\\附件5\\result4-2.xlsx",
+      "sha256": "1c26494cfc6d754e0bd9bff7e13e1126a73d2d2da6c5336eb251d89b9a1a1a47",
+      "bytes": 18397
+    },
+    "result4-3.xlsx": {
+      "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\26C题\\附件\\附件5\\result4-3.xlsx",
+      "sha256": "c59da470cabd0be23f602c95c8aa9d11ec224a0cdac216b3e1f218e65d006bdc",
+      "bytes": 265429
+    }
+  },
+  "formal_window": "2025-02-01..2025-12-31",
+  "natural_slots": 48096,
+  "template_output_hashes": {
+    "result4-2.xlsx": "6c72bc81a9627b4bd8ea995ffbd9d49ea53cddef78bcbb81d21d2fa1970b04b9",
+    "result4-3.xlsx": "b648213f0fec849367181dff91b809d243fd6257a42f176dfdb769b9d2d4ae4c"
+  }
+}

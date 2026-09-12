@@ -1,0 +1,13 @@
+{
+  "backend": "q4-inheritance-v2",
+  "primary": "delivery",
+  "reason": "preserve_latest_Q3_explicit_interpretation_not_choose_by_cheaper_result",
+  "delivery_selected": "B1",
+  "alternative_selected": "B0",
+  "delivery_cash": 16196781.453801906,
+  "alternative_cash": 16297528.144002885,
+  "change_pct": 0.6220167289923584,
+  "alternative_january_sha256": "5df771e34d78e259cdb92492f794e53d6c4d49e32a0f3d554045d9a64408bd6b",
+  "alternative_formal_sha256": "3c0c12651acacc337cd4132b5b8b6a1906a9bd79c179fa20e61884cf3c2396ff",
+  "alternative_solver_sha256": "d29db9576f7cf7162440895cd4c6a105deb50aeed3700e92dcaef11f377b244d"
+}

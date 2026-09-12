@@ -1,41 +1,88 @@
 {
-  "q4_2": {
-    "fixed": {
-      "cash_yuan": 454397.4106125742,
-      "emergency_kwh": 17673.750208249956,
-      "curtailment_kwh": 4376.152741149931,
-      "soc_end_kwh": 5966.074226351964,
-      "max_physics_residual": 1.8189894035458565e-12,
-      "days": 7
+  "backend": "q4-inheritance-v2",
+  "status": "PASS",
+  "scope": "fresh independent 365-day exact inheritance regression",
+  "branches": {
+    "q4_2": {
+      "status": "PASS",
+      "backend": "q4-inheritance-v2",
+      "branch": "q4_2",
+      "days_recomputed": 365,
+      "actual_slots_checked": 52559,
+      "max_absolute_errors": {
+        "B": 0.0,
+        "A": 0.0,
+        "SOC": 0.0,
+        "charge": 0.0,
+        "discharge": 0.0,
+        "emergency": 2.2737367544323206e-13,
+        "curtail": 1.1368683772161603e-13,
+        "grid_import": 0.0,
+        "unused_contract": 1.1368683772161603e-13,
+        "cash": 4.3655745685100555e-11,
+        "Q2_native_plan": 0.0
+      },
+      "formal_metrics": {
+        "n_days": 334,
+        "cash_total_yuan": 15933557.407928225,
+        "cash_mean_yuan_per_day": 47705.261700383904,
+        "cash_median_yuan_per_day": 45035.518130877346,
+        "cash_p95_yuan_per_day": 92011.89988337463,
+        "cash_cvar90_yuan_per_day": 96674.9322137299,
+        "cash_cvar95_yuan_per_day": 108316.91993728286,
+        "cash_worst_day_yuan": 163125.1411281547,
+        "emergency_total_kwh": 565008.4443916262,
+        "emergency_days": 169,
+        "emergency_worst_day_kwh": 26841.763062161826,
+        "curtailment_total_kwh": 1673850.0305823877,
+        "unused_contract_total_kwh": 1012025.136342948,
+        "soc_end_kwh": 7107.244602388408,
+        "max_physics_residual": 9.094947017729282e-13
+      },
+      "comparison_file": "问题三\\code\\run_A.npz",
+      "comparison_sha256": "90011a7c11ddb6b1064b90b3c6b57c5888b363b6a157a779c33b0a9cbdd23690",
+      "numerical_core_hash": "66f714f3db223d3ca0338d0fcf0860ed14c70bb006ce4eee7410a7d43a9eb5da",
+      "scope": "new independent full continuous simulation from Jan1 6000kWh; saved upstream arrays are comparison targets, never simulation inputs"
     },
-    "variable": {
-      "cash_yuan": 518053.8568726603,
-      "emergency_kwh": 17589.60359691664,
-      "curtailment_kwh": 4446.266466445377,
-      "soc_end_kwh": 5989.131212944099,
-      "max_physics_residual": 1.8189894035458565e-12,
-      "days": 7
-    },
-    "difference_variable_minus_fixed_yuan": 63656.446260086086
-  },
-  "q4_3": {
-    "fixed": {
-      "cash_yuan": 405912.9170428271,
-      "emergency_kwh": 6248.326406750415,
-      "curtailment_kwh": 3891.0136244444434,
-      "soc_end_kwh": 5966.075871693763,
-      "max_physics_residual": 1.8189894035458565e-12,
-      "days": 7
-    },
-    "variable": {
-      "cash_yuan": 463472.1922527104,
-      "emergency_kwh": 6162.5700612225555,
-      "curtailment_kwh": 4092.66260749158,
-      "soc_end_kwh": 5989.1311833751215,
-      "max_physics_residual": 1.8189894035458565e-12,
-      "days": 7
-    },
-    "difference_variable_minus_fixed_yuan": 57559.275209883286
-  },
-  "scope": "E0 Jan09-Jan15 bridge; B0 source-flow engine and information permissions identical, only tariff path changes; diagnostic, not formal model selection"
+    "q4_3": {
+      "status": "PASS",
+      "backend": "q4-inheritance-v2",
+      "branch": "q4_3",
+      "days_recomputed": 365,
+      "actual_slots_checked": 52559,
+      "max_absolute_errors": {
+        "B": 0.0,
+        "A": 0.0,
+        "SOC": 0.0,
+        "charge": 0.0,
+        "discharge": 0.0,
+        "emergency": 2.2737367544323206e-13,
+        "curtail": 1.1368683772161603e-13,
+        "grid_import": 0.0,
+        "unused_contract": 1.1368683772161603e-13,
+        "cash": 3.637978807091713e-11
+      },
+      "formal_metrics": {
+        "n_days": 334,
+        "cash_total_yuan": 15206579.471935473,
+        "cash_mean_yuan_per_day": 45528.68105369902,
+        "cash_median_yuan_per_day": 45502.90845915749,
+        "cash_p95_yuan_per_day": 77502.50850237797,
+        "cash_cvar90_yuan_per_day": 79766.35819209291,
+        "cash_cvar95_yuan_per_day": 88215.26949323715,
+        "cash_worst_day_yuan": 102070.34325917916,
+        "emergency_total_kwh": 381890.2496116296,
+        "emergency_days": 198,
+        "emergency_worst_day_kwh": 11064.0478845,
+        "curtailment_total_kwh": 1635876.5656184256,
+        "unused_contract_total_kwh": 886122.105221487,
+        "soc_end_kwh": 7509.743830126475,
+        "max_physics_residual": 9.094947017729282e-13
+      },
+      "comparison_file": "问题三\\code\\run_D.npz",
+      "comparison_sha256": "45ee14081691b2810c4d9f9354abd0fd18d9bd0285d3debfa93d2e1647f9c051",
+      "numerical_core_hash": "66f714f3db223d3ca0338d0fcf0860ed14c70bb006ce4eee7410a7d43a9eb5da",
+      "scope": "new independent full continuous simulation from Jan1 6000kWh; saved upstream arrays are comparison targets, never simulation inputs"
+    }
+  }
 }

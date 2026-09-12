@@ -1,0 +1,70 @@
+{
+  "name": "R0 Repricing Exposure",
+  "executable_strategy": false,
+  "ranking_role": "diagnostic only; excluded from B0/B1/B2 algorithm ranking",
+  "q4_2": {
+    "branch": "q4_2",
+    "source": "问题二/code/run_data.npz",
+    "trajectory_frozen": true,
+    "semantics": "existing Q2 plan+storage+emergency frozen; natural-day contracts mapped from plan rows; only tariff repriced",
+    "stored_q2_planrow_total_yuan": 15933591.160142256,
+    "fixed_price_natural_reconstruction": {
+      "period": "2025-02-01..2025-12-31",
+      "n_days": 334,
+      "cash_total_yuan": 15933557.407928225,
+      "regular_total_yuan": 12940544.060167473,
+      "emergency_total_yuan": 2993013.34776075,
+      "emergency_total_kwh": 565008.4443916262,
+      "daily_mean_yuan": 47705.261700383904,
+      "daily_p95_yuan": 92011.89988337463,
+      "daily_worst_yuan": 163125.14112815473
+    },
+    "R0_variable_price": {
+      "period": "2025-02-01..2025-12-31",
+      "n_days": 334,
+      "cash_total_yuan": 16721410.455964975,
+      "regular_total_yuan": 13539124.031992529,
+      "emergency_total_yuan": 3182286.4239724474,
+      "emergency_total_kwh": 565008.4443916262,
+      "daily_mean_yuan": 50064.10316157178,
+      "daily_p95_yuan": 100340.52431555468,
+      "daily_worst_yuan": 170557.95349148454
+    },
+    "variable_minus_fixed_natural_yuan": 787853.0480367504,
+    "variable_vs_fixed_natural_pct": 0.049446148645043334
+  },
+  "q4_3": {
+    "branch": "q4_3",
+    "source": "问题三/code/run_D.npz",
+    "trajectory_frozen": true,
+    "semantics": "repaired Q3 original-B/final-A/storage/emergency frozen; only tariff repriced under identical natural-day settlement",
+    "stored_q3_natural_total_yuan": 20097740.11083406,
+    "fixed_price_natural_reconstruction": {
+      "period": "2025-02-01..2025-12-31",
+      "n_days": 334,
+      "cash_total_yuan": 20097740.110834062,
+      "regular_total_yuan": 19601656.845090885,
+      "emergency_total_yuan": 496083.2657431768,
+      "emergency_total_kwh": 115464.3119971349,
+      "daily_mean_yuan": 60172.87458333551,
+      "daily_p95_yuan": 83699.37204873828,
+      "daily_worst_yuan": 95518.58540652279
+    },
+    "fixed_reconstruction_diff_yuan": 3.725290298461914e-09,
+    "fixed_reconstruction_pass": true,
+    "R0_variable_price": {
+      "period": "2025-02-01..2025-12-31",
+      "n_days": 334,
+      "cash_total_yuan": 20933846.561892867,
+      "regular_total_yuan": 20415614.654776983,
+      "emergency_total_yuan": 518231.9071158818,
+      "emergency_total_kwh": 115464.3119971349,
+      "daily_mean_yuan": 62676.187311056485,
+      "daily_p95_yuan": 98238.31042733426,
+      "daily_worst_yuan": 113202.24464740565
+    },
+    "variable_minus_fixed_natural_yuan": 836106.451058805,
+    "variable_vs_fixed_natural_pct": 0.04160201328347789
+  },
+  "claim_boundary": "R0 isolates historical price exposure. It does not measure savings of any Q4 decision rule."
+}

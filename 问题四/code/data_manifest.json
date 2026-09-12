@@ -39,7 +39,9 @@
   "formal_window": "2025-02-01..2025-12-31",
   "natural_slots": 48096,
   "template_output_hashes": {
-    "result4-2.xlsx": "6c72bc81a9627b4bd8ea995ffbd9d49ea53cddef78bcbb81d21d2fa1970b04b9",
-    "result4-3.xlsx": "b648213f0fec849367181dff91b809d243fd6257a42f176dfdb769b9d2d4ae4c"
-  }
+    "result4-2.xlsx": "41c8c74e06e0479e2838c2fd625014c80be3243e20d7d99ccc31588607399726",
+    "result4-3.xlsx": "bc118be4836f6d583f216afd325ce64dd733d8d708b48c43093b15d5289299aa"
+  },
+  "backend": "q4-inheritance-v2",
+  "numerical_core_hash": "66f714f3db223d3ca0338d0fcf0860ed14c70bb006ce4eee7410a7d43a9eb5da"
 }

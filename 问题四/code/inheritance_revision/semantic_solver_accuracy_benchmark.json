@@ -1,0 +1,10 @@
+{
+  "day": 70,
+  "hour": 12,
+  "exact_objective": 69818.31761284589,
+  "candidate_objective": 69818.31761284589,
+  "seconds": 6.316935700000613,
+  "certified_relative_gap": 8.0777812203405e-05,
+  "allowed_relative_gap": 0.0001,
+  "production_changed": false
+}

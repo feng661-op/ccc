@@ -26,9 +26,9 @@ class SimConfig:
     branch:str
     level:str='B0'
     price_config:PriceConfig=PriceConfig()
-    scenario_k:int=3
+    scenario_k:int=9
     alpha:float=0.80
-    risk_lambda:float=0.0
+    risk_lambda:float=0.02
     epsilon:float=0.0
     terminal_reserve:float=6000.0
     terminal_value:float=0.80
@@ -46,6 +46,8 @@ class SimConfig:
     fixed_price:bool=False
     disabled_vintage_hours:Tuple[int,...]=()
     label:str='formal'
+    backend:str='q4-inheritance-v2'
+    settlement_clock:str='delivery'
 
 
 @dataclass
@@ -53,6 +55,7 @@ class SimState:
     soc:float
     prev_B:np.ndarray
     prev_A:np.ndarray
+    prev_adjustment_prices:Optional[np.ndarray]=None
 
 
 @dataclass
@@ -112,7 +115,7 @@ def _make_scenarios(data:Q4Data,pf:PriceForecaster,day_idx:int,eh:int,cfg:SimCon
     return sc
 
 
-def simulate_range(data:Q4Data,pf:PriceForecaster,cfg:SimConfig,start_day:int,end_day:int,
+def simulate_range_legacy(data:Q4Data,pf:PriceForecaster,cfg:SimConfig,start_day:int,end_day:int,
                    state:Optional[SimState]=None)->SimulationResult:
     """Replay day indices [start_day,end_day), returning authoritative ledgers."""
     if cfg.branch not in ('q4_2','q4_3'): raise ValueError(cfg.branch)
@@ -214,3 +217,10 @@ def replay_summary(res:SimulationResult)->dict:
             'soc_max_kwh':float(res.slots.S1_kwh.max()) if len(res.slots) else float('nan'),
             'soc_end_kwh':float(res.state_end.soc),'event_solve_p95_sec':float(res.events.solve_seconds.quantile(.95)) if len(res.events) else 0.0,
             'max_physics_residual':float(res.slots.physics_residual.max()) if len(res.slots) else 0.0}
+
+
+def simulate_range(data,pf,cfg,start_day,end_day,state=None,*,progress=None):
+    if cfg.backend == "legacy-v1.2":
+        raise RuntimeError("Legacy replay disabled: use archived source/commit explicitly; do not mix current artifacts")
+    from q4_sim_v2 import simulate_range as inherited
+    return inherited(data,pf,cfg,start_day,end_day,state,progress=progress)

@@ -1,7 +1,29 @@
-# 问题4最终图表
+# 当前图表
 
-本目录是给人看的中文命名副本，原始制图文件和PDF仍在 `../figures/`。
+> 当前版本：`q4-inheritance-v2`。以下均来自本轮继承修复后的新账本；旧V1.2结果不作为当前证据。
 
-推荐正文顺序：图21结构证据 → 图22信息边界 → 图23模型结构 → 图24成本风险 → 图25典型调度 → 图26机制消融；图27—图29放附录/鲁棒性。
+## 10 图表索引
 
-图片只是展示层；底层CSV见 `../figures/subdata/`。
+**fig01_四问连续继承 四问连续继承**
+
+证据：`q4_inheritance.py; bridge_q4_2.json; bridge_q4_3.json`。图注：固定电价下两条分支都精确回退到现有上游策略。
+
+**fig02_信息与跨日时间轴 因果信息与连续执行**
+
+证据：`q4_inheritance.make_bundle; q4_sim_v2.simulate_range`。图注：新增信息有发布时间；未知未来实际值不参与当前决策。
+
+**fig03_匹配价格决策对照 匹配价格决策对照**
+
+证据：`inheritance_revision/runs/*delivery_selected & *matched_fixed_decision`。图注：对照的是整体价格适应包，不宣称识别单一预测器的独立因果贡献。
+
+**fig04_一月成本风险权衡 一月成本与风险同时披露**
+
+证据：`january_frozen_selection.json; fig04_data.csv`。图注：Q4-3 B1现金代价在1%以内，且尾部改善及其80%区块区间通过门槛；Q4-2不通过。
+
+**fig05_连续SOC与储备反馈 实际SOC与场景储备反馈**
+
+证据：`q4_3/physical_10min.csv; fig05_day_data.csv`。图注：真实SOC满足边界，并按固定的代表日规则展示，不挑选最好的一天。
+
+**fig06_全年继承回归证据 全年继承回归证据**
+
+证据：`inheritance_revision/bridge_q4_2.json; bridge_q4_3.json`。图注：以全年逐段一致性替代仅看总费用接近的弱证据。

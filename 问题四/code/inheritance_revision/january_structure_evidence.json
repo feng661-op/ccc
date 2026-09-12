@@ -1,0 +1,6 @@
+{
+  "within_slot_demeaned_correlation": 0.9609863144859959,
+  "n_days": 31,
+  "n_slots_per_day": 144,
+  "scope": "January exploratory structure only; NOT online predictor feature/causal proof"
+}

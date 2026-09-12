@@ -1,12 +1,12 @@
-# 问题4精选鲁棒性与验收证据
+# 本轮未运行鲁棒性
 
-这里只放人工审计最常用的机器证据副本，便于快速查看；权威原件仍在 `../../code/`、`../../code/ablations/` 和 `../02_model_selection/`。
+本目录旧实验不得视为继承版证据。## 9 验证范围、保留意见与复现
 
-- `final_acceptance.json`：最终T01—T42状态
-- `validation.json`：42项逐项证据
-- `ablation_matrix_E0_E15.json`：消融总表
-- `oracle_audit.json`：Oracle边界与数值
-- `price_freeze_decision.json` / `price_model_ablation.csv`：价格预测冻结
-- `E9_measurement_timing.json`：lag-one测量敏感性
-- `E12_emergency_charging.json`：紧急充电敏感性
-- `export_manifest.json`：最终Excel和指定日期文件哈希
+本轮实际执行：新的B0/B1一月冻结、双分支334日连续回放、双分支365日固定价退化回归、匹配固定价决策对照、Q4-3备选策略、替代结算完整重新优化、因果性/权限/物理/结算单测、CSV/JSON/Excel对账与来源哈希。
+
+本轮不执行鲁棒性参数扫描、DRO晋级、旧E0—E15全消融矩阵或Full-information Oracle。旧Price Oracle和旧FI Oracle因控制器/初态/语义不匹配，不能作为新结果直接引用；本版不报告严格最优下界、严格VOI或旧的最优性差额。旧结果保存在`code/inheritance_revision/legacy_pre_inheritance`，其他旧实验目录带STALE标记。SKIP不算PASS。
+
+最终验证以`code/validation.json`为准；其中T42检查294份受保护上游与官方文件的SHA256，不再要求HEAD永远等于旧Q3提交。`run_manifest.json`分别记录base_q3_head、实际run_head、未提交状态、源文件/配置/结果/验证哈希，不能把未提交新产物冒充已有提交。
+
+复现入口：`python -B q4_revision_run.py january --branch q4_2`及q4_3；然后`freeze`、`formal`、`publish`；导出用`q4_export.py`，图文用`q4_revision_report.py`，正确性验收用`q4_validate.py`。每一步只在输入指纹匹配时运行，旧月度断点不能静默恢复。参数/鲁棒性不是默认运行项。
+

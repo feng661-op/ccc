@@ -1,7 +1,7 @@
 {
-  "window": "2025-01-01..2025-01-31",
-  "statistic": "corr(price-slotmean, netload_power-slotmean)",
-  "value": 0.9609863144859966,
-  "role": "offline structural mechanism evidence only; not predictive accuracy and not dispatch benefit",
-  "lag7_price_corr_all_year": 0.9820369555202604
+  "backend": "q4-inheritance-v2",
+  "within_slot_demeaned_correlation": 0.9609863144859959,
+  "n_days": 31,
+  "n_slots_per_day": 144,
+  "scope": "January exploratory structure only; NOT online predictor feature/causal proof"
 }

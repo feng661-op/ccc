@@ -1,0 +1,8 @@
+{
+  "path": "问题三.zip",
+  "sha256": "dd8bc26d521e4cd70f0b890275a0c16cb02198b12be457feaf7bbefe02634c0f",
+  "bytes": 81172453,
+  "created_utc": "2026-09-12T06:11:50.928826+00:00",
+  "observed_utc": "2026-09-12T06:58:34.153220+00:00",
+  "treatment": "Untracked out-of-scope artifact observed during Q4 task; preserve untouched, do not attribute author or delete."
+}

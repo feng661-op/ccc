@@ -65,7 +65,7 @@ def _candidate_row(name,res,base=None):
     return row
 
 
-def run():
+def run_legacy():
     data=load_q4_inputs(ROOT); pf=PriceForecaster(data)
     # E1 price evidence and structural evidence are both January-only.
     price_rows,price_metrics,price_cfg,price_decision=pf.january_walkforward()
@@ -102,7 +102,7 @@ def run():
         b1mean=row1['mean_cash_improvement_pct']; b1tail=row1['cvar95_improvement_pct']; pb1=row1['paired']
         mean_sig=pb1['mean_cash_gain_80pct_interval'][0]>0
         tail_sig=pb1['cvar95_gain_80pct_interval'][0]>0
-        b1_pass=bool((b1mean>=1.0 and mean_sig) or (b1tail>=2.0 and tail_sig))
+        b1_pass=promotion_gate(row1)['promote']
 
         q50=float(eps[branch]['q50']); q75=float(eps[branch]['q75'])
         b2rows=[]; b2results={}
@@ -126,10 +126,10 @@ def run():
             tail_gain=r['cvar95_improvement_pct']
             tail_lb=r['paired']['cvar95_gain_80pct_interval'][0]
             r['mean_cash_penalty_pct']=mean_penalty
-            r['eligible_tail_candidate']=bool(mean_penalty<=1.0 and tail_gain>0 and tail_lb>0)
+            r['eligible_tail_candidate']=promotion_gate(r)['promote']
             if r['eligible_tail_candidate']: eligible.append(r)
         best_b2=max(eligible,key=lambda r:(r['cvar95_improvement_pct'],r['mean_cash_improvement_pct'])) if eligible else None
-        b2_pass=bool(best_b2 is not None and best_b2['cvar95_improvement_pct']>=2.0)
+        b2_pass=bool(best_b2 is not None and promotion_gate(best_b2)['promote'])
 
         selected_name='B0'; selected=b0; reason='B1 did not pass January joint-model practical/bootstrap gate.'
         if b1_pass:
@@ -151,4 +151,27 @@ def run():
                       'q4_2_B1_pass':ladder['branches']['q4_2']['B1_pass'],'q4_2_B2_pass':ladder['branches']['q4_2']['B2_pass'],
                       'q4_3_B1_pass':ladder['branches']['q4_3']['B1_pass'],'q4_3_B2_pass':ladder['branches']['q4_3']['B2_pass']},ensure_ascii=False))
 
+def promotion_gate(row, *, max_cash_penalty_pct=1.0, min_cash_gain_pct=1.0, min_tail_gain_pct=2.0):
+    """One prespecified cost-dominant gate for every complexity increment.
+
+    Percent units are explicit; the second branch requires BOTH the cost cap
+    and a practically/significantly positive tail gain. B1 has no special OR.
+    """
+    mean=float(row['mean_cash_improvement_pct']); tail=float(row['cvar95_improvement_pct'])
+    paired=row['paired']; ml=float(paired['mean_cash_gain_80pct_interval'][0]); tl=float(paired['cvar95_gain_80pct_interval'][0])
+    if not all(np.isfinite(v) for v in (mean,tail,ml,tl)):raise ValueError('nonfinite selection evidence')
+    cash_pass=bool(mean>=min_cash_gain_pct and ml>0)
+    risk_pass=bool(-mean<=max_cash_penalty_pct and tail>=min_tail_gain_pct and tl>0)
+    return {'promote':cash_pass or risk_pass,'cash_branch':cash_pass,'capped_risk_branch':risk_pass,
+            'mean_cash_penalty_pct':-mean,'cost_penalty_cap_pct':max_cash_penalty_pct,
+            'cash_gain_threshold_pct':min_cash_gain_pct,'tail_gain_threshold_pct':min_tail_gain_pct,
+            'ci_level':.8,'block_days':7}
+
+
+def run():
+    from q4_revision_run import january, publish_freeze
+    for branch in ('q4_2','q4_3'):january(branch,'delivery')
+    publish_freeze()
+
 if __name__=='__main__': run()
+

@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "backend": "q4-inheritance-v2",
+  "branch": "q4_3",
+  "days_recomputed": 365,
+  "actual_slots_checked": 52559,
+  "max_absolute_errors": {
+    "B": 0.0,
+    "A": 0.0,
+    "SOC": 0.0,
+    "charge": 0.0,
+    "discharge": 0.0,
+    "emergency": 2.2737367544323206e-13,
+    "curtail": 1.1368683772161603e-13,
+    "grid_import": 0.0,
+    "unused_contract": 1.1368683772161603e-13,
+    "cash": 3.637978807091713e-11
+  },
+  "formal_metrics": {
+    "n_days": 334,
+    "cash_total_yuan": 15206579.471935473,
+    "cash_mean_yuan_per_day": 45528.68105369902,
+    "cash_median_yuan_per_day": 45502.90845915749,
+    "cash_p95_yuan_per_day": 77502.50850237797,
+    "cash_cvar90_yuan_per_day": 79766.35819209291,
+    "cash_cvar95_yuan_per_day": 88215.26949323715,
+    "cash_worst_day_yuan": 102070.34325917916,
+    "emergency_total_kwh": 381890.2496116296,
+    "emergency_days": 198,
+    "emergency_worst_day_kwh": 11064.0478845,
+    "curtailment_total_kwh": 1635876.5656184256,
+    "unused_contract_total_kwh": 886122.105221487,
+    "soc_end_kwh": 7509.743830126475,
+    "max_physics_residual": 9.094947017729282e-13
+  },
+  "comparison_file": "问题三\\code\\run_D.npz",
+  "comparison_sha256": "45ee14081691b2810c4d9f9354abd0fd18d9bd0285d3debfa93d2e1647f9c051",
+  "numerical_core_hash": "66f714f3db223d3ca0338d0fcf0860ed14c70bb006ce4eee7410a7d43a9eb5da",
+  "scope": "new independent full continuous simulation from Jan1 6000kWh; saved upstream arrays are comparison targets, never simulation inputs"
+}

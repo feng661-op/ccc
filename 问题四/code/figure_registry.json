@@ -1,0 +1,41 @@
+{
+  "backend": "q4-inheritance-v2",
+  "figures": [
+    {
+      "id": "fig01_四问连续继承",
+      "title": "四问连续继承",
+      "source": "q4_inheritance.py; bridge_q4_2.json; bridge_q4_3.json",
+      "supported_claim": "固定电价下两条分支都精确回退到现有上游策略。"
+    },
+    {
+      "id": "fig02_信息与跨日时间轴",
+      "title": "因果信息与连续执行",
+      "source": "q4_inheritance.make_bundle; q4_sim_v2.simulate_range",
+      "supported_claim": "新增信息有发布时间；未知未来实际值不参与当前决策。"
+    },
+    {
+      "id": "fig03_匹配价格决策对照",
+      "title": "匹配价格决策对照",
+      "source": "inheritance_revision/runs/*delivery_selected & *matched_fixed_decision",
+      "supported_claim": "对照的是整体价格适应包，不宣称识别单一预测器的独立因果贡献。"
+    },
+    {
+      "id": "fig04_一月成本风险权衡",
+      "title": "一月成本与风险同时披露",
+      "source": "january_frozen_selection.json; fig04_data.csv",
+      "supported_claim": "Q4-3 B1现金代价在1%以内，且尾部改善及其80%区块区间通过门槛；Q4-2不通过。"
+    },
+    {
+      "id": "fig05_连续SOC与储备反馈",
+      "title": "实际SOC与场景储备反馈",
+      "source": "q4_3/physical_10min.csv; fig05_day_data.csv",
+      "supported_claim": "真实SOC满足边界，并按固定的代表日规则展示，不挑选最好的一天。"
+    },
+    {
+      "id": "fig06_全年继承回归证据",
+      "title": "全年继承回归证据",
+      "source": "inheritance_revision/bridge_q4_2.json; bridge_q4_3.json",
+      "supported_claim": "以全年逐段一致性替代仅看总费用接近的弱证据。"
+    }
+  ]
+}

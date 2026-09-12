@@ -1,0 +1,1064 @@
+{
+  "suite": "Q4 V1.2 T01-T42",
+  "all_pass": true,
+  "passed": 42,
+  "failed": [],
+  "tests": [
+    {
+      "id": "T01",
+      "name": "输入完整性",
+      "pass": true,
+      "evidence": {
+        "hashes": {
+          "C题.pdf": "2c098f6ae9dd47ae965aebdec3b9facf3de6c173f999783c1012c08fc5fb9d2d",
+          "附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+          "附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+          "附件3.xlsx": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
+          "附件4.xlsx": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71",
+          "result4-2.xlsx": "1c26494cfc6d754e0bd9bff7e13e1126a73d2d2da6c5336eb251d89b9a1a1a47",
+          "result4-3.xlsx": "c59da470cabd0be23f602c95c8aa9d11ec224a0cdac216b3e1f218e65d006bdc"
+        },
+        "dims": {
+          "price": [
+            365,
+            144
+          ],
+          "forecast_issues": 1460,
+          "dates": [
+            "2025-01-01",
+            "2025-12-31"
+          ]
+        }
+      }
+    },
+    {
+      "id": "T02",
+      "name": "计划时段解析",
+      "pass": true,
+      "evidence": {
+        "first": "0:10-0:20",
+        "last": "0:00-0:10+1",
+        "n": 144
+      }
+    },
+    {
+      "id": "T03",
+      "name": "自然日映射",
+      "pass": true,
+      "evidence": {
+        "refs": [
+          [
+            30,
+            143
+          ],
+          [
+            31,
+            0
+          ],
+          [
+            31,
+            142
+          ]
+        ],
+        "feb1_00_price": 0.309,
+        "jan31_tail_price": 0.309
+      }
+    },
+    {
+      "id": "T04",
+      "name": "事件边界",
+      "pass": true,
+      "evidence": {
+        "rows": [
+          {
+            "event_hour": 0,
+            "H": 145,
+            "first_h": 0,
+            "first_j": 143,
+            "first_lead": true,
+            "last_j": 143,
+            "mutable_count": 144
+          },
+          {
+            "event_hour": 6,
+            "H": 109,
+            "first_h": 0,
+            "first_j": 35,
+            "first_lead": false,
+            "last_j": 143,
+            "mutable_count": 109
+          },
+          {
+            "event_hour": 12,
+            "H": 73,
+            "first_h": 0,
+            "first_j": 71,
+            "first_lead": false,
+            "last_j": 143,
+            "mutable_count": 73
+          },
+          {
+            "event_hour": 18,
+            "H": 37,
+            "first_h": 0,
+            "first_j": 107,
+            "first_lead": false,
+            "last_j": 143,
+            "mutable_count": 37
+          }
+        ],
+        "pass": true,
+        "nonanticipativity": "all mutable contract variables are shared across scenarios at each event"
+      }
+    },
+    {
+      "id": "T05",
+      "name": "跨月/年度尾",
+      "pass": true,
+      "evidence": {
+        "q4_2": {
+          "first": {
+            "timestamp": "2025-02-01T00:00:00",
+            "plan_owner_day_index": 30,
+            "plan_j": 143
+          },
+          "tail": {
+            "timestamp": "2026-01-01T00:00:00",
+            "source_plan_date": "2025-12-31",
+            "plan_j": 143,
+            "B_kwh": 583.847375,
+            "A_kwh": 583.847375,
+            "price_yuan_per_kwh": 0.462,
+            "load_kwh": 659.6633333333333,
+            "pv_kwh": 0.0,
+            "S0_kwh": 5947.059649917024,
+            "target_soc_kwh": 6000.0,
+            "S1_kwh": 5867.142612809772,
+            "qL": 583.847375,
+            "qB": 0.0,
+            "u": 0.0,
+            "gL": 0.0,
+            "gB": 0.0,
+            "kappa": 0.0,
+            "eL": 0.0,
+            "eB": 0.0,
+            "x": 0.0,
+            "y": 75.81595833333324,
+            "I_kwh": 583.847375,
+            "regular_fee_yuan": 269.73748725,
+            "emergency_fee_yuan": 0.0,
+            "cash_fee_yuan": 269.73748725,
+            "physics_residual": 0.0,
+            "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+            "scope": "committed +1 tail bridge; excluded from 334-natural-day formal KPI but required for template/continuity audit"
+          },
+          "continuity": 0.0
+        },
+        "q4_3": {
+          "first": {
+            "timestamp": "2025-02-01T00:00:00",
+            "plan_owner_day_index": 30,
+            "plan_j": 143
+          },
+          "tail": {
+            "timestamp": "2026-01-01T00:00:00",
+            "source_plan_date": "2025-12-31",
+            "plan_j": 143,
+            "B_kwh": 0.0,
+            "A_kwh": 514.6125209893551,
+            "price_yuan_per_kwh": 0.462,
+            "load_kwh": 659.6633333333333,
+            "pv_kwh": 0.0,
+            "S0_kwh": 5860.769011131398,
+            "target_soc_kwh": 5841.476637233752,
+            "S1_kwh": 5707.872029976518,
+            "qL": 514.6125209893551,
+            "qB": 0.0,
+            "u": 0.0,
+            "gL": 0.0,
+            "gB": 0.0,
+            "kappa": 0.0,
+            "eL": 0.0,
+            "eB": 0.0,
+            "x": 0.0,
+            "y": 145.05081234397824,
+            "I_kwh": 514.6125209893551,
+            "regular_fee_yuan": 356.62647704562306,
+            "emergency_fee_yuan": 0.0,
+            "cash_fee_yuan": 356.62647704562306,
+            "physics_residual": 0.0,
+            "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+            "scope": "committed +1 tail bridge; excluded from 334-natural-day formal KPI but required for template/continuity audit"
+          },
+          "continuity": 0.0
+        }
+      }
+    },
+    {
+      "id": "T06",
+      "name": "初始缺失段",
+      "pass": true,
+      "evidence": {
+        "jan1_00_load": NaN,
+        "jan1_00_pv": NaN,
+        "jan1_00_price": NaN
+      }
+    },
+    {
+      "id": "T07",
+      "name": "vintage对齐",
+      "pass": true,
+      "evidence": {
+        "records": 35040,
+        "sample": {
+          "issue_time": "2025-01-13 18:00:00",
+          "target_time": "2025-01-14 05:00:00",
+          "lead_hour": 11,
+          "pv_kw": 0.0
+        }
+      }
+    },
+    {
+      "id": "T08",
+      "name": "残差可用性",
+      "pass": true,
+      "evidence": {
+        "d20_e0": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ],
+        "d20_e6": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      }
+    },
+    {
+      "id": "T09",
+      "name": "合同未来扰动不变",
+      "pass": true,
+      "evidence": {
+        "max_contract_diff": 0.0
+      }
+    },
+    {
+      "id": "T10",
+      "name": "控制未来扰动不变",
+      "pass": true,
+      "evidence": {
+        "future_price_perturbation_max": 2.5000000000000004,
+        "first_target_diff": 0.0,
+        "first_action_max_diff": 0.0,
+        "first_action": {
+          "qL": 0.0,
+          "qB": 0.0,
+          "u": 0.0,
+          "gL": 0.0,
+          "gB": 0.0,
+          "kappa": 0.0,
+          "eL": 0.0,
+          "eB": 0.0,
+          "x": 0.0,
+          "y": 618.2516666666667,
+          "S0": 6000.0,
+          "S1": 5348.305522046045,
+          "I": 0.0,
+          "target_soc": 5383.2731100017245,
+          "residual_max": 0.0,
+          "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f"
+        }
+      }
+    },
+    {
+      "id": "T11",
+      "name": "当前测量隔离",
+      "pass": true,
+      "evidence": {
+        "contract_rewrite_diff": 0.0,
+        "action_change_max": 480.0,
+        "action_before": {
+          "qL": 800.0,
+          "qB": 0.0,
+          "u": 0.0,
+          "gL": 100.0,
+          "gB": 0.0,
+          "kappa": 0.0,
+          "eL": 0.0,
+          "eB": 0.0,
+          "x": 0.0,
+          "y": 0.0,
+          "S0": 6000.0,
+          "S1": 6000.0,
+          "I": 800.0,
+          "target_soc": 6100.0,
+          "residual_max": 0.0,
+          "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f"
+        },
+        "action_after": {
+          "qL": 800.0,
+          "qB": 0.0,
+          "u": 0.0,
+          "gL": 20.0,
+          "gB": 0.0,
+          "kappa": 0.0,
+          "eL": 0.0,
+          "eB": 0.0,
+          "x": 0.0,
+          "y": 480.0,
+          "S0": 6000.0,
+          "S1": 5494.03557437306,
+          "I": 800.0,
+          "target_soc": 6100.0,
+          "residual_max": 0.0,
+          "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f"
+        }
+      }
+    },
+    {
+      "id": "T12",
+      "name": "价格揭示边界",
+      "pass": true,
+      "evidence": {
+        "now": {
+          "decision_time": "2025-01-21T06:00:00",
+          "target_time": "2025-01-21T06:00:00",
+          "block": 1,
+          "lag1": 1.0779,
+          "lag7": 1.0021,
+          "dN_MW": 0.0,
+          "R_price": 0.001213888888888894,
+          "ridge_beta": null,
+          "pred_price": 1.0798,
+          "actual_price": 1.0798,
+          "model_version": "revealed",
+          "max_training_released_at": "2025-01-21T06:00:00"
+        },
+        "future": {
+          "decision_time": "2025-01-21T06:00:00",
+          "target_time": "2025-01-21T06:10:00",
+          "block": 1,
+          "lag1": 1.1214,
+          "lag7": 1.0587,
+          "dN_MW": -0.06305200499999933,
+          "R_price": 0.001213888888888894,
+          "ridge_beta": null,
+          "pred_price": 1.0587,
+          "actual_price": 1.062,
+          "model_version": "lag7|global|a=1|H=42",
+          "max_training_released_at": "2025-01-21T06:00:00"
+        }
+      }
+    },
+    {
+      "id": "T13",
+      "name": "Q4-2权限",
+      "pass": true,
+      "evidence": {
+        "pv_forecast_diff_after_deleting_Att3": 0.0
+      }
+    },
+    {
+      "id": "T14",
+      "name": "Q4-3权限",
+      "pass": true,
+      "evidence": {
+        "0": "ATT3_VINTAGE_00",
+        "6": "ATT3_VINTAGE_06",
+        "12": "ATT3_VINTAGE_12",
+        "18": "ATT3_VINTAGE_18"
+      }
+    },
+    {
+      "id": "T15",
+      "name": "历史窗",
+      "pass": true,
+      "evidence": {
+        "day100_pool": [
+          58,
+          99,
+          42
+        ],
+        "frozen": {
+          "q4_2": 42,
+          "q4_3": 42
+        }
+      }
+    },
+    {
+      "id": "T16",
+      "name": "价格分组与因果回归",
+      "pass": true,
+      "evidence": {
+        "schemes": [
+          "6block",
+          "global"
+        ],
+        "six_blocks": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "max_training_target": "2025-01-21 11:50:00",
+        "decision": "2025-01-21 12:00:00"
+      }
+    },
+    {
+      "id": "T17",
+      "name": "价格消融与证据分层",
+      "pass": true,
+      "evidence": {
+        "models": [
+          "full_ridge",
+          "lag1",
+          "lag7",
+          "lag7_R",
+          "lag7_dN"
+        ],
+        "fair_winner": {
+          "model": "lag7",
+          "block_scheme": "global",
+          "alpha": 1.0,
+          "n": 3312,
+          "mae": 0.0386628925120772,
+          "rmse": 0.0488873244527634,
+          "q95_abs_error": 0.0950899999999999,
+          "cvar95_abs_error": 0.1181311594202899,
+          "block_mae": "{\"0\": 0.03438061594202898, \"1\": 0.037214492753623186, \"2\": 0.04334728260869564, \"3\": 0.047550905797101445, \"4\": 0.03715778985507246, \"5\": 0.03232626811594203}"
+        },
+        "frozen_choice": {
+          "model": "lag7",
+          "block_scheme": "global",
+          "ridge_alpha": 1.0,
+          "history_days": 42,
+          "min_samples": 48
+        },
+        "selection_rule": "minimum January causal walk-forward MAE; RMSE then q95 tie-break; model complexity only after predictive ties",
+        "structure": {
+          "window": "2025-01-01..2025-01-31",
+          "statistic": "corr(price-slotmean, netload_power-slotmean)",
+          "value": 0.9609863144859966,
+          "role": "offline structural mechanism evidence only; not predictive accuracy and not dispatch benefit",
+          "lag7_price_corr_all_year": 0.9820369555202604
+        }
+      }
+    },
+    {
+      "id": "T18",
+      "name": "单位与10分钟限值",
+      "pass": true,
+      "evidence": {
+        "DT": 0.16666666666666666,
+        "XMAX_kwh": 833.3333333333333,
+        "eta": 0.9486832980505138
+      }
+    },
+    {
+      "id": "T19",
+      "name": "合同源流",
+      "pass": true,
+      "evidence": {
+        "max_residual": 4.547473508864641e-13
+      }
+    },
+    {
+      "id": "T20",
+      "name": "PV源流",
+      "pass": true,
+      "evidence": {
+        "max_residual": 6.821210263296962e-13,
+        "night_kappa_max": 0.0
+      }
+    },
+    {
+      "id": "T21",
+      "name": "负荷汇流",
+      "pass": true,
+      "evidence": {
+        "max_residual": 4.547473508864641e-13
+      }
+    },
+    {
+      "id": "T22",
+      "name": "充电汇流与eB语义",
+      "pass": true,
+      "evidence": {
+        "max_residual": 1.7053025658242404e-13,
+        "formal_eB_max": 0.0
+      }
+    },
+    {
+      "id": "T23",
+      "name": "SOC递推与边界",
+      "pass": true,
+      "evidence": {
+        "max_residual": 5.4569682106375694e-12,
+        "min": 1200.0,
+        "max": 10800.0
+      }
+    },
+    {
+      "id": "T24",
+      "name": "充放电上限与无无意义循环",
+      "pass": true,
+      "evidence": {
+        "xmax": 833.3333333333333,
+        "ymax": 833.3333333333333,
+        "simultaneous_slots": 0
+      }
+    },
+    {
+      "id": "T25",
+      "name": "夜间反例",
+      "pass": true,
+      "evidence": {
+        "night_unused_contract": {
+          "unused_contract": 500.00000086399996,
+          "kappa": 0.0,
+          "battery_dump": 0.0,
+          "residual": 0.0
+        },
+        "pv_surplus": {
+          "unused_contract": 0.0,
+          "kappa": 899.9999999900001,
+          "residual": 0.0
+        },
+        "no_emergency_charge": {
+          "eL": 100.0,
+          "eB": 0.0,
+          "x": 0.0,
+          "residual": 0.0
+        }
+      }
+    },
+    {
+      "id": "T26",
+      "name": "事件/执行同一物理内核",
+      "pass": true,
+      "evidence": {
+        "isomorphism": {
+          "schema_hash": "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f",
+          "rows": [
+            {
+              "case": {
+                "Q": 1000,
+                "L": 500,
+                "G": 0,
+                "S": 10800,
+                "T": 10800
+              },
+              "residual": 0.0,
+              "eB": 0.0,
+              "S1": 10800.0,
+              "unused": 500.0,
+              "curtail": 0.0
+            },
+            {
+              "case": {
+                "Q": 0,
+                "L": 300,
+                "G": 1200,
+                "S": 10800,
+                "T": 10800
+              },
+              "residual": 0.0,
+              "eB": 0.0,
+              "S1": 10800.0,
+              "unused": 0.0,
+              "curtail": 900.0
+            },
+            {
+              "case": {
+                "Q": 0,
+                "L": 100,
+                "G": 0,
+                "S": 1200,
+                "T": 1200
+              },
+              "residual": 0.0,
+              "eB": 0.0,
+              "S1": 1200.0,
+              "unused": 0.0,
+              "curtail": 0.0
+            },
+            {
+              "case": {
+                "Q": 800,
+                "L": 1000,
+                "G": 300,
+                "S": 6000,
+                "T": 6200
+              },
+              "residual": 0.0,
+              "eB": 0.0,
+              "S1": 6094.868329805051,
+              "unused": 0.0,
+              "curtail": 0.0
+            },
+            {
+              "case": {
+                "Q": 1200,
+                "L": 500,
+                "G": 700,
+                "S": 5000,
+                "T": 5600
+              },
+              "residual": 0.0,
+              "eB": 0.0,
+              "S1": 5600.0,
+              "unused": 767.5444679663241,
+              "curtail": 0.0
+            }
+          ],
+          "max_residual": 0.0
+        },
+        "formal_hashes": [
+          "08ad55a129c188b78a6bf379ee5514cf466d54acf150f52d0326740697aa261f"
+        ]
+      }
+    },
+    {
+      "id": "T27",
+      "name": "字典序第一层保持",
+      "pass": true,
+      "evidence": {
+        "f1": 65180.096682617026,
+        "final_f1": 65180.09674779713,
+        "tol": 6.518009668261703e-05
+      }
+    },
+    {
+      "id": "T28",
+      "name": "字典序第二层最小化",
+      "pass": true,
+      "evidence": {
+        "f2": 57550.667153446375,
+        "final_f2": 57550.66721099705,
+        "tol": 5.7550667153446375e-05
+      }
+    },
+    {
+      "id": "T29",
+      "name": "字典序第三层弃光最小化",
+      "pass": true,
+      "evidence": {
+        "stage3_objective": 0.0,
+        "independent_weighted_curtailment": 0.0,
+        "stage3_match_abs": 0.0,
+        "level1_gate_slack": 6.518010195577517e-05,
+        "level1_tol": 6.518009668261703e-05,
+        "level2_gate_slack": 5.7550678320694715e-05,
+        "level2_tol": 5.7550667153446375e-05,
+        "solver": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      }
+    },
+    {
+      "id": "T30",
+      "name": "B锚定不变且A为绝对量",
+      "pass": true,
+      "evidence": {
+        "B_max_diff": 0.0,
+        "A_min": 0.0
+      }
+    },
+    {
+      "id": "T31",
+      "name": "结算手算",
+      "pass": true,
+      "evidence": {
+        "rows": [
+          {
+            "B": 100,
+            "A": 60,
+            "c": 0.8,
+            "formula": 64.0,
+            "epigraph": 64.0,
+            "diff": 0.0
+          },
+          {
+            "B": 100,
+            "A": 100,
+            "c": 0.8,
+            "formula": 80.0,
+            "epigraph": 80.00000000000001,
+            "diff": 1.4210854715202004e-14
+          },
+          {
+            "B": 100,
+            "A": 140,
+            "c": 0.8,
+            "formula": 128.0,
+            "epigraph": 128.00000000000003,
+            "diff": 2.842170943040401e-14
+          },
+          {
+            "B": 0,
+            "A": 50,
+            "c": 1.2,
+            "formula": 89.99999999999999,
+            "epigraph": 89.99999999999999,
+            "diff": 0.0
+          }
+        ],
+        "max_abs_diff": 2.842170943040401e-14,
+        "semantics": "original_B_anchor_delivery_price"
+      }
+    },
+    {
+      "id": "T32",
+      "name": "紧急购电逐槽5c e",
+      "pass": true,
+      "evidence": {
+        "max_fee_residual": 1.8189894035458565e-12
+      }
+    },
+    {
+      "id": "T33",
+      "name": "场景权重与同源路径",
+      "pass": true,
+      "evidence": {
+        "weights": [
+          0.6111111111111112,
+          0.2222222222222222,
+          0.16666666666666666
+        ],
+        "medoid_source_days": [
+          13,
+          5,
+          16
+        ],
+        "pool_source_days": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ]
+      }
+    },
+    {
+      "id": "T34",
+      "name": "B0/B1联合价值与匹配价格基线",
+      "pass": true,
+      "evidence": {
+        "q4_2_B1_gain_pct": -4.496663086090832,
+        "q4_3_B1_gain_pct": -6.057009524448191,
+        "matched_C0": {
+          "artifact": "e0_fixed_price_bridge.json",
+          "role": "diagnostic fixed-vs-variable tariff bridge plus matched causal policy benchmark",
+          "matched_no_price_adaptation": {
+            "cash_total_yuan": 19283169.442770902,
+            "cash_mean_yuan_per_day": 57734.04024781707,
+            "cash_cvar95_yuan_per_day": 156043.3036364365,
+            "cash_worst_day_yuan": 198630.99474636692,
+            "emergency_total_kwh": 1090873.3859376875,
+            "emergency_days": 243,
+            "curtailment_total_kwh": 1372162.4781097402,
+            "unused_contract_total_kwh": 835333.2027230347,
+            "soc_end_kwh": 5900.735858716783,
+            "max_physics_residual": 1.8189894035458565e-12
+          },
+          "formal_price_adaptive": {
+            "cash_total_yuan": 19324185.811747298,
+            "cash_mean_yuan_per_day": 57856.8437477464,
+            "cash_cvar95_yuan_per_day": 154803.61282401782,
+            "cash_worst_day_yuan": 197235.6375261584,
+            "emergency_total_kwh": 1094259.0453667096,
+            "emergency_days": 255,
+            "curtailment_total_kwh": 1372336.9014591426,
+            "unused_contract_total_kwh": 846963.5054057061,
+            "soc_end_kwh": 5947.059649917024,
+            "max_physics_residual": 1.8189894035458565e-12
+          },
+          "adaptive_cash_gain_pct": -0.2127055362870976,
+          "paired_daily_cash_difference_adaptive_minus_C0": {
+            "mean_yuan_per_day": 122.80349992932328,
+            "median_yuan_per_day": 206.875963406128,
+            "weekly_block_bootstrap_95pct_CI_yuan_per_day": [
+              1.2000844698088067,
+              245.9246801910626
+            ],
+            "bootstrap_seed": 2026,
+            "block_days": 7,
+            "replicates": 5000,
+            "interpretation": "interpret the paired weekly-block bootstrap interval by sign: entirely positive means adaptive is more expensive; entirely negative means adaptive is cheaper; crossing zero means no robust cash dominance",
+            "conclusion": "price-adaptive policy is slightly but robustly more expensive than matched C0 over the formal period; do not claim Q4-2 savings from price adaptation"
+          },
+          "claim_boundary": "matched policy benchmark; unlike R0 it shares the Q4 state, physics and information process and changes only the decision tariff"
+        }
+      }
+    },
+    {
+      "id": "T35",
+      "name": "经验漂移ε校准",
+      "pass": true,
+      "evidence": {
+        "q4_2": {
+          "n": 21,
+          "q50": 0.04300030602689439,
+          "q75": 0.34314810350750613,
+          "interpretation": "successive empirical W1 distribution-drift scale; NOT a confidence radius or coverage guarantee",
+          "frozen_scales": {
+            "s_net_kwh": 92.92255827343426,
+            "s_pv_kwh": 18.27374361909089,
+            "s_price_yuan_per_kwh": 0.14788934999999986
+          }
+        },
+        "q4_3": {
+          "n": 21,
+          "q50": 0.021344913900328763,
+          "q75": 0.2552668458023087,
+          "interpretation": "successive empirical W1 distribution-drift scale; NOT a confidence radius or coverage guarantee",
+          "frozen_scales": {
+            "s_net_kwh": 95.91782560111119,
+            "s_pv_kwh": 29.969572919999965,
+            "s_price_yuan_per_kwh": 0.14788934999999986
+          }
+        }
+      }
+    },
+    {
+      "id": "T36",
+      "name": "DRO原对偶与ε=0退化",
+      "pass": true,
+      "evidence": {
+        "duality_max_gap": 2.220446049250313e-16,
+        "epsilon0": {
+          "B1_success": true,
+          "B2_success": true,
+          "contract_max_abs_diff": 7.29380644770572e-08,
+          "level1_abs_diff": 0.0,
+          "expected_cash_abs_diff": 5.820766091346741e-11
+        }
+      }
+    },
+    {
+      "id": "T37",
+      "name": "加权离散CVaR",
+      "pass": true,
+      "evidence": {
+        "flow_cvar": 10.0,
+        "opt_cvar": 10.0
+      }
+    },
+    {
+      "id": "T38",
+      "name": "DRO不强行保留",
+      "pass": true,
+      "evidence": {
+        "selected": {
+          "q4_2": "B0",
+          "q4_3": "B1"
+        },
+        "ladder_selected": {
+          "q4_2": "B0",
+          "q4_3": "B1"
+        },
+        "B2_pass": {
+          "q4_2": false,
+          "q4_3": false
+        }
+      }
+    },
+    {
+      "id": "T39",
+      "name": "紧急充电独立敏感性",
+      "pass": true,
+      "evidence": {
+        "q4_2": {
+          "main_eB0": {
+            "cash_total_yuan": 19324185.811747298,
+            "cash_mean_yuan_per_day": 57856.8437477464,
+            "cash_cvar95_yuan_per_day": 154803.61282401782,
+            "cash_worst_day_yuan": 197235.6375261584,
+            "emergency_total_kwh": 1094259.0453667096,
+            "emergency_days": 255,
+            "curtailment_total_kwh": 1372336.9014591426,
+            "unused_contract_total_kwh": 846963.5054057061,
+            "soc_end_kwh": 5947.059649917024,
+            "max_physics_residual": 1.8189894035458565e-12
+          },
+          "sensitivity_eB_allowed": {
+            "cash_total_yuan": 18673067.76849172,
+            "cash_mean_yuan_per_day": 55907.38852841832,
+            "cash_cvar95_yuan_per_day": 137211.1569018885,
+            "cash_worst_day_yuan": 174867.42444720666,
+            "emergency_total_kwh": 1439113.7039518678,
+            "emergency_days": 299,
+            "curtailment_total_kwh": 1434936.1866727066,
+            "unused_contract_total_kwh": 962771.8116009559,
+            "soc_end_kwh": 6000.0,
+            "max_physics_residual": 1.8189894035458565e-12
+          },
+          "sensitivity_eB_total_kwh": 1320987.7436141043
+        },
+        "q4_3": {
+          "main_eB0": {
+            "cash_total_yuan": 16370299.289312504,
+            "cash_mean_yuan_per_day": 49012.87212369013,
+            "cash_cvar95_yuan_per_day": 98401.36440127784,
+            "cash_worst_day_yuan": 123973.32134672384,
+            "emergency_total_kwh": 295316.02674145857,
+            "emergency_days": 201,
+            "curtailment_total_kwh": 1316566.1812534945,
+            "unused_contract_total_kwh": 1767365.5584367933,
+            "soc_end_kwh": 5860.769011131398,
+            "max_physics_residual": 1.8189894035458565e-12
+          },
+          "sensitivity_eB_allowed": {
+            "cash_total_yuan": 19583425.993292663,
+            "cash_mean_yuan_per_day": 58633.01195596606,
+            "cash_cvar95_yuan_per_day": 131487.70093566444,
+            "cash_worst_day_yuan": 160888.59179136538,
+            "emergency_total_kwh": 1265757.99195213,
+            "emergency_days": 301,
+            "curtailment_total_kwh": 1384923.744545972,
+            "unused_contract_total_kwh": 2050244.462662071,
+            "soc_end_kwh": 5914.83302105583,
+            "max_physics_residual": 1.8189894035458565e-12
+          },
+          "sensitivity_eB_total_kwh": 1249941.688429472
+        }
+      }
+    },
+    {
+      "id": "T40",
+      "name": "Oracle边界与同口径一致性",
+      "pass": true,
+      "evidence": {
+        "q4_2": {
+          "causal_matches_formal": true,
+          "full_info_le_price_oracle": true,
+          "full_info_le_causal": true,
+          "boundary_mentions_tail": true,
+          "price_oracle_claim": "diagnostic information-value comparator only; NOT a theoretical lower bound",
+          "strict_lower_bound_check_pass": true
+        },
+        "q4_3": {
+          "causal_matches_formal": true,
+          "full_info_le_price_oracle": true,
+          "full_info_le_causal": true,
+          "boundary_mentions_tail": true,
+          "price_oracle_claim": "diagnostic information-value comparator only; NOT a theoretical lower bound",
+          "strict_lower_bound_check_pass": true
+        }
+      }
+    },
+    {
+      "id": "T41",
+      "name": "连续回放/Excel/指定日期独立重读",
+      "pass": true,
+      "evidence": {
+        "xlsx": {
+          "q4_2": {
+            "file": "result4-2.xlsx",
+            "rows_plan": 335,
+            "contract_sample_errors": [
+              4.547473508864641e-13,
+              4.547473508864641e-13,
+              4.547473508864641e-13
+            ],
+            "emergency_xlsx_sum": 1094259.045366709,
+            "emergency_ledger_sum": 1094259.0453667094,
+            "sha256": "6c72bc81a9627b4bd8ea995ffbd9d49ea53cddef78bcbb81d21d2fa1970b04b9"
+          },
+          "q4_3": {
+            "file": "result4-3.xlsx",
+            "rows_plan": 335,
+            "contract_sample_errors": [
+              4.547473508864641e-13,
+              4.547473508864641e-13,
+              4.547473508864641e-13,
+              4.547473508864641e-13,
+              4.547473508864641e-13,
+              4.547473508864641e-13
+            ],
+            "emergency_xlsx_sum": 295316.0267414586,
+            "emergency_ledger_sum": 295316.02674145857,
+            "sha256": "b648213f0fec849367181dff91b809d243fd6257a42f176dfdb769b9d2d4ae4c"
+          }
+        },
+        "export_manifest_hash_lock": {
+          "q4_2": "6c72bc81a9627b4bd8ea995ffbd9d49ea53cddef78bcbb81d21d2fa1970b04b9",
+          "q4_3": "b648213f0fec849367181dff91b809d243fd6257a42f176dfdb769b9d2d4ae4c"
+        },
+        "hash_lock_pass": true,
+        "specified_table": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题四\\output\\04_tables\\指定日期表格.md",
+        "row_counts": {
+          "q4_2": {
+            "days": 334,
+            "slots": 48096,
+            "events": 334
+          },
+          "q4_3": {
+            "days": 334,
+            "slots": 48096,
+            "events": 1336
+          }
+        }
+      }
+    },
+    {
+      "id": "T42",
+      "name": "范围保护",
+      "pass": true,
+      "evidence": {
+        "head": "c2864f3899685674419c9b209c800b6c89f4b8d6",
+        "git_status": [
+          "?? 问题四/"
+        ],
+        "outside_q4": []
+      }
+    }
+  ]
+}

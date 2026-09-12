@@ -1,8 +1,24 @@
 {
+  "backend": "q4-inheritance-v2",
   "status": "PASS",
-  "T01_T42": {
-    "passed": 42,
-    "failed": []
+  "passed": 32,
+  "failed": 0,
+  "skipped": 4,
+  "unit_tests": 22,
+  "validation_sha256": "85a20a254d5aae848663100eed8d545a669db9155c1607e18662638663099f6d",
+  "run_manifest_sha256": "9d0e3b51d6678052a13c2de294649073697eb385a5271aa0e51575a5a2114d37",
+  "robustness_run": false,
+  "numerical_validation": "PASS",
+  "visual_review": "PASS",
+  "completed_utc": "2026-09-12T07:27:08.873667+00:00",
+  "visual_observation_ids": [
+    "obs-db317e7c645349fca2f11901de155e17",
+    "obs-b1371b7bee7243e08099fb2c7544d582"
+  ],
+  "visual_evidence": {
+    "six_current_figures_sha256": "078e3534e68eaa8065d5b91cf7ca2f8595e2ad2c64b58000714d6c6ff175174a",
+    "saved_excel_cell_readback_sha256": "eaecbab694dce7c5545fa8b3e547daeabc343fef639e65272a643f5f3f9d31bc",
+    "scope": "Actual current PNGs and saved-XLSX data readback inspected; not an application screenshot."
   },
-  "required_next": "final_visual_then_user_review"
+  "commit_push_performed": false
 }

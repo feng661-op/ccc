@@ -1,56 +1,24 @@
-# 问题四代码导航
+# 第四问复现入口
 
-本目录保留完整复现链。**普通阅读不需要逐个打开所有 CSV/JSON**；先看根目录 `../README.md` 和 `../output/`。
+> 当前版本：`q4-inheritance-v2`。以下均来自本轮继承修复后的新账本；旧V1.2结果不作为当前证据。
 
-## 1. 核心代码按执行链分类
+## 9 验证范围、保留意见与复现
 
-| 阶段 | 文件 | 作用 |
-|---|---|---|
-| 数据与时间 | `q4_data.py` | 官方附件读取、自然日/计划日双时间坐标 |
-| 信息边界 | `q4_information.py` | 决策时刻可用信息、42天历史窗 |
-| 预测 | `q4_forecast.py`、`q4_price.py` | 负荷/PV权限、波动电价因果预测 |
-| 场景 | `q4_scenarios.py`、`q4_tree.py` | 同源残差路径、场景约简与事件树 |
-| 物理 | `q4_flow.py`、`q4_control.py` | 唯一源—汇物理核、10分钟执行 |
-| 结算 | `q4_settlement.py` | 原始合同 B 锚定结算、5c紧急购电 |
-| 优化 | `q4_opt.py` | 事件层 LP / SAA / DRO / 字典序 |
-| 回放 | `q4_sim.py`、`q4_metrics.py` | 连续 SOC 回放、正式指标 |
-| 基线/冻结 | `q4_bridge.py`、`q4_select.py` | R0/C0桥接、1月复杂度冻结 |
-| 正式期 | `q4_formal.py` | 334天冻结策略正式回放 |
-| Oracle | `q4_oracle.py`、`q4_oracle_run.py` | Price Oracle 与 Full-information Oracle |
-| 导出 | `q4_export.py` | 官方 Excel 与指定日期表 |
-| 图表 | `q4_figures.py` | 正文图与附图 |
-| 论文材料 | `q4_paper.py` | 生成 `../问题4论文材料.md` |
-| 验收 | `q4_validate.py` | T01—T42 独立核验 |
+本轮实际执行：新的B0/B1一月冻结、双分支334日连续回放、双分支365日固定价退化回归、匹配固定价决策对照、Q4-3备选策略、替代结算完整重新优化、因果性/权限/物理/结算单测、CSV/JSON/Excel对账与来源哈希。
 
-## 2. 消融脚本
+本轮不执行鲁棒性参数扫描、DRO晋级、旧E0—E15全消融矩阵或Full-information Oracle。旧Price Oracle和旧FI Oracle因控制器/初态/语义不匹配，不能作为新结果直接引用；本版不报告严格最优下界、严格VOI或旧的最优性差额。旧结果保存在`code/inheritance_revision/legacy_pre_inheritance`，其他旧实验目录带STALE标记。SKIP不算PASS。
 
-`q4_ablations*.py`、`q4_e0_finish.py`、`q4_e13_finish.py` 等用于冻结后的 E0—E15 验证。最终统一结果见：
+最终验证以`code/validation.json`为准；其中T42检查294份受保护上游与官方文件的SHA256，不再要求HEAD永远等于旧Q3提交。`run_manifest.json`分别记录base_q3_head、实际run_head、未提交状态、源文件/配置/结果/验证哈希，不能把未提交新产物冒充已有提交。
 
-- `ablations/ablation_matrix_E0_E15.json`
-- `../output/09_鲁棒性与消融验证.md`
+复现入口：`python -B q4_revision_run.py january --branch q4_2`及q4_3；然后`freeze`、`formal`、`publish`；导出用`q4_export.py`，图文用`q4_revision_report.py`，正确性验收用`q4_validate.py`。每一步只在输入指纹匹配时运行，旧月度断点不能静默恢复。参数/鲁棒性不是默认运行项。
 
-`q4_settlement_reopt.py` 属于结算语义实验代码；正式材料对 E10 **只保留固定主策略 exposure**，不把未完全可靠的替代结算重优化结果用于排名或冻结。
+## 5 统一一月选模，不按正式期反向挑选
 
-## 3. 机器产物目录
+1月1—8日作共同预热，B0/B1从同一1月8日末状态分别运行1月9—31日。复杂模型晋级必须满足：现金平均改善至少1%且80%配对区块区间下界为正；或者现金恶化不超过1%、日费用CVaR95改善至少2%且对应区间下界为正。两条复杂度晋级统一使用同一规则，区块长度7日、重采样2000次。1%是沿用的成本容忍纪律，不是题目规定。
 
-- `q4_2/`：Q4-2 正式 334 天账本与 checkpoint
-- `q4_3/`：Q4-3 正式 334 天账本与 checkpoint
-- `ablations/`：E0—E15 原始机器证据
-- `../output/02_model_selection/`：1月模型选择全部候选
+Q4-2冻结为B0。Q4-3新B1的现金代价为+0.535172%，CVaR95改善3.084284%，其尾部收益80%区间为[889.533, 4077.358]元/日，因此按同一规则重新冻结为B1。
 
-其中 `q4_2/physical_10min.csv`、`q4_2/contract_ledger.csv`、`q4_2/event_ledger.csv`、`q4_2/daily_ledger.csv` 与 `q4_3/` 下对应文件是两分支权威回放账本；`q4_2/checkpoints/`、`q4_3/checkpoints/` 只是分段运行恢复与复核材料，不是论文阅读入口。
+这不是沿用旧B1，也不能为了满足桌面审计对旧数据的B0预测而强行改选。旧审计中的+6.057%代价属于旧控制器；修复继承关系后必须以新一月证据为准。图4同时展示现金代价与尾部收益。
 
-## 4. 冻结配置与关键清单
+优化中的CVaR置信参数为0.8，正式报告的日费用CVaR95是另一评价量，两者不能混写。B2/DRO与参数扫描按本轮要求不运行，也不凭旧结果获得晋级资格。
 
-- `config_frozen.yaml`：正式冻结配置
-- `january_frozen_selection.json`：1月复杂度冻结结果
-- `oracle_audit.json`：Oracle边界
-- `export_manifest.json`：Excel/指定日期输出哈希
-- `validation.json`：T01—T42逐项证据
-- `final_acceptance.json`：最终验收状态
-
-## 5. 推荐复核顺序
-
-不要从 checkpoint 开始。人工复核建议：
-
-`config_frozen.yaml` → `january_frozen_selection.json` → `q4_2/formal_summary.json`、`q4_3/formal_summary.json` → `oracle_audit.json` → `ablations/ablation_matrix_E0_E15.json` → `validation.json`。

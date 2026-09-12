@@ -20,7 +20,7 @@ BLOCK_SCHEMES = ('global','6block')
 
 @dataclass(frozen=True)
 class PriceConfig:
-    model: str = 'full_ridge'
+    model: str = 'lag7'
     block_scheme: str = 'global'
     ridge_alpha: float = 1.0
     history_days: int = 42

@@ -4,7 +4,7 @@
   "files": {
     "result4-2": {
       "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题四\\result4-2.xlsx",
-      "sha256": "6c72bc81a9627b4bd8ea995ffbd9d49ea53cddef78bcbb81d21d2fa1970b04b9",
+      "sha256": "41c8c74e06e0479e2838c2fd625014c80be3243e20d7d99ccc31588607399726",
       "sheets": [
         "计划购电量",
         "充放电量",
@@ -13,7 +13,7 @@
     },
     "result4-3": {
       "path": "D:\\数学建模国赛\\26C\\C题\\26C-ccc\\问题四\\result4-3.xlsx",
-      "sha256": "b648213f0fec849367181dff91b809d243fd6257a42f176dfdb769b9d2d4ae4c",
+      "sha256": "bc118be4836f6d583f216afd325ce64dd733d8d708b48c43093b15d5289299aa",
       "sheets": [
         "计划购电量",
         "调整购电量",
@@ -23,15 +23,15 @@
     }
   },
   "specified_table_hashes": {
-    "q4_2_specified_emergency.csv": "86015f1c8da5710e445d47c0b81d6b7e237e87cb5f29fdd078af060d70f5b734",
-    "q4_2_specified_purchase.csv": "206084185cb0a3a31d43d0a699d0a9065559f59387117ede635db37f4a23cc79",
-    "q4_2_specified_storage.csv": "2d54ee5200e6779f0d4b573010ed759da6bda8d0fb3c12a57161d7cdf81a3d1e",
-    "q4_3_specified_emergency.csv": "f2723071b68484b63d099368f041df34242e2c944850df9c96f6fb32528760f3",
-    "q4_3_specified_purchase.csv": "b7fc73dfccb1d86496f1f88a277d32cf923b4b26df51ec0dd9759907fa194f01",
-    "q4_3_specified_storage.csv": "bd163473ebbf0870118be3abcedfe87b5f35e9ec212644594a0ab57fb87b7b82",
-    "specified_emergency_all.csv": "11d655f41c39e63295cb20436e22b7a6d22c0138b89ebab7d40addcd592d5c33",
-    "specified_purchase_all.csv": "349cc5f440dc232d1c33521d5e776e162e3137b31603c57ebc5a509c8d06a3b1",
-    "specified_storage_all.csv": "a92844193f8f5926422988bafa81e51b8102b09339c0e1c91b44f89dc842996b",
-    "指定日期表格.md": "c6a95ce72586d960963fc4418bfed90130318afbc8131bf4c8acc5e9f395c070"
+    "q4_2_specified_emergency.csv": "4bc1d806943cf2ed522e6929f0bfd276cc7d7c2a70d50460241991ec03e1d645",
+    "q4_2_specified_purchase.csv": "c77e695ac4c2dfd79377c5a744e46798c396cdbf589c1ab90235682a572caf28",
+    "q4_2_specified_storage.csv": "716ab487ef837cdadfa44736a5cf80481c0ef4ea03672a01470c10d2c8407656",
+    "q4_3_specified_emergency.csv": "54709a93ddaf42d11926c0be2c152017ea95eaa6bb881b2f364f4b648adf2a00",
+    "q4_3_specified_purchase.csv": "b038baeb4e81a1512a92c103902daa453e7f693ec7038fb8748ce96ffe875fb6",
+    "q4_3_specified_storage.csv": "716b7ef359913bf7f6df4c6b4fe8ae9ebfbb670d4b27637d5f7eaf7a55d980c7",
+    "specified_emergency_all.csv": "ff30ee58440ac8ea488c54df96c80478d9b7bb1f974be954a42bc845f8ce4e94",
+    "specified_purchase_all.csv": "a4d478a402dd5c717c9baf4e03aee54bb043dfc90e0edf5e095ed684cb4d6d83",
+    "specified_storage_all.csv": "252893f2449f2d5ee610283b08ae359121f5636d04177fc46a1cf2e626bb536e",
+    "指定日期表格.md": "a85700c6c72ebb47ec06690f5c7fe686dbe5a386976b5dcc63fa09b21a724e12"
   }
 }

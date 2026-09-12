@@ -1,0 +1,26 @@
+{"run": "q4_3 delivery selected", "day_index": 31, "date": "2025-02-01", "cash": 21212.039709587643, "soc": 10626.297326217222}
+{"run": "q4_3 delivery selected", "day_index": 42, "date": "2025-02-12", "cash": 58182.537755958874, "soc": 6961.202351522444}
+{"run": "q4_3 delivery selected", "day_index": 56, "date": "2025-02-26", "cash": 48786.00012094753, "soc": 5764.7542614420045}
+{"run": "q4_3 delivery selected", "day_index": 70, "date": "2025-03-12", "cash": 47599.18770350573, "soc": 6481.997086908536}
+{"run": "q4_3 delivery selected", "day_index": 84, "date": "2025-03-26", "cash": 42885.88723254006, "soc": 6797.280905928694}
+{"run": "q4_3 delivery selected", "day_index": 98, "date": "2025-04-09", "cash": 41082.942813429385, "soc": 7417.722399609207}
+{"run": "q4_3 delivery selected", "day_index": 112, "date": "2025-04-23", "cash": 34422.428952988674, "soc": 5552.687624298423}
+{"run": "q4_3 delivery selected", "day_index": 126, "date": "2025-05-07", "cash": 42932.975319650286, "soc": 6744.938636152981}
+{"run": "q4_3 delivery selected", "day_index": 140, "date": "2025-05-21", "cash": 36215.94570807853, "soc": 3282.2182879135153}
+{"run": "q4_3 delivery selected", "day_index": 154, "date": "2025-06-04", "cash": 62840.76409822091, "soc": 4517.92607434773}
+{"run": "q4_3 delivery selected", "day_index": 168, "date": "2025-06-18", "cash": 56142.28982567439, "soc": 5513.572813109997}
+{"run": "q4_3 delivery selected", "day_index": 182, "date": "2025-07-02", "cash": 68097.23645970199, "soc": 2108.532730654258}
+{"run": "q4_3 delivery selected", "day_index": 196, "date": "2025-07-16", "cash": 59905.92021847133, "soc": 4806.740563388493}
+{"run": "q4_3 delivery selected", "day_index": 210, "date": "2025-07-30", "cash": 65346.66801877269, "soc": 4682.391321058108}
+{"run": "q4_3 delivery selected", "day_index": 224, "date": "2025-08-13", "cash": 54933.07740214439, "soc": 5536.736516276951}
+{"run": "q4_3 delivery selected", "day_index": 238, "date": "2025-08-27", "cash": 54588.82702155106, "soc": 3484.9221995541648}
+{"run": "q4_3 delivery selected", "day_index": 252, "date": "2025-09-10", "cash": 47583.66803770932, "soc": 5141.047841975313}
+{"run": "q4_3 delivery selected", "day_index": 266, "date": "2025-09-24", "cash": 42845.920587650115, "soc": 3245.7191737505977}
+{"run": "q4_3 delivery selected", "day_index": 280, "date": "2025-10-08", "cash": 41870.91031684757, "soc": 4879.6859260164365}
+{"run": "q4_3 delivery selected", "day_index": 294, "date": "2025-10-22", "cash": 50907.71581580355, "soc": 5470.450068413655}
+{"run": "q4_3 delivery selected", "day_index": 308, "date": "2025-11-05", "cash": 54854.81780462817, "soc": 5686.950955063436}
+{"run": "q4_3 delivery selected", "day_index": 322, "date": "2025-11-19", "cash": 57921.181690819445, "soc": 7011.883028524784}
+{"run": "q4_3 delivery selected", "day_index": 336, "date": "2025-12-03", "cash": 80466.46480936756, "soc": 2578.9251840706465}
+{"run": "q4_3 delivery selected", "day_index": 350, "date": "2025-12-17", "cash": 76532.8579942083, "soc": 7705.588769530827}
+{"run": "q4_3 delivery selected", "day_index": 364, "date": "2025-12-31", "cash": 76278.45430025217, "soc": 7888.67225862134}
+{"FORMAL_DONE": "q4_3", "clock": "delivery", "mode": "selected", "selected": "B1", "formal": {"n_days": 334, "cash_total_yuan": 16196781.453801906, "cash_mean_yuan_per_day": 48493.35764611349, "cash_median_yuan_per_day": 47559.67455333228, "cash_p95_yuan_per_day": 86417.4649321347, "cash_cvar90_yuan_per_day": 90630.36923865417, "cash_cvar95_yuan_per_day": 100343.77067637019, "cash_worst_day_yuan": 122294.50199926303, "emergency_total_kwh": 433134.77477845416, "emergency_days": 197, "emergency_worst_day_kwh": 11919.102895763423, "curtailment_total_kwh": 1580593.154316607, "unused_contract_total_kwh": 883166.0836636026, "soc_end_kwh": 7888.67225862134, "max_physics_residual": 9.094947017729282e-13}}

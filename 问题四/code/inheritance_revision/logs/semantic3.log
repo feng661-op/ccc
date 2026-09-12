@@ -1,0 +1,31 @@
+{"run": "q4_3 warm", "day_index": 0, "date": "2025-01-01", "cash": 162275.25950195873, "soc": 10800.0}
+{"run": "q4_3 warm", "day_index": 7, "date": "2025-01-08", "cash": 105079.90935717139, "soc": 7802.145661949418}
+{"run": "q4_3 adjustment_time B0", "day_index": 14, "date": "2025-01-15", "cash": 81156.46903903264, "soc": 7139.570127964878}
+{"run": "q4_3 adjustment_time B0", "day_index": 28, "date": "2025-01-29", "cash": 63228.01087703503, "soc": 8192.517137956243}
+{"run": "q4_3 adjustment_time B0", "day_index": 30, "date": "2025-01-31", "cash": 32667.199754437755, "soc": 9306.397425825946}
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+HighsMipSolverData::transformNewIntegerFeasibleSolution tmpSolver.run();
+Traceback (most recent call last):
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_revision_run.py", line 202, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_revision_run.py", line 196, in main
+    if a.stage=='january':january(a.branch,a.clock)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_revision_run.py", line 80, in january
+    rr=simulate_range(d,None,cfg,8,31,state_load(state_dict(warm.state_end)),progress=log_progress(branch+' '+clock+' '+level))
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_sim.py", line 226, in simulate_range
+    return inherited(data,pf,cfg,start_day,end_day,state,progress=progress)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_sim_v2.py", line 43, in simulate_range
+    before=A.copy();sol=solve_event(data,d,eh,soc,B,A,float(prevA[143]),cfg);event_start=i
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_inheritance.py", line 208, in solve_event
+    return solve_intraday(bundle,prices,soc,B,A,lead,eh,cfg,p,fixed_contract)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题四\code\q4_inheritance.py", line 187, in solve_intraday
+    if not sol.success:raise RuntimeError(f'inherited event LP/MILP failed: {sol.message}')
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: inherited event LP/MILP failed: Time limit reached. (HiGHS Status 13: Time limit reached)

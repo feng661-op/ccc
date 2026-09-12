@@ -1,0 +1,26 @@
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 31, "date": "2025-02-01", "cash": 21151.07996196831, "soc": 8234.993867534266}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 42, "date": "2025-02-12", "cash": 58744.17252520012, "soc": 7549.863329249441}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 56, "date": "2025-02-26", "cash": 51203.00338923544, "soc": 7211.826450021872}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 70, "date": "2025-03-12", "cash": 46235.27976823264, "soc": 7146.09514057653}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 84, "date": "2025-03-26", "cash": 39612.301070477675, "soc": 7357.897971103392}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 98, "date": "2025-04-09", "cash": 41176.30928137918, "soc": 7052.71751724918}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 112, "date": "2025-04-23", "cash": 34834.73926397468, "soc": 6971.8698653371375}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 126, "date": "2025-05-07", "cash": 49806.00905674099, "soc": 4943.222825570301}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 140, "date": "2025-05-21", "cash": 43586.726380945, "soc": 5034.7832904924}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 154, "date": "2025-06-04", "cash": 72884.93453876389, "soc": 3456.000859719185}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 168, "date": "2025-06-18", "cash": 58572.793622809564, "soc": 7504.767202246869}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 182, "date": "2025-07-02", "cash": 65608.8825116439, "soc": 4979.259588986001}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 196, "date": "2025-07-16", "cash": 63072.01583013398, "soc": 7581.333335960049}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 210, "date": "2025-07-30", "cash": 63037.97688140062, "soc": 7740.578622534731}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 224, "date": "2025-08-13", "cash": 56318.04976203912, "soc": 6352.962732824462}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 238, "date": "2025-08-27", "cash": 60418.31885774906, "soc": 6757.481689007877}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 252, "date": "2025-09-10", "cash": 47482.75480922279, "soc": 5429.300562785951}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 266, "date": "2025-09-24", "cash": 44917.78674657683, "soc": 6229.209249954869}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 280, "date": "2025-10-08", "cash": 38902.68273132863, "soc": 6155.831641038458}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 294, "date": "2025-10-22", "cash": 45988.776071539934, "soc": 6464.222002798467}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 308, "date": "2025-11-05", "cash": 51902.383661043306, "soc": 7020.23819698782}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 322, "date": "2025-11-19", "cash": 55278.14219771583, "soc": 6552.222741088353}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 336, "date": "2025-12-03", "cash": 84237.52110875645, "soc": 7067.391930062505}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 350, "date": "2025-12-17", "cash": 75433.63637406139, "soc": 7551.0504959869695}
+{"run": "q4_2 delivery matched_fixed_decision", "day_index": 364, "date": "2025-12-31", "cash": 75286.57986225648, "soc": 7107.244602388408}
+{"FORMAL_DONE": "q4_2", "clock": "delivery", "mode": "matched_fixed_decision", "selected": "B0", "formal": {"n_days": 334, "cash_total_yuan": 16721939.68696782, "cash_mean_yuan_per_day": 50065.68768553239, "cash_median_yuan_per_day": 46895.79537372514, "cash_p95_yuan_per_day": 100340.52431555468, "cash_cvar90_yuan_per_day": 105010.21880903578, "cash_cvar95_yuan_per_day": 118226.03530263602, "cash_worst_day_yuan": 170557.95349148454, "emergency_total_kwh": 565008.4443916262, "emergency_days": 169, "emergency_worst_day_kwh": 26841.763062161826, "curtailment_total_kwh": 1673850.0305823877, "unused_contract_total_kwh": 1011998.8756783388, "soc_end_kwh": 7107.244602388408, "max_physics_residual": 9.094947017729282e-13}}
