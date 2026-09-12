@@ -1,13 +1,13 @@
 {
   "name": "D_sunk",
   "mode": "sunk",
-  "total_cost_yuan": 19887258.03952366,
-  "regular_cost_yuan": 19388572.58535188,
-  "emergency_cost_yuan": 498685.4541717798,
-  "emergency_kwh": 116392.45410559856,
+  "total_cost_yuan": 15322905.191214416,
+  "regular_cost_yuan": 13409925.44868618,
+  "emergency_cost_yuan": 1912979.7425282346,
+  "emergency_kwh": 376096.12933121726,
   "soc_min_kwh": 1200.0,
-  "soc_max_kwh": 10747.416456085572,
-  "changed_slot_count_formal": 37304,
-  "adjusted_event_count_formal": 1002,
-  "runtime_seconds": 141.93912720680237
+  "soc_max_kwh": 10800.0,
+  "changed_slot_count_formal": 2250,
+  "adjusted_event_count_formal": 270,
+  "runtime_seconds": 2049.4816448688507
 }

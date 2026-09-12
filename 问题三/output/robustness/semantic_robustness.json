@@ -1,55 +1,55 @@
 {
-  "main_D_total_cost_yuan": 20097740.110834062,
+  "main_D_total_cost_yuan": 15206579.471935473,
   "sunk_plan_plus_penalty": {
     "name": "D_sunk",
     "mode": "sunk",
-    "total_cost_yuan": 19887258.03952366,
-    "regular_cost_yuan": 19388572.58535188,
-    "emergency_cost_yuan": 498685.4541717798,
-    "emergency_kwh": 116392.45410559856,
+    "total_cost_yuan": 15322905.191214416,
+    "regular_cost_yuan": 13409925.44868618,
+    "emergency_cost_yuan": 1912979.7425282346,
+    "emergency_kwh": 376096.12933121726,
     "soc_min_kwh": 1200.0,
-    "soc_max_kwh": 10747.416456085572,
-    "changed_slot_count_formal": 37304,
-    "adjusted_event_count_formal": 1002,
-    "runtime_seconds": 141.93912720680237
+    "soc_max_kwh": 10800.0,
+    "changed_slot_count_formal": 2250,
+    "adjusted_event_count_formal": 270,
+    "runtime_seconds": 2049.4816448688507
   },
   "stepwise_revision": {
     "name": "D_stepwise",
     "mode": "stepwise",
-    "total_cost_yuan": 20146384.833388995,
-    "regular_cost_yuan": 19644656.284171622,
-    "emergency_cost_yuan": 501728.5492173733,
-    "emergency_kwh": 116393.00625387205,
+    "total_cost_yuan": 15260948.029974323,
+    "regular_cost_yuan": 13323184.53004364,
+    "emergency_cost_yuan": 1937763.4999306856,
+    "emergency_kwh": 381000.7987626878,
     "soc_min_kwh": 1200.0,
-    "soc_max_kwh": 10768.97846848463,
-    "changed_slot_count_formal": 17746,
-    "adjusted_event_count_formal": 998,
-    "runtime_seconds": 139.06084513664246
+    "soc_max_kwh": 10800.0,
+    "changed_slot_count_formal": 4629,
+    "adjusted_event_count_formal": 623,
+    "runtime_seconds": 2049.5082433223724
   },
   "revision_time": {
     "method": "full_year_fixed_policy_repricing_plus_exact_local_MILP",
-    "regular_cost_yuan": 19435454.688007392,
-    "emergency_cost_yuan": 496083.2657431768,
-    "total_cost_yuan": 19931537.95375057
+    "regular_cost_yuan": 13281288.996627692,
+    "emergency_cost_yuan": 1939312.1594564996,
+    "total_cost_yuan": 15220601.156084191
   },
   "revision_time_exact_milp_audit": [
     {
       "date": "2025-03-20",
       "event_hour": 12,
-      "objective": 560.2135099238841,
-      "solve_seconds": 0.019973039627075195,
+      "objective": 965.1279141852676,
+      "solve_seconds": 0.025551557540893555,
       "nonconvex_delivery_slots": 7,
       "up_branch_slots": 0,
       "down_branch_slots": 18,
-      "q_min": 0.0,
-      "q_max": 0.0,
+      "q_min": -6.954232714549163e-14,
+      "q_max": 7.471086330149748e-14,
       "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
     },
     {
       "date": "2025-06-21",
       "event_hour": 12,
       "objective": 0.0,
-      "solve_seconds": 0.005000591278076172,
+      "solve_seconds": 0.010002613067626953,
       "nonconvex_delivery_slots": 7,
       "up_branch_slots": 0,
       "down_branch_slots": 18,
@@ -60,31 +60,31 @@
     {
       "date": "2025-09-23",
       "event_hour": 12,
-      "objective": 61.401030182222165,
-      "solve_seconds": 0.00599980354309082,
+      "objective": 610.4538096897777,
+      "solve_seconds": 0.009376764297485352,
       "nonconvex_delivery_slots": 7,
       "up_branch_slots": 1,
       "down_branch_slots": 17,
-      "q_min": -0.0,
-      "q_max": -0.0,
+      "q_min": 0.0,
+      "q_max": 0.0,
       "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
     },
     {
       "date": "2025-12-21",
       "event_hour": 12,
-      "objective": 2714.094515705473,
-      "solve_seconds": 0.07413697242736816,
+      "objective": 1896.6268738037263,
+      "solve_seconds": 0.06137490272521973,
       "nonconvex_delivery_slots": 7,
-      "up_branch_slots": 4,
-      "down_branch_slots": 14,
-      "q_min": -3.410605131648481e-13,
-      "q_max": 942.5035250000013,
+      "up_branch_slots": 0,
+      "down_branch_slots": 18,
+      "q_min": -2.44083221968683e-13,
+      "q_max": 836.5581333333334,
       "status": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
     }
   ],
   "deltas_vs_main": {
-    "sunk": -210482.07131040096,
-    "stepwise": 48644.72255493328,
-    "revision_time_fixed_policy": -166202.15708349273
+    "sunk": 116325.7192789428,
+    "stepwise": 54368.55803884938,
+    "revision_time_fixed_policy": 14021.684148717672
   }
 }

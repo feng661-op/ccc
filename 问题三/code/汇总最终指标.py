@@ -15,15 +15,17 @@ out={
   'formal_period':{'start':'2025-02-01','end':'2025-12-31','days':334,'warmup':'2025-01-01..2025-01-31','soc_reset_on_feb1':False},
   'protocol':{
     'no_formal_retuning':True,
-    'main_scenario_count':3,
-    'terminal_value':0.45,
-    'load_forecast':'7-day seasonal-naive when available; selected on January only',
-    'dispatch':'current-measurement 10-min receding-horizon LP; only current entry observed, all future entries forecast',
+    'main_scenario_count':9,
+    'terminal_value':0.8,
+    'load_forecast':'unchanged Q2 causal ensemble',
+    'dispatch':'unchanged Q2 current-measurement feedback with scenario SOC 25 percent reserve',
     'measurement_model':'ideal_piecewise_constant_current_slot; not actual zero-delay sensor validation',
     'contract_information':'completed history and released forecasts only',
     'physical_schema_version':2,
     'curtail_semantics':'PV-only; unused paid contract is separate',
-    'event_storage_recoursing':'scenario estimate; not a full nonanticipative multistage optimum'
+    'event_storage_recoursing':'Q2 48-hour valuation recourse; future purchases never issued; not globally nonanticipative optimal control',
+    'risk_lambda':0.02,'cvar_alpha':0.8,'history_days':42,'floor_quantile':0.25,
+    'revision_context':'structural correction after old results observed; no revised formal-cost parameter search'
   },
   'factorial':{k:m[k] for k in ('A','B','C','D')},
   'factorial_effects':m['factorial_effects'],
@@ -33,6 +35,7 @@ out={
   'marginal_deadzone':{'epsilon_kwh':d['epsilon_kwh'],'rows':d['rows'],'direction_match_count':d['direction_match_count']},
   'validation_summary':{'all_pass':v['all_pass'],'pass_count':v['pass_count'],'check_count':v['check_count']},
   'main_D':m['D'],
+  'cross_problem':json.loads((HERE/'cross_problem_evidence'/'cross_problem_validation.json').read_text(encoding='utf-8')),
   'physical_fix':json.loads((HERE/'physical_fix_evidence'/'physical_matrix_validation.json').read_text(encoding='utf-8')),
 }
 (HERE/'metrics_final.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')

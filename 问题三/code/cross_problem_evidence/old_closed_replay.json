@@ -1,0 +1,12 @@
+{
+  "seconds": 98.00202298164368,
+  "total_cost": 31904641.11414478,
+  "array_max_errors": {
+    "B": 0.0,
+    "A": 0.0,
+    "charge": 0.0,
+    "discharge": 0.0,
+    "emergency": 0.0,
+    "soc_path": 0.0
+  }
+}

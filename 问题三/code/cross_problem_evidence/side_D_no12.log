@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题三\code\运行单策略.py", line 35, in <module>
+    claim(name)
+  File "D:\数学建模国赛\26C\C题\26C-ccc\问题三\code\q3_run_guard.py", line 19, in claim
+    if stream.read(1)==b'':stream.write(b'0');stream.flush()
+       ^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied

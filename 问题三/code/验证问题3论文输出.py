@@ -15,11 +15,16 @@ ck('stale_invalid_baseline_removed_from_paper','D_det' not in alltext+main and '
 ck('master_paper_symbol_index','## 0. 统一符号设定与论文输出索引' in main and 'output/01_符号说明.md' in main)
 ck('model_validation_pass',v.get('all_pass') and v.get('pass_count')==v.get('check_count') and v.get('check_count',0)>=36 and all(v['checks'].get(k)=='PASS' for k in ['pv_curtailment_source_bound','no_battery_dump','actual_import_within_contract','contract_import_unused_identity']),{'pass':v.get('pass_count'),'count':v.get('check_count')})
 ck('final_acceptance_pass',fa.get('all_pass') and fa.get('pass_count')==fa.get('check_count') and fa.get('check_count',0)>=15 and fa['checks'].get('physical_matrix_all_11_pass')=='PASS' and fa['checks'].get('physical_targeted_regressions_pass')=='PASS',{'pass':fa.get('pass_count'),'count':fa.get('check_count')})
-figs=['图14_问题3事件驱动滚动调度框架.png','图15_问题3典型日合同滚动调整.png','图16_问题3ABCD因子对照.png','图17_问题3主模型费用分解.png','图18_问题3四季代表日合同与净负荷.png','图19_合同调整死区边际价值.png','图20_问题3结算语义鲁棒性.png','表7_指定日期原始与最终合同.png','表8_指定日期储能充放电.png','表9_指定日期紧急购电.png'];bad=[f for f in figs if not (FIG/f).is_file() or (FIG/f).stat().st_size<20000];ck('paper_figures_complete',not bad,{'bad':bad,'sizes':{f:(FIG/f).stat().st_size if (FIG/f).exists() else 0 for f in figs}})
+figs=['图14_问题3事件驱动滚动调度框架.png','图15_问题3典型日合同滚动调整.png','图16_问题3ABCD因子对照.png','图17_问题3主模型费用分解.png','图18_问题3四季代表日合同与净负荷.png','图19_合同调整死区边际价值.png','图20_问题3结算语义鲁棒性.png','表7_指定日期原始与最终合同.png','表8_指定日期储能充放电.png','表9_指定日期紧急购电.png','附图_第二问第三问同口径对照.png'];bad=[f for f in figs if not (FIG/f).is_file() or (FIG/f).stat().st_size<20000];ck('paper_figures_complete',not bad,{'bad':bad,'sizes':{f:(FIG/f).stat().st_size if (FIG/f).exists() else 0 for f in figs}})
 robfiles=['semantic_robustness.json','revision_time_milp_audit.csv','marginal_value_audit.csv','future_perturbation_audit.csv','nonanticipativity_nodes.csv','leakage_audit.csv','forecast_vintage_alignment_audit.csv','validation.json','final_acceptance.json','event_audit.csv','extended_experiments.json','dispatch_audit.csv','鲁棒性验收报告.md'];miss=[f for f in robfiles if not (ROB/f).is_file()];ck('robustness_evidence_complete',not miss,{'missing':miss})
 for f in ['validation.json','final_acceptance.json']:
     if (ROB/f).exists():ck('robustness_copy_'+f,hashlib.sha256((ROB/f).read_bytes()).digest()==hashlib.sha256((CODE/f).read_bytes()).digest())
 ck('factorial_metric_identity',abs(fac['D']['total_cost_yuan']-D['total_cost_yuan'])<1e-9 and abs(sem['main_D_total_cost_yuan']-D['total_cost_yuan'])<1e-9)
+cross=m['cross_problem']
+ck('cross_problem_inheritance_pass',cross['all_pass'] and cross['pass_count']==cross['check_count'])
+ck('cross_problem_paper_explanation',all(x in alltext+main for x in ['策略集合包含关系','全年退化','289','25%','下一日辅助']))
+obsolete=['主模型 K=3','主场景数 K=3','终端机会价值系数 0.45','事件 horizon 分别为 145/109/73/37','无场景特定跨日 continuation']
+ck('retired_model_claims_removed',not any(x in alltext+main for x in obsolete),{'stale':[x for x in obsolete if x in alltext+main]})
 ck('result3_exists',(Q3/'result3.xlsx').is_file() and (Q3/'result3.xlsx').stat().st_size>500000,{'bytes':(Q3/'result3.xlsx').stat().st_size})
 ck('paper_material_size',(Q3/'问题3论文材料.md').stat().st_size>10000,{'bytes':(Q3/'问题3论文材料.md').stat().st_size})
 out={'all_pass':all(x=='PASS' for x in checks.values()),'pass_count':sum(x=='PASS' for x in checks.values()),'check_count':len(checks),'checks':checks,'evidence':evidence};(OUT/'论文输出验收.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8');print(json.dumps(out,ensure_ascii=False,indent=2));

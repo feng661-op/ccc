@@ -20,17 +20,20 @@ def summarize(s,runtime):
 if len(sys.argv)<2:raise SystemExit('usage: 运行单策略.py A|B|C|D|D_point|D_no6|D_no12|D_no18|D_K5')
 name=sys.argv[1]
 configs={
-'A':dict(use_new_vintage=False,allow_revision=False,scenario_count=3),
-'B':dict(use_new_vintage=True,allow_revision=False,scenario_count=3),
-'C':dict(use_new_vintage=False,allow_revision=True,scenario_count=3),
-'D':dict(use_new_vintage=True,allow_revision=True,scenario_count=3),
+'A':dict(use_new_vintage=False,allow_revision=False,scenario_count=9),
+'B':dict(use_new_vintage=True,allow_revision=False,scenario_count=9),
+'C':dict(use_new_vintage=False,allow_revision=True,scenario_count=9),
+'D':dict(use_new_vintage=True,allow_revision=True,scenario_count=9),
 'D_point':dict(use_new_vintage=True,allow_revision=True,scenario_count=1),
-'D_no6':dict(use_new_vintage=True,allow_revision=True,scenario_count=3,disabled_vintage_hours=(6,)),
-'D_no12':dict(use_new_vintage=True,allow_revision=True,scenario_count=3,disabled_vintage_hours=(12,)),
-'D_no18':dict(use_new_vintage=True,allow_revision=True,scenario_count=3,disabled_vintage_hours=(18,)),
+'D_no6':dict(use_new_vintage=True,allow_revision=True,scenario_count=9,disabled_vintage_hours=(6,)),
+'D_no12':dict(use_new_vintage=True,allow_revision=True,scenario_count=9,disabled_vintage_hours=(12,)),
+'D_no18':dict(use_new_vintage=True,allow_revision=True,scenario_count=9,disabled_vintage_hours=(18,)),
 'D_K5':dict(use_new_vintage=True,allow_revision=True,scenario_count=5),
+'Q3_zero_only':dict(use_new_vintage=True,allow_revision=False,scenario_count=9,disabled_vintage_hours=(6,12,18)),
 }
 if name not in configs:raise SystemExit(name)
+from q3_run_guard import claim
+claim(name)
 print('RUN',name,configs[name],flush=True);t0=time.time();s=simulate_strategy(data,name=name,end_day=365,verbose=True,**configs[name]);runtime=time.time()-t0
 np.savez_compressed(HERE/f'run_{name}.npz',B=s.B,A=s.A,A_stage=s.A_stage,charge=s.charge,discharge=s.discharge,emergency=s.emergency,curtail=s.curtail,grid_import=s.grid_import,unused_contract=s.unused_contract,supply_surplus=s.supply_surplus,battery_dump=s.battery_dump,execution_mode=np.asarray(s.execution_mode),physical_schema_version=np.asarray(2),soc00=s.soc00,soc24=s.soc24,soc_path=s.soc_path,plan_fee=s.plan_fee,adjusted_fee=s.adjusted_fee,natural_regular_fee=s.natural_regular_fee,emergency_fee=s.emergency_fee)
 if name=='D':save_csv(HERE/'event_audit.csv',s.event_rows);save_csv(HERE/'revision_log.csv',s.revision_rows);save_csv(HERE/'dispatch_audit.csv',s.dispatch_rows)

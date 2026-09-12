@@ -43,7 +43,7 @@ def save_sim(s):
       'terminal_shortfall_expected_kwh_mean':float(np.mean([r['terminal_shortfall_expected_kwh'] for r in s.event_rows])),
     }
 
-variants=[('A',False,False,3),('B',True,False,3),('C',False,True,3),('D',True,True,3),('D_point',True,True,1)]
+variants=[('A',False,False,9),('B',True,False,9),('C',False,True,9),('D',True,True,9),('D_point',True,True,1)]
 metrics={}; t_all=time.time()
 for name,new,flex,k in variants:
     t=time.time(); print(f'RUN {name} start',flush=True)

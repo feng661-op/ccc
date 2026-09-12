@@ -42,15 +42,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 31904641.11414478,
-      "emergency_kwh": 3433796.68523662,
-      "pv_curtail_kwh": 2473567.030182313,
-      "actual_import_kwh": 17268418.81391819,
-      "unused_contract_kwh": 3600810.2462746757,
-      "supply_surplus_kwh": 6074377.276456989,
+      "total_cost_yuan": 15933557.407928225,
+      "emergency_kwh": 565008.4443916262,
+      "pv_curtail_kwh": 1673850.0305823877,
+      "actual_import_kwh": 19597588.735664614,
+      "unused_contract_kwh": 1012025.136342948,
+      "supply_surplus_kwh": 2685875.1669253353,
       "battery_dump_kwh": 0.0,
-      "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "1a477f97c38a28f3a050c9e78976166e45f28a7e1cd26fe3c7886b550da6dc1f"
+      "max_physical_residual_kwh": 4.547473508864641e-13,
+      "run_sha256": "90011a7c11ddb6b1064b90b3c6b57c5888b363b6a157a779c33b0a9cbdd23690"
     },
     {
       "name": "B",
@@ -74,15 +74,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 32294150.592298966,
-      "emergency_kwh": 3484790.7567004226,
-      "pv_curtail_kwh": 2503384.8161867037,
-      "actual_import_kwh": 17241643.439431265,
-      "unused_contract_kwh": 3625158.915230723,
-      "supply_surplus_kwh": 6128543.731417427,
+      "total_cost_yuan": 15709709.724760894,
+      "emergency_kwh": 473725.13564809784,
+      "pv_curtail_kwh": 1703447.565268386,
+      "actual_import_kwh": 19721209.490227178,
+      "unused_contract_kwh": 1353064.0731329853,
+      "supply_surplus_kwh": 3056511.638401371,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "9921eabc1a19a6bc0b4b9ba25bffb24507a95e442b70ada7d8efb5e374fe7eb2"
+      "run_sha256": "6548b85bdd3c1aadb2d2c620367b62cacae3f7fd794c5a93707db408b3d678f2"
     },
     {
       "name": "C",
@@ -106,15 +106,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 19590852.52772674,
-      "emergency_kwh": 128239.14528884066,
-      "pv_curtail_kwh": 2465563.7340380326,
-      "actual_import_kwh": 20610965.33622585,
-      "unused_contract_kwh": 3993188.8134558266,
-      "supply_surplus_kwh": 6458752.54749386,
+      "total_cost_yuan": 15168153.75625911,
+      "emergency_kwh": 415636.12344491325,
+      "pv_curtail_kwh": 1638238.2412492807,
+      "actual_import_kwh": 19719793.33479002,
+      "unused_contract_kwh": 800947.5432301657,
+      "supply_surplus_kwh": 2439185.7844794467,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "7ea329a580fd8bdefcdebf6e91c0468123b613873f6c87d9fd0921794775440a"
+      "run_sha256": "1d95243c0b7a441a5564e983619c2ec97d9966bf8e9f06dc22cda2bbed74abd0"
     },
     {
       "name": "D",
@@ -138,15 +138,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 20097740.110834062,
-      "emergency_kwh": 115464.3119971349,
-      "pv_curtail_kwh": 2587280.5924059013,
-      "actual_import_kwh": 20706478.806447838,
-      "unused_contract_kwh": 3960730.8149105925,
-      "supply_surplus_kwh": 6548011.407316495,
+      "total_cost_yuan": 15206579.471935473,
+      "emergency_kwh": 381890.2496116297,
+      "pv_curtail_kwh": 1635876.5656184256,
+      "actual_import_kwh": 19750328.55474536,
+      "unused_contract_kwh": 886122.1052214871,
+      "supply_surplus_kwh": 2521998.6708399127,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "1c053844d9cc1d20ab95dd034ab117b2d447f96145f1f44d241a958fe2bc6cab"
+      "run_sha256": "45ee14081691b2810c4d9f9354abd0fd18d9bd0285d3debfa93d2e1647f9c051"
     },
     {
       "name": "D_point",
@@ -170,15 +170,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 19522924.67358819,
-      "emergency_kwh": 241196.72449453123,
-      "pv_curtail_kwh": 2491455.223043056,
-      "actual_import_kwh": 20528327.491586313,
-      "unused_contract_kwh": 3307190.8844333803,
-      "supply_surplus_kwh": 5798646.1074764365,
+      "total_cost_yuan": 15717516.347988456,
+      "emergency_kwh": 783718.8262510103,
+      "pv_curtail_kwh": 1359166.5863652923,
+      "actual_import_kwh": 19129864.73807798,
+      "unused_contract_kwh": 427850.9234979946,
+      "supply_surplus_kwh": 1787017.5098632867,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "068a96bc55a82a7db439ee0a962789adee7368aaec27224103c26b0542fa3e50"
+      "run_sha256": "c54b5853cd98f04d5675e8bd7c0bbef628ebb23f3910ab2c6ec6c3f65b813a63"
     },
     {
       "name": "D_no6",
@@ -202,15 +202,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 19981152.824415416,
-      "emergency_kwh": 126540.50088008573,
-      "pv_curtail_kwh": 2567923.1772813657,
-      "actual_import_kwh": 20684432.821232535,
-      "unused_contract_kwh": 3878126.9406042965,
-      "supply_surplus_kwh": 6446050.117885662,
+      "total_cost_yuan": 15152997.881944425,
+      "emergency_kwh": 365801.6002577783,
+      "pv_curtail_kwh": 1655287.7700042357,
+      "actual_import_kwh": 19786175.385277513,
+      "unused_contract_kwh": 930435.9985136102,
+      "supply_surplus_kwh": 2585723.7685178462,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "a66233411776a8293236fa11c2558644fa6b4abb4695a3b51ef044aa2e54becb"
+      "run_sha256": "808c517193d666affddfd40191ec3671512afdede06dcf78da770843c32e188a"
     },
     {
       "name": "D_no12",
@@ -234,15 +234,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 19796047.737347953,
-      "emergency_kwh": 119537.22724793672,
-      "pv_curtail_kwh": 2522110.2732687322,
-      "actual_import_kwh": 20659834.478982545,
-      "unused_contract_kwh": 3910868.9207591927,
-      "supply_surplus_kwh": 6432979.194027925,
+      "total_cost_yuan": 15204285.51371131,
+      "emergency_kwh": 367194.7037883725,
+      "pv_curtail_kwh": 1627757.9181718272,
+      "actual_import_kwh": 19756337.718040336,
+      "unused_contract_kwh": 880779.5747541942,
+      "supply_surplus_kwh": 2508537.4929260216,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "8a39a90d5f283a8a02f9a5e58e9a010cf7dbfb8d211d70455d634b24a1d46b48"
+      "run_sha256": "311ba60c829293d9d2ae6b7b1a8902af6da2368c984590f04cc0ef1dda625914"
     },
     {
       "name": "D_no18",
@@ -266,15 +266,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 20112373.10717541,
-      "emergency_kwh": 116449.388840647,
-      "pv_curtail_kwh": 2587319.653547173,
-      "actual_import_kwh": 20704922.811358474,
-      "unused_contract_kwh": 3987963.356420644,
-      "supply_surplus_kwh": 6575283.009967817,
+      "total_cost_yuan": 15203599.14634293,
+      "emergency_kwh": 381621.81077663193,
+      "pv_curtail_kwh": 1635805.175875835,
+      "actual_import_kwh": 19750649.742326424,
+      "unused_contract_kwh": 885931.1105243927,
+      "supply_surplus_kwh": 2521736.2864002273,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "dbdb36a793cd7058bdc87ff33dec4815596b014a52adb9a8b12f25357428b92f"
+      "run_sha256": "50b3ad60148e4bf97a828dd750fe7334a0043deb2b07092106a3aee3b9328760"
     },
     {
       "name": "D_K5",
@@ -298,15 +298,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 20038610.354367234,
-      "emergency_kwh": 134000.67633552398,
-      "pv_curtail_kwh": 2595630.4764261553,
-      "actual_import_kwh": 20693187.461154778,
-      "unused_contract_kwh": 3965913.9568906976,
-      "supply_surplus_kwh": 6561544.433316853,
+      "total_cost_yuan": 15591178.014240619,
+      "emergency_kwh": 183230.74140469334,
+      "pv_curtail_kwh": 1932524.751774418,
+      "actual_import_kwh": 20218172.982789546,
+      "unused_contract_kwh": 1785175.469282174,
+      "supply_surplus_kwh": 3717700.2210565917,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "88579c3e5d88d05d2719ebb1ece0912ce7c5fd64249359db1bd1674e4e166f27"
+      "run_sha256": "96db4772537dbeb79e93d05540ec7ff800832e80db8b0704c39e48bd42490cb9"
     },
     {
       "name": "D_sunk",
@@ -330,15 +330,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 19887258.03952366,
-      "emergency_kwh": 116392.45410559856,
-      "pv_curtail_kwh": 2564701.01678441,
-      "actual_import_kwh": 20696013.105173606,
-      "unused_contract_kwh": 3914449.7742871055,
-      "supply_surplus_kwh": 6479150.791071516,
+      "total_cost_yuan": 15322905.191214416,
+      "emergency_kwh": 376096.12933121726,
+      "pv_curtail_kwh": 1709696.290043211,
+      "actual_import_kwh": 19828776.668859564,
+      "unused_contract_kwh": 1372419.566493602,
+      "supply_surplus_kwh": 3082115.8565368135,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "35275951436c7bcb2b448f524fdfeb7eb97cf1cc6108375b48cda8992621978e"
+      "run_sha256": "410b248559ef0c82a27803408cf26bde32a091e390823bb1e15689240a739d7c"
     },
     {
       "name": "D_stepwise",
@@ -362,15 +362,15 @@
         "execution_mode": true
       },
       "slots": 48096,
-      "total_cost_yuan": 20146384.833388995,
-      "emergency_kwh": 116393.00625387205,
-      "pv_curtail_kwh": 2583970.3773922226,
-      "actual_import_kwh": 20701811.67074938,
-      "unused_contract_kwh": 3960509.096354123,
-      "supply_surplus_kwh": 6544479.473746346,
+      "total_cost_yuan": 15260948.029974323,
+      "emergency_kwh": 381000.7987626878,
+      "pv_curtail_kwh": 1635446.0061062644,
+      "actual_import_kwh": 19749029.214607105,
+      "unused_contract_kwh": 867578.2785249014,
+      "supply_surplus_kwh": 2503024.2846311657,
       "battery_dump_kwh": 0.0,
       "max_physical_residual_kwh": 3.410605131648481e-13,
-      "run_sha256": "11bdc958e937c4665387bc9706c78d51bad7b5616129bb1b346fb57c5a4ecdda"
+      "run_sha256": "9028bdac8ca41f8a7e67b02162676ac9760a1e08f8b7c5287d5f303fcee645ad"
     }
   ]
 }

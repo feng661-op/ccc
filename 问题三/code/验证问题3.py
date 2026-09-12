@@ -58,9 +58,10 @@ events=list(csv.DictReader(open(HERE/'event_audit.csv',encoding='utf-8-sig')));m
 check('solver_residuals',maxeq<1e-7 and maxub<1e-7,{'max_eq':maxeq,'max_ub':maxub})
 bad=[]
 for r in events:
-    expected=(datetime.fromisoformat(r['date'])+timedelta(days=1,minutes=10)).strftime('%Y-%m-%d %H:%M:%S')
-    if r.get('continuation_first_time','') not in ('',None) or r.get('terminal_time')!=expected:bad.append((r['date'],r['event_hour'],r.get('continuation_first_time'),r.get('terminal_time'),expected))
-check('cross_day_continuation_no_clairvoyance',len(bad)==0,{'bad_count':len(bad),'terminal_expected':'next day 00:10','sample':bad[:3]})
+    expected=(datetime.fromisoformat(r['date'])+timedelta(days=2,minutes=10)).strftime('%Y-%m-%d %H:%M:%S')
+    continuation=(datetime.fromisoformat(r['date'])+timedelta(days=1,minutes=10)).strftime('%Y-%m-%d %H:%M:%S')
+    if r.get('continuation_first_time')!=continuation or r.get('terminal_time')!=expected:bad.append((r['date'],r['event_hour'],r.get('continuation_first_time'),r.get('terminal_time'),expected))
+check('cross_day_continuation_no_clairvoyance',len(bad)==0,{'bad_count':len(bad),'terminal_expected':'day+2 00:10; day+1 continuation is Q2 valuation only','sample':bad[:3]})
 weight_err=max(abs(float(r['scenario_weight_sum'])-1.) for r in events);clip_rates=np.asarray([float(r['clip_rate']) for r in events]);bind=np.asarray([int(r['terminal_shortfall_binding_scenarios'])>0 for r in events])
 check('scenario_weights_sum_to_one',weight_err<1e-12,{'max_error':weight_err})
 check('scenario_clipping_rate_reported',np.all((clip_rates>=0)&(clip_rates<=1)),{'mean':float(clip_rates.mean()),'max':float(clip_rates.max())})
@@ -76,7 +77,7 @@ date_to_idx={d.date():i for i,d in enumerate(data.dates)};point_err=[];werr=[];n
 for ds in ('2025-03-20','2025-06-21','2025-09-23','2025-12-21'):
     d=date_to_idx[datetime.fromisoformat(ds).date()]
     for eh in EVENT_HOURS:
-        b1=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=1);b3=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=3)
+        b1=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=1);b3=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=9)
         point_err.append(float(np.max(np.abs(b1.scenarios[0]-b1.point_net))));werr.append(abs(float(b3.weights.sum())-1.0))
         for (stage,nid),members in b3.node_members.items():node_rows.append([ds,eh,stage,nid,';'.join(map(str,members)),len(members)])
 with open(HERE/'nonanticipativity_nodes.csv','w',newline='',encoding='utf-8-sig') as f:
@@ -90,11 +91,11 @@ for ds in ('2025-03-20','2025-06-21','2025-09-23','2025-12-21'):
     d=date_to_idx[datetime.fromisoformat(ds).date()]
     for eh,stage_before,sidx in ((0,None,0),(6,0,36),(12,1,72),(18,2,108)):
         soc=float(sp[d,sidx]);lead=0 if d==0 else float(A[d-1,143]);bb=None if eh==0 else B[d];aa=None if eh==0 else AS[d,stage_before]
-        base=solve_event_lp(data,d,eh,soc,bb,aa,lead_contract=lead,use_new_vintage=True,allow_revision=True,scenario_count=3)
+        base=solve_event_lp(data,d,eh,soc,bb,aa,lead_contract=lead,use_new_vintage=True,allow_revision=True,scenario_count=9)
         dd=copy.deepcopy(data);start_i=eh*6;dd.load_cal_kwh[d,start_i:]+=777.;dd.net_cal_kwh[d,start_i:]+=777.;event=datetime(data.dates[d].year,data.dates[d].month,data.dates[d].day)+timedelta(hours=eh)
         for issue in list(dd.forecasts):
             if issue>event:dd.forecasts[issue]={tt:vv+9999. for tt,vv in dd.forecasts[issue].items()}
-        pert=solve_event_lp(dd,d,eh,soc,bb,aa,lead_contract=lead,use_new_vintage=True,allow_revision=True,scenario_count=3)
+        pert=solve_event_lp(dd,d,eh,soc,bb,aa,lead_contract=lead,use_new_vintage=True,allow_revision=True,scenario_count=9)
         diff=float(np.max(np.abs(base.current_contract-pert.current_contract)));samples.append([ds,eh,diff])
         if eh>0:
             j0=EVENT_PLAN_START[eh];H=36 if eh<18 else 36;H=min(H,len(base.point_net));q=base.current_contract[j0:j0+H];pr=np.asarray(data.price_calendar[start_i:start_i+H],float)

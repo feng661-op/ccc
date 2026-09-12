@@ -73,7 +73,7 @@
     },
     "soc_bounds": {
       "min": 1200.0,
-      "max": 10768.978468484624
+      "max": 10800.0
     },
     "soc_conservation": {
       "max_residual_kwh": 9.094947017729282e-13
@@ -86,7 +86,7 @@
       "max_min_xy": 0.0
     },
     "physical_energy_balance": {
-      "max_physical_residual_kwh": 3.410605131648481e-13
+      "max_physical_residual_kwh": 2.2737367544323206e-13
     },
     "actual_import_within_contract": {
       "max_excess_kwh": 0.0
@@ -114,11 +114,11 @@
     },
     "solver_residuals": {
       "max_eq": 5.4569682106375694e-12,
-      "max_ub": 3.609557097661309e-12
+      "max_ub": 5.820766091346741e-11
     },
     "cross_day_continuation_no_clairvoyance": {
       "bad_count": 0,
-      "terminal_expected": "next day 00:10",
+      "terminal_expected": "day+2 00:10; day+1 continuation is Q2 valuation only",
       "sample": []
     },
     "scenario_weights_sum_to_one": {
@@ -129,8 +129,8 @@
       "max": 0.0
     },
     "terminal_penalty_binding_rate_reported": {
-      "event_binding_rate": 0.9664383561643836,
-      "binding_events": 1411,
+      "event_binding_rate": 0.0,
+      "binding_events": 0,
       "events": 1460
     },
     "warmup_formal_event_counts": {
@@ -139,11 +139,11 @@
       "formal": 1336
     },
     "revision_statistics_explicit": {
-      "changed_slots_total": 41793,
-      "warmup_changed_slots": 3768,
-      "formal_changed_slots": 38025,
-      "formal_adjusted_events": 1002,
-      "formal_adjusted_event_rate": 1.0
+      "changed_slots_total": 6918,
+      "warmup_changed_slots": 895,
+      "formal_changed_slots": 6023,
+      "formal_adjusted_events": 682,
+      "formal_adjusted_event_rate": 0.6806387225548902
     },
     "deterministic_baseline_is_point_forecast": {
       "samples": 16,
@@ -162,7 +162,7 @@
       "max_action_change": 0.0
     },
     "revision_log_legal_only": {
-      "rows": 41793,
+      "rows": 6918,
       "illegal": 0
     },
     "settlement_extreme_cases": {
@@ -175,24 +175,24 @@
     "result3_contract_readback": {
       "max_B": 4.547473508864641e-13,
       "max_A": 4.547473508864641e-13,
-      "max_daily_sum": 4.3655745685100555e-11,
+      "max_daily_sum": 2.9103830456733704e-11,
       "max_fee": 7.275957614183426e-12
     },
     "result3_physical_readback": {
       "charge_rows": 2005,
-      "emergency_rows": 1377,
-      "charge_diff": -1.862645149230957e-09,
-      "discharge_diff": 0.0,
-      "emergency_diff": 5.820766091346741e-11
+      "emergency_rows": 990,
+      "charge_diff": -1.210719347000122e-08,
+      "discharge_diff": -1.862645149230957e-09,
+      "emergency_diff": -2.3283064365386963e-10
     },
     "natural_day_bridge": {
-      "natural_regular": 19601656.84509088,
-      "plan_day_regular": 19601729.75587955,
-      "bridge": -72.91078866666663
+      "natural_regular": 13267267.312478974,
+      "plan_day_regular": 13267296.88424379,
+      "bridge": -29.571764816666672
     },
     "five_ledger_total": {
-      "ledger_total": 20097740.110834084,
-      "metrics_total": 20097740.110834062
+      "ledger_total": 15206579.471935436,
+      "metrics_total": 15206579.471935473
     }
   },
   "pass_count": 36,

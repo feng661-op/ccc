@@ -1,0 +1,4 @@
+{'strategy': 'A', 'midnight_solves': 365, 'max_contract_reproduction_error': 0.0, 'max_eq_residual': 2.7284841053187847e-12, 'max_ub_violation': 2.9103830456733704e-11}
+{'strategy': 'B', 'midnight_solves': 365, 'max_contract_reproduction_error': 0.0, 'max_eq_residual': 5.4569682106375694e-12, 'max_ub_violation': 5.820766091346741e-11}
+{'strategy': 'C', 'midnight_solves': 365, 'max_contract_reproduction_error': 0.0, 'max_eq_residual': 2.7284841053187847e-12, 'max_ub_violation': 2.9103830456733704e-11}
+{'strategy': 'D', 'midnight_solves': 365, 'max_contract_reproduction_error': 0.0, 'max_eq_residual': 5.4569682106375694e-12, 'max_ub_violation': 5.820766091346741e-11}

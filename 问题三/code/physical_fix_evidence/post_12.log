@@ -1,7 +1,7 @@
 {
   "all_pass": true,
-  "pass_count": 15,
-  "check_count": 15,
+  "pass_count": 19,
+  "check_count": 19,
   "checks": {
     "base_validation_all_pass": "PASS",
     "factorial_A_finite": "PASS",
@@ -17,19 +17,23 @@
     "result3_exists": "PASS",
     "final_cost_identity": "PASS",
     "physical_matrix_all_11_pass": "PASS",
-    "physical_targeted_regressions_pass": "PASS"
+    "physical_targeted_regressions_pass": "PASS",
+    "q2_to_q3_full_year_degeneration": "PASS",
+    "inheritance_regressions_executed": "PASS",
+    "midnight_q2_native_solver_full_audit": "PASS",
+    "same_q2_base_parameters": "PASS"
   },
   "evidence": {
     "base_validation_all_pass": {
       "pass_count": 36,
       "check_count": 36
     },
-    "factorial_A_finite": 31904641.11414478,
-    "factorial_B_finite": 32294150.592298966,
-    "factorial_C_finite": 19590852.52772674,
-    "factorial_D_finite": 20097740.110834062,
-    "semantic_sunk_full_run": 19887258.03952366,
-    "semantic_stepwise_full_run": 20146384.833388995,
+    "factorial_A_finite": 15933557.407928225,
+    "factorial_B_finite": 15709709.724760894,
+    "factorial_C_finite": 15168153.75625911,
+    "factorial_D_finite": 15206579.471935473,
+    "semantic_sunk_full_run": 15322905.191214416,
+    "semantic_stepwise_full_run": 15260948.029974323,
     "semantic_revision_time_nonconvex_milp": {
       "rows": 4,
       "nonconvex_slots": [
@@ -50,36 +54,97 @@
       "rows": 8
     },
     "figures_complete": {
-      "fig_q3_typical_day.png": 186732,
-      "fig_q3_factorial_abcd.png": 62386,
-      "fig_q3_fee_decomposition.png": 51773,
-      "fig_q3_representative_days.png": 498865,
-      "fig_q3_marginal_deadzone.png": 160216,
-      "fig_q3_semantic_robustness.png": 71827
+      "fig_q3_typical_day.png": 188194,
+      "fig_q3_factorial_abcd.png": 73695,
+      "fig_q3_fee_decomposition.png": 51331,
+      "fig_q3_representative_days.png": 480221,
+      "fig_q3_marginal_deadzone.png": 149576,
+      "fig_q3_semantic_robustness.png": 70268,
+      "fig_q3_cross_problem.png": 110896
     },
     "paper_material_complete": {
-      "bytes": 12063
+      "bytes": 19663
     },
     "result3_exists": {
-      "bytes": 986521
+      "bytes": 940629
     },
     "final_cost_identity": {
-      "metrics_D": 20097740.110834062,
-      "five_ledger": 20097740.110834084,
-      "diff": 2.2351741790771484e-08
+      "metrics_D": 15206579.471935473,
+      "five_ledger": 15206579.471935436,
+      "diff": -3.725290298461914e-08
     },
     "physical_matrix_all_11_pass": {
       "pass": 176,
       "count": 176
     },
     "physical_targeted_regressions_pass": {
-      "tests": 12,
+      "tests": 29,
       "failures_or_errors": 0
+    },
+    "q2_to_q3_full_year_degeneration": {
+      "pass": 17,
+      "count": 17,
+      "cost": {
+        "q2": 15933591.160142258,
+        "closed_q3": 15933591.160142258,
+        "difference": 0.0
+      }
+    },
+    "inheritance_regressions_executed": {
+      "tests": 29,
+      "failures_or_errors": 0
+    },
+    "midnight_q2_native_solver_full_audit": [
+      {
+        "strategy": "A",
+        "midnight_solves": 365,
+        "max_contract_reproduction_error": 0.0,
+        "max_eq_residual": 2.7284841053187847e-12,
+        "max_ub_violation": 2.9103830456733704e-11
+      },
+      {
+        "strategy": "B",
+        "midnight_solves": 365,
+        "max_contract_reproduction_error": 0.0,
+        "max_eq_residual": 5.4569682106375694e-12,
+        "max_ub_violation": 5.820766091346741e-11
+      },
+      {
+        "strategy": "C",
+        "midnight_solves": 365,
+        "max_contract_reproduction_error": 0.0,
+        "max_eq_residual": 2.7284841053187847e-12,
+        "max_ub_violation": 2.9103830456733704e-11
+      },
+      {
+        "strategy": "D",
+        "midnight_solves": 365,
+        "max_contract_reproduction_error": 0.0,
+        "max_eq_residual": 5.4569682106375694e-12,
+        "max_ub_violation": 5.820766091346741e-11
+      }
+    ],
+    "same_q2_base_parameters": {
+      "no_formal_retuning": true,
+      "main_scenario_count": 9,
+      "terminal_value": 0.8,
+      "load_forecast": "unchanged Q2 causal ensemble",
+      "dispatch": "unchanged Q2 current-measurement feedback with scenario SOC 25 percent reserve",
+      "measurement_model": "ideal_piecewise_constant_current_slot; not actual zero-delay sensor validation",
+      "contract_information": "completed history and released forecasts only",
+      "physical_schema_version": 2,
+      "curtail_semantics": "PV-only; unused paid contract is separate",
+      "event_storage_recoursing": "Q2 48-hour valuation recourse; future purchases never issued; not globally nonanticipative optimal control",
+      "risk_lambda": 0.02,
+      "cvar_alpha": 0.8,
+      "history_days": 42,
+      "floor_quantile": 0.25,
+      "revision_context": "structural correction after old results observed; no revised formal-cost parameter search"
     }
   },
   "artifact_hashes": {
-    "result3_sha256": "ef85dd76b9d7083242061d535b69983ed0b048aaa32d57a1f4ee8a956b7be267",
-    "paper_sha256": "1e579ea587ff94797e36b4010fcc8aa1de63b2d44030a164f7039d1fe75b6adc",
-    "metrics_final_sha256": "d3c6313c927cf54f446d0c9cf77b1567d5afff98587276f3ff8c7527bea32b24"
+    "result3_sha256": "c9518c3248424600ce464b731f94d03ae6c9a1f237f1c3c5575614bc25b9a1b3",
+    "paper_sha256": "69a5d9679279a786272ea1ce48177f289fe6dc240baaaf38f18320a82a8fec08",
+    "metrics_final_sha256": "c3e724cfbf0ff9f1b42cc5ec6fbaf286b87691c0cb305c248ca2fd8f610481dc"
   }
 }

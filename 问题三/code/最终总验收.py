@@ -16,7 +16,7 @@ ck('semantic_stepwise_full_run',(HERE/'run_D_stepwise.npz').exists() and math.is
 aud=sem['revision_time_exact_milp_audit'];milp_ok=len(aud)==4 and all('Optimal' in x['status'] and x['nonconvex_delivery_slots']>0 for x in aud)
 ck('semantic_revision_time_nonconvex_milp',milp_ok,{'rows':len(aud),'nonconvex_slots':[x['nonconvex_delivery_slots'] for x in aud],'statuses':[x['status'] for x in aud]})
 ck('marginal_deadzone_direction_consistency',marg['rows']==marg['direction_match_count'] and marg['rows']>0,{'match':marg['direction_match_count'],'rows':marg['rows']})
-figs=['fig_q3_typical_day.png','fig_q3_factorial_abcd.png','fig_q3_fee_decomposition.png','fig_q3_representative_days.png','fig_q3_marginal_deadzone.png','fig_q3_semantic_robustness.png']
+figs=['fig_q3_typical_day.png','fig_q3_factorial_abcd.png','fig_q3_fee_decomposition.png','fig_q3_representative_days.png','fig_q3_marginal_deadzone.png','fig_q3_semantic_robustness.png','fig_q3_cross_problem.png']
 fig_info={f:(FIG/f).stat().st_size if (FIG/f).exists() else 0 for f in figs};ck('figures_complete',all(v>20000 for v in fig_info.values()),fig_info)
 paper=Q3/'问题3论文材料.md';ck('paper_material_complete',paper.exists() and paper.stat().st_size>10000,{'bytes':paper.stat().st_size if paper.exists() else 0})
 result=Q3/'result3.xlsx';ck('result3_exists',result.exists() and result.stat().st_size>100000,{'bytes':result.stat().st_size if result.exists() else 0})
@@ -32,6 +32,13 @@ import xml.etree.ElementTree as ET
 jt=ET.parse(HERE/'physical_fix_evidence'/'targeted_pytest.xml').getroot()
 suites=list(jt.iter('testsuite')); nt=sum(int(x.attrib.get('tests',0)) for x in suites);nf=sum(int(x.attrib.get('failures',0))+int(x.attrib.get('errors',0)) for x in suites)
 ck('physical_targeted_regressions_pass',nt>=12 and nf==0,{'tests':nt,'failures_or_errors':nf})
+cross=json.loads((HERE/'cross_problem_evidence'/'cross_problem_validation.json').read_text(encoding='utf-8'))
+ck('q2_to_q3_full_year_degeneration',cross.get('all_pass') and cross.get('pass_count')==cross.get('check_count'),{'pass':cross['pass_count'],'count':cross['check_count'],'cost':cross['evidence']['published_q2_cost_reproduced']})
+ck('inheritance_regressions_executed',nt>=27 and nf==0,{'tests':nt,'failures_or_errors':nf})
+midnight=json.loads((HERE/'cross_problem_evidence'/'midnight_solver_validation.json').read_text(encoding='utf-8'))
+ck('midnight_q2_native_solver_full_audit',len(midnight)==4 and all(r['midnight_solves']==365 and r['max_contract_reproduction_error']<1e-6 and max(r['max_eq_residual'],r['max_ub_violation'])<1e-7 for r in midnight),midnight)
+protocol=metrics['protocol']
+ck('same_q2_base_parameters',protocol['main_scenario_count']==9 and protocol['terminal_value']==0.8 and protocol['risk_lambda']==0.02 and protocol['cvar_alpha']==0.8 and protocol['history_days']==42 and protocol['floor_quantile']==0.25,protocol)
 # Hash final user-facing artifacts for traceability.
 def sha(p):
     h=hashlib.sha256();

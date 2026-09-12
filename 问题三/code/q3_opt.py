@@ -157,7 +157,7 @@ def solve_dispatch_mpc(soc0,contracts,net_forecast,prices,terminal_value=.45,*,c
 
 def solve_event_lp(data,day_idx,event_hour,soc0,B,A_before,lead_contract=0.0,*,use_new_vintage=True,allow_revision=True,scenario_count=3,horizon=None,down_settlement='cancel_settlement',revision_anchor='original_anchor',terminal_value=.45,disabled_vintage_hours=()):
     if horizon is None: horizon=EVENT_PLAN_HORIZON[event_hour]
-    bundle=build_scenarios(data,day_idx,event_hour,horizon,use_new_vintage,scenario_count,disabled_vintage_hours=disabled_vintage_hours); K,H=bundle.scenarios.shape; day=data.dates[day_idx]; startj=EVENT_PLAN_START[event_hour]
+    bundle=legacy_build_scenarios(data,day_idx,event_hour,horizon,use_new_vintage,scenario_count,disabled_vintage_hours=disabled_vintage_hours); K,H=bundle.scenarios.shape; day=data.dates[day_idx]; startj=EVENT_PLAN_START[event_hour]
     if event_hour>0 and (B is None or A_before is None): raise ValueError('日内事件缺B/A')
     B0=None if B is None else np.asarray(B,float); A0=None if A_before is None else np.asarray(A_before,float)
     names=[]; lo=[]; hi=[]; cost=[]
@@ -309,3 +309,10 @@ def natural_regular_fee(plan_B,plan_A,data,d,down_settlement='cancel_settlement'
         else:pd,j=d,i-1
         total+=float(settlement_components([plan_B[pd,j]],[plan_A[pd,j]],[data.price_plan[j]],down_settlement)['F_regular'][0])
     return total
+
+
+# Preserve historical solvers for explicit old-model diagnosis only. Production
+# event planning now inherits Q2, including its 48-hour valuation approximation.
+legacy_build_scenarios = build_scenarios
+legacy_solve_event_lp = solve_event_lp
+from q3_inheritance import build_scenarios, solve_event_lp

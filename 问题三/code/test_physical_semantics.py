@@ -82,7 +82,7 @@ def test_future_observations_do_not_change_earlier_decisions():
     np.testing.assert_allclose(a.charge[0,:73], b.charge[0,:73], atol=1e-7, rtol=0)
     np.testing.assert_allclose(a.discharge[0,:73], b.discharge[0,:73], atol=1e-7, rtol=0)
     assert np.max(a.battery_dump) == 0
-    assert a.execution_mode == 'measured_current_mpc'
+    assert a.execution_mode == 'q2_reserve_feedback'
 
 
 @pytest.mark.parametrize('bad', [float('nan'), float('inf'), -10])

@@ -1,7 +1,7 @@
 {
   "all_pass": true,
-  "pass_count": 14,
-  "check_count": 14,
+  "pass_count": 17,
+  "check_count": 17,
   "checks": {
     "complete_output_documents": "PASS",
     "symbol_table_core_coverage": "PASS",
@@ -15,6 +15,9 @@
     "robustness_copy_validation.json": "PASS",
     "robustness_copy_final_acceptance.json": "PASS",
     "factorial_metric_identity": "PASS",
+    "cross_problem_inheritance_pass": "PASS",
+    "cross_problem_paper_explanation": "PASS",
+    "retired_model_claims_removed": "PASS",
     "result3_exists": "PASS",
     "paper_material_size": "PASS"
   },
@@ -28,10 +31,10 @@
     },
     "current_metrics_referenced": {
       "required": [
-        "20,097,740.11",
-        "115,464.31",
-        "11,806,901.00",
-        "-301,692.37"
+        "15,206,579.47",
+        "381,890.25",
+        "726,977.94",
+        "-2,293.96"
       ],
       "missing": []
     },
@@ -42,22 +45,23 @@
       "count": 36
     },
     "final_acceptance_pass": {
-      "pass": 15,
-      "count": 15
+      "pass": 19,
+      "count": 19
     },
     "paper_figures_complete": {
       "bad": [],
       "sizes": {
-        "图14_问题3事件驱动滚动调度框架.png": 229945,
-        "图15_问题3典型日合同滚动调整.png": 186732,
-        "图16_问题3ABCD因子对照.png": 62386,
-        "图17_问题3主模型费用分解.png": 51773,
-        "图18_问题3四季代表日合同与净负荷.png": 498865,
-        "图19_合同调整死区边际价值.png": 160216,
-        "图20_问题3结算语义鲁棒性.png": 71827,
-        "表7_指定日期原始与最终合同.png": 87951,
-        "表8_指定日期储能充放电.png": 81270,
-        "表9_指定日期紧急购电.png": 79692
+        "图14_问题3事件驱动滚动调度框架.png": 230814,
+        "图15_问题3典型日合同滚动调整.png": 188194,
+        "图16_问题3ABCD因子对照.png": 73695,
+        "图17_问题3主模型费用分解.png": 51331,
+        "图18_问题3四季代表日合同与净负荷.png": 480221,
+        "图19_合同调整死区边际价值.png": 149576,
+        "图20_问题3结算语义鲁棒性.png": 70268,
+        "表7_指定日期原始与最终合同.png": 88189,
+        "表8_指定日期储能充放电.png": 82094,
+        "表9_指定日期紧急购电.png": 74132,
+        "附图_第二问第三问同口径对照.png": 110896
       }
     },
     "robustness_evidence_complete": {
@@ -66,11 +70,16 @@
     "robustness_copy_validation.json": null,
     "robustness_copy_final_acceptance.json": null,
     "factorial_metric_identity": null,
+    "cross_problem_inheritance_pass": null,
+    "cross_problem_paper_explanation": null,
+    "retired_model_claims_removed": {
+      "stale": []
+    },
     "result3_exists": {
-      "bytes": 986521
+      "bytes": 940629
     },
     "paper_material_size": {
-      "bytes": 12063
+      "bytes": 19663
     }
   }
 }

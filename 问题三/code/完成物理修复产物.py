@@ -9,7 +9,7 @@ assert len(replays)==11 and all(x['exit_code']==0 for x in replays), 'Complete a
 steps=[
  ['汇总主结果.py'],['扩展建议验证.py'],['语义鲁棒性.py'],['边际价值审计.py'],
  ['写出result3.py'],['验证问题3.py'],['验证物理修复矩阵.py'],
- ['-m','pytest','-q','test_physical_semantics.py','--junitxml=physical_fix_evidence/targeted_pytest.xml'],
+ ['-m','pytest','-q','test_physical_semantics.py','test_q2_inheritance.py','--junitxml=physical_fix_evidence/targeted_pytest.xml'],
  ['汇总最终指标.py'],['同步问题3论文输出.py'],['生成问题3图表.py'],['同步问题3图表.py'],
  ['最终总验收.py'],['验证问题3论文输出.py']]
 start=int(sys.argv[1]) if len(sys.argv)>1 else 0

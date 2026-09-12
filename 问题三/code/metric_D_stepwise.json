@@ -1,13 +1,13 @@
 {
   "name": "D_stepwise",
   "mode": "stepwise",
-  "total_cost_yuan": 20146384.833388995,
-  "regular_cost_yuan": 19644656.284171622,
-  "emergency_cost_yuan": 501728.5492173733,
-  "emergency_kwh": 116393.00625387205,
+  "total_cost_yuan": 15260948.029974323,
+  "regular_cost_yuan": 13323184.53004364,
+  "emergency_cost_yuan": 1937763.4999306856,
+  "emergency_kwh": 381000.7987626878,
   "soc_min_kwh": 1200.0,
-  "soc_max_kwh": 10768.97846848463,
-  "changed_slot_count_formal": 17746,
-  "adjusted_event_count_formal": 998,
-  "runtime_seconds": 139.06084513664246
+  "soc_max_kwh": 10800.0,
+  "changed_slot_count_formal": 4629,
+  "adjusted_event_count_formal": 623,
+  "runtime_seconds": 2049.5082433223724
 }

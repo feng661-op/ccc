@@ -34,25 +34,25 @@ def load_benchmark(a,b):
     return out
 
 metrics=json.loads((HERE/'metrics.json').read_text(encoding='utf-8'))
-out={'protocol':{'selection':'7-day load seasonal-naive selected using January only; formal period is report-only; K=3/scenario settings remain predeclared and are not retuned on formal period','formal_period':'2025-02-01..2025-12-31','no_formal_retuning':True}}
-out['load_forecast']={'january_selection':load_benchmark(7,31),'formal_generalization':load_benchmark(31,365)}
+out={'protocol':{'selection':'Q2 causal ensemble remains the production load forecast; old 7-day method is diagnostic only; Q2 parameters inherited directly; no parameter selected from revised formal-period results','formal_period':'2025-02-01..2025-12-31','no_formal_retuning':True}}
+out['load_forecast']={'historical_diagnostic_january':load_benchmark(7,31),'historical_diagnostic_formal':load_benchmark(31,365),'production':'unchanged Q2 causal ensemble'}
 idx={d.date():i for i,d in enumerate(data.dates)};diag=[];point_err=[]
 for ds in ('2025-03-20','2025-06-21','2025-09-23','2025-12-21'):
     d=idx[datetime.fromisoformat(ds).date()]
     for eh in (0,6,12,18):
-        b1=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=1);b3=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=3)
+        b1=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=1);b3=build_scenarios(data,d,eh,use_new_vintage=True,max_scenarios=9)
         point_err.append(float(np.max(np.abs(b1.scenarios[0]-b1.point_net))))
         diag.append({'date':ds,'event_hour':eh,'weights':[float(x) for x in b3.weights],'weight_sum':float(b3.weights.sum()),'clip_rate':float(b3.clip_rate),'source_days':b3.source_days})
-out['scenario_structure']={'K1_max_point_error_kwh':max(point_err),'representative_K3':diag,'max_weight_sum_error':max(abs(x['weight_sum']-1) for x in diag),'max_clip_rate':max(x['clip_rate'] for x in diag)}
+out['scenario_structure']={'K1_max_point_error_kwh':max(point_err),'representative_K9':diag,'max_weight_sum_error':max(abs(x['weight_sum']-1) for x in diag),'max_clip_rate':max(x['clip_rate'] for x in diag)}
 runs={name:json.loads((HERE/f'metric_{name}.json').read_text(encoding='utf-8')) for name in ('D_no6','D_no12','D_no18','D_K5')}
 Dcost=float(metrics['D']['total_cost_yuan'])
 for m in runs.values():m['delta_vs_D_yuan']=m['total_cost_yuan']-Dcost
 out['full_year_realized_policy_sensitivity']=runs
-out['scenario_count']={'K1_point':metrics['D_point'],'K3_main':metrics['D'],'K5':runs['D_K5'],'interpretation':'formal-period realized-policy stability only; K=3 was predeclared and is not selected by these formal results; not theoretical VSS/VOI'}
+out['scenario_count']={'K1_point':metrics['D_point'],'K9_main':metrics['D'],'K5':runs['D_K5'],'interpretation':'formal-period realized-policy stability only; K=9 directly inherits Q2 and is not selected by these formal results; not theoretical VSS/VOI'}
 # terminal value sensitivity is intentionally limited to January to avoid formal-period retuning.
 jan={}
-for tv in (.25,.45,.75):
-    print('JAN terminal',tv,flush=True);t0=time.time();s=simulate_strategy(data,name=f'Jan_vT_{tv}',use_new_vintage=True,allow_revision=True,scenario_count=3,end_day=31,verbose=False,terminal_value=tv)
+for tv in (.4,.8,1.2):
+    print('JAN terminal',tv,flush=True);t0=time.time();s=simulate_strategy(data,name=f'Jan_vT_{tv}',use_new_vintage=True,allow_revision=True,scenario_count=9,end_day=31,verbose=False,terminal_value=tv)
     jan[str(tv)]={'jan_total_cost_yuan':float(np.sum(s.natural_regular_fee+s.emergency_fee)),'jan_emergency_kwh':float(np.sum(s.emergency)),'jan_soc_end_kwh':float(s.soc24[-1]),'terminal_binding_event_rate':float(np.mean([r['terminal_shortfall_binding_scenarios']>0 for r in s.event_rows])),'runtime_seconds':time.time()-t0}
 out['terminal_value_january_only']=jan
 (HERE/'extended_experiments.json').write_text(json.dumps(out,ensure_ascii=False,indent=2),encoding='utf-8')

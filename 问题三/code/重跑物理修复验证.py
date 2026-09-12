@@ -24,7 +24,7 @@ def run_one(item):
     print('START', name, flush=True)
     with log.open('w', encoding='utf-8') as f:
         result = subprocess.run([sys.executable, str(HERE/script), arg], cwd=HERE, env=env,
-                                stdout=f, stderr=subprocess.STDOUT, timeout=1800)
+                                stdout=f, stderr=subprocess.STDOUT, timeout=7200)
     row = {'name': name, 'exit_code': result.returncode, 'seconds': time.time()-start,
            'log': str(log), 'source_script_sha256': hashlib.sha256((HERE/script).read_bytes()).hexdigest()}
     print('END', json.dumps(row, ensure_ascii=False), flush=True)

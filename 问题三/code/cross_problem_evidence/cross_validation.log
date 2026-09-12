@@ -1,0 +1,253 @@
+{
+  "all_pass": true,
+  "pass_count": 17,
+  "check_count": 17,
+  "checks": {
+    "all_year_B": true,
+    "all_year_A": true,
+    "all_year_charge": true,
+    "all_year_discharge": true,
+    "all_year_emergency": true,
+    "all_year_soc00": true,
+    "all_year_soc24": true,
+    "all_year_plan_fee": true,
+    "all_year_emergency_fee": true,
+    "all_year_supply_surplus": true,
+    "published_q2_cost_reproduced": true,
+    "natural_period_bridge": true,
+    "all_stages_contract_unchanged": true,
+    "zero_forecast_only_control": true,
+    "q1_q2_q4_attachments_unchanged": true,
+    "fee_decomposition_第二问同口径": true,
+    "fee_decomposition_第三问完整模型": true
+  },
+  "evidence": {
+    "all_year_B": {
+      "max_error": 0.0,
+      "entries": 52560
+    },
+    "all_year_A": {
+      "max_error": 0.0,
+      "entries": 52560
+    },
+    "all_year_charge": {
+      "max_error": 0.0,
+      "entries": 52560
+    },
+    "all_year_discharge": {
+      "max_error": 0.0,
+      "entries": 52560
+    },
+    "all_year_emergency": {
+      "max_error": 2.2737367544323206e-13,
+      "entries": 52560
+    },
+    "all_year_soc00": {
+      "max_error": 0.0,
+      "entries": 365
+    },
+    "all_year_soc24": {
+      "max_error": 0.0,
+      "entries": 365
+    },
+    "all_year_plan_fee": {
+      "max_error": 0.0,
+      "entries": 365
+    },
+    "all_year_emergency_fee": {
+      "max_error": 1.4551915228366852e-11,
+      "entries": 365
+    },
+    "all_year_supply_surplus": {
+      "max_error": 2.2737367544323206e-13,
+      "entries": 52560
+    },
+    "published_q2_cost_reproduced": {
+      "q2": 15933591.160142258,
+      "closed_q3": 15933591.160142258,
+      "difference": 0.0
+    },
+    "natural_period_bridge": {
+      "bridge": -33.75221403333342,
+      "natural_total": 15933557.407928225
+    },
+    "all_stages_contract_unchanged": {
+      "max_error": 0.0
+    },
+    "zero_forecast_only_control": {
+      "total_cost": 15892248.474028386,
+      "delta_vs_q2_natural": -41308.93389983848,
+      "contract_freeze_error": 0.0,
+      "physical_residual": 3.410605131648481e-13,
+      "soc_residual": 9.094947017729282e-13,
+      "information": "midnight official PV retained; all intraday releases and contract revision disabled"
+    },
+    "q1_q2_q4_attachments_unchanged": {
+      "files": 464,
+      "changed": []
+    },
+    "fee_decomposition_第二问同口径": {
+      "error": 1.862645149230957e-09
+    },
+    "fee_decomposition_第三问完整模型": {
+      "error": 0.0
+    }
+  },
+  "comparison": [
+    {
+      "策略": "第二问同口径",
+      "原计划电量": 20609692.806090895,
+      "最终合同计划行电量": 20609692.806090895,
+      "生效合同自然日电量": 20609613.872007564,
+      "上调电量": 0.0,
+      "下调电量": 0.0,
+      "实际普通取电": 19597588.735664614,
+      "未利用合同": 1012025.136342948,
+      "充电": 5532824.430521867,
+      "放电": 4983031.072681347,
+      "紧急购电": 565008.4443916262,
+      "真正弃光": 1673850.0305823877,
+      "储电量下限": 1200.0,
+      "储电量上限": 10800.0,
+      "正式期起点储电量": 10785.06334214753,
+      "正式期终点储电量": 7107.244602388408,
+      "保留计划费用": 12940544.060167473,
+      "下调费用": 0.0,
+      "上调费用": 0.0,
+      "紧急费用": 2993013.3477607504,
+      "总费用": 15933557.407928225
+    },
+    {
+      "策略": "第三问完整模型",
+      "原计划电量": 21072971.170345187,
+      "最终合同计划行电量": 20636519.817508515,
+      "生效合同自然日电量": 20636450.65996685,
+      "上调电量": 145552.6914844619,
+      "下调电量": 582004.0443211345,
+      "实际普通取电": 19750328.55474536,
+      "未利用合同": 886122.1052214871,
+      "充电": 5604912.402962323,
+      "放电": 5047523.955857091,
+      "紧急购电": 381890.2496116297,
+      "真正弃光": 1635876.5656184256,
+      "储电量下限": 1200.0,
+      "储电量上限": 10800.0,
+      "正式期起点储电量": 10780.375027467098,
+      "正式期终点储电量": 7509.743830126475,
+      "保留计划费用": 12945675.760849737,
+      "下调费用": 153517.95690227023,
+      "上调费用": 168073.59472696678,
+      "紧急费用": 1939312.1594564994,
+      "总费用": 15206579.471935473
+    }
+  ],
+  "original_audit": {
+    "Q2": {
+      "plan_kwh": 20609692.806090895,
+      "accepted_plan_kwh": 20609692.806090895,
+      "natural_contract_kwh": 20609613.872007564,
+      "actual_regular_import_kwh": 19597588.735664614,
+      "unused_contract_kwh": 1012025.136342948,
+      "charge_kwh": 5532824.430521867,
+      "discharge_kwh": 4983031.072681347,
+      "emergency_kwh": 565008.4443916262,
+      "pv_curtail_kwh": 1673850.0305823877,
+      "total_surplus_kwh": 2685875.1669253353,
+      "soc_min": 1199.9999999999918,
+      "soc_max": 10800.000000000011,
+      "soc_start": 10785.06334214753,
+      "soc_end": 7107.244602388409,
+      "plan_cost": 12940577.812381506,
+      "emergency_cost": 2993013.3477607504,
+      "published_total": 15933591.160142258,
+      "natural_bridge": -33.75221403333342,
+      "natural_total": 15933557.407928225,
+      "surplus_split_error": 2.2737367544323206e-13,
+      "physical_error": 2.2737367544323206e-13
+    },
+    "old_A": {
+      "charge": 2898843.0406906437,
+      "discharge": 2609148.36335148,
+      "emergency": 3433796.68523662,
+      "curtail": 2473567.030182313,
+      "grid_import": 17268418.81391819,
+      "unused_contract": 3600810.2462746757,
+      "supply_surplus": 6074377.276456989,
+      "natural_regular_fee": 12700974.862983998,
+      "emergency_fee": 19203666.251160778,
+      "plan_kwh": 20869406.418526195,
+      "final_kwh": 20869406.418526195,
+      "up_kwh": 0.0,
+      "down_kwh": 0.0,
+      "soc_start": 1485.404146066579,
+      "soc_end": 1285.520022154271,
+      "natural_total": 31904641.11414478
+    },
+    "old_B": {
+      "charge": 2842852.150415495,
+      "discharge": 2558756.562103847,
+      "emergency": 3484790.7567004226,
+      "curtail": 2503384.8161867037,
+      "grid_import": 17241643.439431265,
+      "unused_contract": 3625158.915230723,
+      "supply_surplus": 6128543.731417427,
+      "natural_regular_fee": 12699851.593568953,
+      "emergency_fee": 19594298.998730008,
+      "plan_kwh": 20866979.71299532,
+      "final_kwh": 20866979.71299532,
+      "up_kwh": 0.0,
+      "down_kwh": 0.0,
+      "soc_start": 1485.404146066579,
+      "soc_end": 1285.520022154271,
+      "natural_total": 32294150.592298966
+    },
+    "old_C": {
+      "charge": 3350663.768337094,
+      "discharge": 3015976.812493772,
+      "emergency": 128239.14528884066,
+      "curtail": 2465563.7340380326,
+      "grid_import": 20610965.33622585,
+      "unused_contract": 3993188.8134558266,
+      "supply_surplus": 6458752.54749386,
+      "natural_regular_fee": 19037821.924268246,
+      "emergency_fee": 553030.6034584916,
+      "plan_kwh": 19768742.705073506,
+      "final_kwh": 24604324.661348343,
+      "up_kwh": 4898610.937071979,
+      "down_kwh": 63028.98079714095,
+      "soc_start": 1775.280391923131,
+      "soc_end": 1375.3355513566075,
+      "natural_total": 19590852.52772674
+    },
+    "old_D": {
+      "charge": 2960007.359703129,
+      "discharge": 2664298.625297391,
+      "emergency": 115464.3119971349,
+      "curtail": 2587280.5924059013,
+      "grid_import": 20706478.806447838,
+      "unused_contract": 3960730.8149105925,
+      "supply_surplus": 6548011.407316495,
+      "natural_regular_fee": 19601656.84509088,
+      "emergency_fee": 496083.2657431768,
+      "plan_kwh": 19767446.48419203,
+      "final_kwh": 24667380.133025095,
+      "up_kwh": 5128125.387534237,
+      "down_kwh": 228191.73870116612,
+      "soc_start": 1633.2873991408042,
+      "soc_end": 1325.4907243437765,
+      "natural_total": 20097740.110834062
+    }
+  },
+  "old_closed_replay": {
+    "seconds": 98.00202298164368,
+    "total_cost": 31904641.11414478,
+    "array_max_errors": {
+      "B": 0.0,
+      "A": 0.0,
+      "charge": 0.0,
+      "discharge": 0.0,
+      "emergency": 0.0,
+      "soc_path": 0.0
+    }
+  }
+}

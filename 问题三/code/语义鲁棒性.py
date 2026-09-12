@@ -40,9 +40,10 @@ def revision_time_fee_slots(B,Astage):
     return out
 
 def exact_revision_time_milp_12(day_idx,zD):
-    """Exact nonconvex local re-optimization for the 12:00-18:00 current-stage block.
+    """Exact nonconvex local diagnostic for 12:00-15:00 (18 ten-minute slots).
     B is the original anchor, current q is common across scenarios, and the
     adjustment component uses the 12:00 revision price. No convex relaxation.
+    This short point-forecast diagnostic is not the full Q2-inherited objective.
     """
     H=18; bundle=build_scenarios(data,day_idx,12,H,True,1); K=bundle.scenarios.shape[0]; w=bundle.weights
     B=zD['B'][day_idx]; soc0=float(zD['soc_path'][day_idx,72]); js=np.arange(71,71+H); QMAX=5000.0; BIG=1e6
@@ -55,7 +56,7 @@ def exact_revision_time_milp_12(day_idx,zD):
         for t in range(H):
             x[k,t]=add(('x',k,t),0,XMAX);y[k,t]=add(('y',k,t),0,XMAX);e[k,t]=add(('e',k,t),0,BIG,0,float(w[k]*5*bundle.slot_prices[t]))
         for t in range(H+1):s[k,t]=add(('s',k,t),SOC_MIN,SOC_MAX)
-        rt[k]=add(('rt',k),0,BIG,0,float(w[k]*.45))
+        rt[k]=add(('rt',k),0,BIG,0,float(w[k]*.8))
     rows=[];lb=[];ub=[]
     def con(row,l=-np.inf,u=np.inf):rows.append(row);lb.append(l);ub.append(u)
     for k in range(K):
@@ -63,7 +64,7 @@ def exact_revision_time_milp_12(day_idx,zD):
         for t in range(H):
             j=int(js[t]); con({s[k,t+1]:1,s[k,t]:-1,x[k,t]:-ETA_C,y[k,t]:1/ETA_D},0,0)
             con({q[j]:-1,x[k,t]:1,y[k,t]:-1,e[k,t]:-1},-np.inf,-float(bundle.scenarios[k,t]))
-        con({s[k,H]:-1,rt[k]:-1},-np.inf,-soc0)
+        con({s[k,H]:-1,rt[k]:-1},-np.inf,-6000.0)
     pa=revision_clock_price(12); nonconvex=0
     for t,j0 in enumerate(js):
         j=int(j0); b=float(B[j]); pd=float(data.price_plan[j]); z=zz[j]

@@ -16,14 +16,14 @@ def event_args(d,eh):
     raise ValueError(eh)
 
 def shifted_objective(d,eh,target_t,delta):
-    def wrapper(data0,day_idx,event_hour,horizon=None,use_new_vintage=True,max_scenarios=3,history_window=56,disabled_vintage_hours=()):
+    def wrapper(data0,day_idx,event_hour,horizon=None,use_new_vintage=True,max_scenarios=9,history_window=42,disabled_vintage_hours=()):
         b=orig(data0,day_idx,event_hour,horizon,use_new_vintage,max_scenarios,history_window,disabled_vintage_hours=disabled_vintage_hours)
         sc=b.scenarios.copy();pt=b.point_net.copy();sc[:,target_t]+=delta;pt[target_t]+=delta
         return replace(b,point_net=pt,scenarios=sc)
     q3_opt.build_scenarios=wrapper
     try:
         soc,ab=event_args(d,eh);lead=0 if d==0 else float(A[d-1,143])
-        sol=q3_opt.solve_event_lp(data,d,eh,soc,B[d],ab,lead_contract=lead,use_new_vintage=True,allow_revision=True,scenario_count=3,revision_anchor='original_anchor')
+        sol=q3_opt.solve_event_lp(data,d,eh,soc,B[d],ab,lead_contract=lead,use_new_vintage=True,allow_revision=True,scenario_count=9,revision_anchor='original_anchor')
         return float(sol.objective),sol.current_contract
     finally:q3_opt.build_scenarios=orig
 
@@ -43,7 +43,20 @@ for ds in ('2025-03-20','2025-06-21','2025-09-23','2025-12-21'):
         elif mu<lo: predicted='down'
         elif mu>hi: predicted='up'
         else: predicted='deadzone'
-        match=(actual=='down' and predicted in ('down','down_boundary')) or (actual=='up' and predicted in ('up','up_boundary')) or (actual=='deadzone' and predicted=='deadzone')
+        # At A=B either endpoint of the subgradient interval is legitimate.
+        # At A=0 the nonnegative-contract bound also binds; a zero original
+        # contract has no down-adjustment branch at all.
+        if accepted<=1e-5:
+            threshold=hi if b<=1e-5 else lo
+            match=mu<=threshold+ktol
+            predicted='nonnegative_contract_bound'
+        elif actual=='deadzone':
+            match=lo-ktol<=mu<=hi+ktol
+            predicted='deadzone' if match else predicted
+        elif actual=='down':
+            match=abs(mu-lo)<=ktol
+        else:
+            match=abs(mu-hi)<=ktol
         rows.append({'date':ds,'event_hour':eh,'target_offset_10min':target_t,'slot_j':j,'slot_label':data.plan_headers[j],'price':p,'mu_fd':mu,'deadzone_low_0.5p':lo,'deadzone_high_1.5p':hi,'B_kwh':b,'A_event_kwh':accepted,'A_minus_B_kwh':delta,'predicted_direction':predicted,'actual_direction':actual,'direction_match':match,'J_minus':jm,'J_plus':jp})
 with open(HERE/'marginal_value_audit.csv','w',newline='',encoding='utf-8-sig') as f:
     w=csv.DictWriter(f,fieldnames=list(rows[0].keys()));w.writeheader();w.writerows(rows)

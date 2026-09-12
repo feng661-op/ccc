@@ -1,0 +1,3988 @@
+[
+  {
+    "path": "问题二\\code\\daily_summary.csv",
+    "sha256": "a50d80839c70e075a167f0ab93d0fcb5dd3f8a4d161ec4250cbd1c8721c880af",
+    "bytes": 99756,
+    "columns": [
+      "date",
+      "plan_kwh",
+      "plan_cost_yuan",
+      "emergency_kwh",
+      "emergency_cost_yuan",
+      "total_cost_yuan",
+      "charge_kwh",
+      "discharge_kwh",
+      "curtailment_kwh",
+      "soc_00_kwh",
+      "soc_24_kwh",
+      "load_mae_kw",
+      "pv_mae_kw",
+      "net_mae_kw",
+      "scenario_count",
+      "pred_expected_emergency_cost",
+      "pred_cvar_cost"
+    ],
+    "rows": 365
+  },
+  {
+    "path": "问题二\\code\\leakage_audit.csv",
+    "sha256": "6d27c002f5b3676ad508c4eefb969aca973966cdb77b3e6427aeefaeb2e16908",
+    "bytes": 20200,
+    "columns": [
+      "plan_date",
+      "latest_complete_actual_date_allowed",
+      "partial_previous_date_allowed",
+      "partial_previous_last_slot_masked",
+      "scenario_latest_complete_residual_date_allowed",
+      "leakage_check"
+    ],
+    "rows": 365
+  },
+  {
+    "path": "问题二\\code\\metrics.json",
+    "sha256": "b2d78713b420db25557a250989646a7140c2102ca894e746810ffa7831c1cf91",
+    "bytes": 6197,
+    "top_keys": [
+      "model",
+      "evaluation_period",
+      "evaluation_days",
+      "warmup_period",
+      "risk_lambda",
+      "cvar_alpha",
+      "terminal_reserve_kwh",
+      "terminal_shortage_value_yuan_per_kwh",
+      "eta_charge",
+      "eta_discharge",
+      "round_trip_efficiency",
+      "plan_purchase_kwh",
+      "plan_purchase_cost_yuan",
+      "emergency_purchase_kwh",
+      "emergency_purchase_cost_yuan",
+      "total_purchase_cost_yuan",
+      "emergency_share_of_grid_energy",
+      "charge_energy_kwh",
+      "discharge_energy_kwh",
+      "curtailed_surplus_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "soc_continuity_max_abs_error_kwh",
+      "max_charge_per_10min_kwh",
+      "max_discharge_per_10min_kwh",
+      "soc_safety_rate",
+      "risk_neutral_total_cost_yuan",
+      "risk_neutral_plan_cost_yuan",
+      "risk_neutral_emergency_cost_yuan",
+      "risk_neutral_emergency_kwh",
+      "risk_cost_change_vs_neutral_yuan",
+      "risk_cost_change_vs_neutral_pct",
+      "risk_emergency_reduction_kwh",
+      "risk_emergency_reduction_pct",
+      "mean_scenarios_per_day_eval",
+      "january_risk_calibration",
+      "forecast_metrics"
+    ]
+  },
+  {
+    "path": "问题二\\code\\q2_core.py",
+    "sha256": "1724ae2aed8ca4f8336f8ee6083db0d268852d83baf449b8ef7f5ff02521aef8",
+    "bytes": 21114
+  },
+  {
+    "path": "问题二\\code\\run_data.npz",
+    "sha256": "209dd342ab5963250cda6875cd20403281c71cbde5986bc222f6097835ea5d17",
+    "bytes": 1904310,
+    "arrays": {
+      "plan_q": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtailment": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "plan_cost": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_cost": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "baseline_plan_q": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "baseline_emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "baseline_plan_cost": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "baseline_emergency_cost": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "forecast_load": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "forecast_pv": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "forecast_net": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题二\\code\\validation_report.json",
+    "sha256": "88b384faef90a5de21a7eb6755edd978472a7056350e370a61efc1000480d897",
+    "bytes": 1455,
+    "top_keys": [
+      "status",
+      "checks",
+      "diagnostics"
+    ]
+  },
+  {
+    "path": "问题二\\code\\问题2_全年滚动回测.py",
+    "sha256": "d8c4a6c812f6071cde379a997b959bfb056590bfe1acce2beb47e9c9108f264e",
+    "bytes": 29381
+  },
+  {
+    "path": "问题二\\code\\问题2_绘图.py",
+    "sha256": "6409e21b469c55c3860be5d0f248a4eaaebc3de46221b4eff19841b862e85572",
+    "bytes": 24988
+  },
+  {
+    "path": "问题二\\code\\问题2_鲁棒性与消融.py",
+    "sha256": "b2926102f35f61f11f4889d6ac217d787708b85060932583b4dff9948cc7a79a",
+    "bytes": 32380
+  },
+  {
+    "path": "问题二\\code\\验证问题2.py",
+    "sha256": "81784554438b9dc7601935cb4d8937b3d2a84794178af666bddb90937031ab64",
+    "bytes": 6089
+  },
+  {
+    "path": "问题二\\code\\验证鲁棒性与消融.py",
+    "sha256": "bfd2b46c2c233957cf40eb972577b7b33d02f16e77272077fad5c7893d7a3e2a",
+    "bytes": 3577
+  },
+  {
+    "path": "问题二\\output\\00_output目录与论文使用说明.md",
+    "sha256": "9ba8758d45e3ee9f7e8b707b2d4308da8f89592bd8f5ea654ffc800774c1e11c",
+    "bytes": 4038
+  },
+  {
+    "path": "问题二\\output\\01_符号说明.md",
+    "sha256": "32cb3e3905d4ce3984e8ffac95522e2dc57503bfda180a05894aff9625608b5d",
+    "bytes": 4774
+  },
+  {
+    "path": "问题二\\output\\02_模型假设与数据口径.md",
+    "sha256": "8cb934a41fde6fbf4bee28081737ef52eeec315be7fe68af8b8080002c5bb83b",
+    "bytes": 4863
+  },
+  {
+    "path": "问题二\\output\\03_问题2数学模型与公式.md",
+    "sha256": "834dd8f574f4c4cbc69cf6cc4bc92c36d26f844c172c93115444c60bfb726048",
+    "bytes": 7498
+  },
+  {
+    "path": "问题二\\output\\04_滚动预测与求解流程.md",
+    "sha256": "c669be87567d6a05db31ed265a967b3bc04b3ebd41f12b14af967aac0f16f9fd",
+    "bytes": 5233
+  },
+  {
+    "path": "问题二\\output\\05_参数说明与评价指标.md",
+    "sha256": "ac1181c13c7d2675c0ecc7b6e3660427db7695c083bdc9a3d73f2ea06480609c",
+    "bytes": 5373
+  },
+  {
+    "path": "问题二\\output\\06_结果分析与风险对比.md",
+    "sha256": "c50e180a07e053664204cdc275b508667c8eb274145681d47d3b3a7e255257e1",
+    "bytes": 6847
+  },
+  {
+    "path": "问题二\\output\\07_模型评价与论文表述建议.md",
+    "sha256": "9f8aa5bf232767973d39a21f90b01b0ae29b917955599a8f151065a2c736a05e",
+    "bytes": 8782
+  },
+  {
+    "path": "问题二\\output\\08_图表索引与图注.md",
+    "sha256": "9b04fb31850994f7abbe89d2f2da219bbcc0fad8da2f49deb11aa5765490c8d2",
+    "bytes": 3008
+  },
+  {
+    "path": "问题二\\output\\09_鲁棒性与消融验证.md",
+    "sha256": "fc5bf3672975efb429d1e18ddeb93332b3df1a41ab6c1acbb27293d9c81f3607",
+    "bytes": 6723
+  },
+  {
+    "path": "问题二\\output\\robustness\\fixed_high_risk_days.csv",
+    "sha256": "156acf94513613f9e088ff9d8f996c842c732e34c25efac2032e4c1a33c12974",
+    "bytes": 11742,
+    "columns": [
+      "date",
+      "risk_score",
+      "top10pct"
+    ],
+    "rows": 334
+  },
+  {
+    "path": "问题二\\output\\robustness\\k_sensitivity.csv",
+    "sha256": "4c6e8e5b380d214bb4bea9fe5a7e58715fc57d21ea7e784e95b666bfdf91b312",
+    "bytes": 1713,
+    "columns": [
+      "name",
+      "k_target",
+      "window_days",
+      "terminal_value",
+      "floor_policy",
+      "total_cost_yuan",
+      "plan_cost_yuan",
+      "emergency_cost_yuan",
+      "plan_kwh",
+      "emergency_kwh",
+      "emergency_share",
+      "curtailed_kwh",
+      "end_soc_kwh",
+      "realtime_soc_min_kwh",
+      "realtime_soc_max_kwh",
+      "hard_floor_interval_count",
+      "near_floor_interval_count",
+      "near_floor_hours",
+      "high_risk_emergency_kwh",
+      "solve_time_median_s",
+      "solve_time_p90_s",
+      "mean_scenario_count"
+    ],
+    "rows": 5
+  },
+  {
+    "path": "问题二\\output\\robustness\\prediction_baselines.csv",
+    "sha256": "7bf510657d1fbaed9cda0168e1c81d6959674f39e1f4a35ce0d82151cd190dbd",
+    "bytes": 729,
+    "columns": [
+      "model",
+      "target",
+      "mae_kw",
+      "rmse_kw",
+      "nmae"
+    ],
+    "rows": 9
+  },
+  {
+    "path": "问题二\\output\\robustness\\risk_budget_reuse.csv",
+    "sha256": "71c6a073934c470e765d97ed99e6f4a7530d99f6b06d628f174c9b0a36bba344",
+    "bytes": 246,
+    "columns": [
+      "insurance_budget_pct",
+      "selected_lambda",
+      "january_cost_premium_pct",
+      "january_emergency_reduction_kwh"
+    ],
+    "rows": 3
+  },
+  {
+    "path": "问题二\\output\\robustness\\robustness_results.json",
+    "sha256": "e4327a6acad80838372d699362a392c7ab5dbeb53049513c37c1897bd8ce8c67",
+    "bytes": 18703,
+    "top_keys": [
+      "frozen_main",
+      "prediction_baselines",
+      "k_sensitivity",
+      "soc_reserve_ablation",
+      "terminal_value_sensitivity",
+      "window_sensitivity",
+      "risk_budget_reuse",
+      "main_reproduction_check",
+      "conclusions",
+      "exact_cvar_example_k9_alpha08"
+    ]
+  },
+  {
+    "path": "问题二\\output\\robustness\\soc_reserve_ablation.csv",
+    "sha256": "91664aa66aa8d20886073e03e50a8175596882f621b1e5357445bbc0b29c0250",
+    "bytes": 1443,
+    "columns": [
+      "name",
+      "k_target",
+      "window_days",
+      "terminal_value",
+      "floor_policy",
+      "total_cost_yuan",
+      "plan_cost_yuan",
+      "emergency_cost_yuan",
+      "plan_kwh",
+      "emergency_kwh",
+      "emergency_share",
+      "curtailed_kwh",
+      "end_soc_kwh",
+      "realtime_soc_min_kwh",
+      "realtime_soc_max_kwh",
+      "hard_floor_interval_count",
+      "near_floor_interval_count",
+      "near_floor_hours",
+      "high_risk_emergency_kwh",
+      "solve_time_median_s",
+      "solve_time_p90_s",
+      "mean_scenario_count"
+    ],
+    "rows": 4
+  },
+  {
+    "path": "问题二\\output\\robustness\\terminal_value_sensitivity.csv",
+    "sha256": "9942b843009b53901b2d9bf690c27e978fba75ac08e9081c360f5000c6f86b24",
+    "bytes": 1461,
+    "columns": [
+      "name",
+      "k_target",
+      "window_days",
+      "terminal_value",
+      "floor_policy",
+      "total_cost_yuan",
+      "plan_cost_yuan",
+      "emergency_cost_yuan",
+      "plan_kwh",
+      "emergency_kwh",
+      "emergency_share",
+      "curtailed_kwh",
+      "end_soc_kwh",
+      "realtime_soc_min_kwh",
+      "realtime_soc_max_kwh",
+      "hard_floor_interval_count",
+      "near_floor_interval_count",
+      "near_floor_hours",
+      "high_risk_emergency_kwh",
+      "solve_time_median_s",
+      "solve_time_p90_s",
+      "mean_scenario_count"
+    ],
+    "rows": 4
+  },
+  {
+    "path": "问题二\\output\\robustness\\validation_report.json",
+    "sha256": "b27221a8323e6dd3f8a175cbe77abd4bd24eabef4e85569596ad9615ef28caf7",
+    "bytes": 1002,
+    "top_keys": [
+      "status",
+      "checks",
+      "frozen_hashes",
+      "diagnostics"
+    ]
+  },
+  {
+    "path": "问题二\\output\\robustness\\window_sensitivity.csv",
+    "sha256": "4056df8b9c7669657aa9b69814b1528b6804944c26d81df6609fa9ac8a716ca4",
+    "bytes": 1174,
+    "columns": [
+      "name",
+      "k_target",
+      "window_days",
+      "terminal_value",
+      "floor_policy",
+      "total_cost_yuan",
+      "plan_cost_yuan",
+      "emergency_cost_yuan",
+      "plan_kwh",
+      "emergency_kwh",
+      "emergency_share",
+      "curtailed_kwh",
+      "end_soc_kwh",
+      "realtime_soc_min_kwh",
+      "realtime_soc_max_kwh",
+      "hard_floor_interval_count",
+      "near_floor_interval_count",
+      "near_floor_hours",
+      "high_risk_emergency_kwh",
+      "solve_time_median_s",
+      "solve_time_p90_s",
+      "mean_scenario_count"
+    ],
+    "rows": 3
+  },
+  {
+    "path": "问题二\\output\\robustness\\图13_鲁棒性与消融验证.png",
+    "sha256": "daac6ac6c25e7d0e0f44dbd9e39b2a25d881703e5e88f6f90153ca646dca0583",
+    "bytes": 244509
+  },
+  {
+    "path": "问题二\\output\\robustness\\表6_预测基线对比.png",
+    "sha256": "dc1a9918f3ea2b70cb129535b7f46a854b91d7305420b9365f3281ac5276c8ea",
+    "bytes": 52575
+  },
+  {
+    "path": "问题二\\output\\图表\\图10_计划购电零值率日内分布.png",
+    "sha256": "f3b5bf45a69e38211dc42f6833ad8eaeeeeb15cc0b8f0ce7d6a071d639b7f6b3",
+    "bytes": 152589
+  },
+  {
+    "path": "问题二\\output\\图表\\图11_风险方案与风险中性方案对比.png",
+    "sha256": "602b6456bd5bf24abe07f64688dbd62be2085f73314e11ea1e84faa75cf387fb",
+    "bytes": 67002
+  },
+  {
+    "path": "问题二\\output\\图表\\图12_全年每日紧急购电与高风险日.png",
+    "sha256": "95613880525b9dbc4f1ddfbbb79c8247858c2bf06dc5ff6d8491bd9fbe369307",
+    "bytes": 67266
+  },
+  {
+    "path": "问题二\\output\\图表\\图4_问题2因果滚动调度框架.png",
+    "sha256": "2f56364a99b570edbc527e622d92588e574ed8c15e3ff80876c79e134fe7eda0",
+    "bytes": 138603
+  },
+  {
+    "path": "问题二\\output\\图表\\图5_一月风险参数校准与敏感性.png",
+    "sha256": "a7986f8d1f453582598aa8cb286440d2037b5aabbfe15b7f0a53f0003fbae0c4",
+    "bytes": 103120
+  },
+  {
+    "path": "问题二\\output\\图表\\图6_全年SOC轨迹与安全边界.png",
+    "sha256": "c45f206811196dced76f5c1f886a12a01054b78914e4298e8a013e121106e77c",
+    "bytes": 200176
+  },
+  {
+    "path": "问题二\\output\\图表\\图7_月度计划购电与紧急购电.png",
+    "sha256": "64318d972ed1defb747c4181412ff1fd5375738be85322d1274a0b49988a28ed",
+    "bytes": 88943
+  },
+  {
+    "path": "问题二\\output\\图表\\图8_负荷光伏净负荷预测效果.png",
+    "sha256": "9203ca702754641dd357edd86a152a26e397419872bdadba5cb1a98dd56b85e0",
+    "bytes": 181078
+  },
+  {
+    "path": "问题二\\output\\图表\\图9_典型日12月21日实时调度.png",
+    "sha256": "81274bf9788882d6bca5390e42662b283f36c6156fee74d1fc9a878d2b028d30",
+    "bytes": 119808
+  },
+  {
+    "path": "问题二\\output\\图表\\表3_指定日期计划购电量.png",
+    "sha256": "e3a08ff0c6fde80fac9dc81dd793c95703dd7b3c35c5fb0e1dfa9f73a8f3bba0",
+    "bytes": 53919
+  },
+  {
+    "path": "问题二\\output\\图表\\表4_指定日期储能充放电量.png",
+    "sha256": "f192603dc905683ba53608af234d1cf45ee4f68a86aa47d7205b6f714ace32b2",
+    "bytes": 164065
+  },
+  {
+    "path": "问题二\\output\\图表\\表5_指定日期紧急购电量.png",
+    "sha256": "16e7991eeb9c2c2952d990905ebd0daa5b91c210b0cbafbfa0377f5f6bde373d",
+    "bytes": 88220
+  },
+  {
+    "path": "问题二\\output\\指定日期论文表格.md",
+    "sha256": "1eef4e2dae63e3923e4a1c3fc8dfc5424f7611f266873f4557ed5ea536ae222f",
+    "bytes": 3352
+  },
+  {
+    "path": "问题二\\output\\模型与结果说明.md",
+    "sha256": "3cb81a77e5bbef9570bd8e44de52a2f3b88f47ca43be5748481effc2224327f7",
+    "bytes": 5384
+  },
+  {
+    "path": "问题二\\result2.xlsx",
+    "sha256": "0d7f3b3cf6f3159b6a69b4c30d39ff517fe0f0dd2ea276eefdf8209e9b94e884",
+    "bytes": 454039,
+    "sheets": {
+      "计划购电量": {
+        "shape": [
+          335,
+          147
+        ],
+        "nonempty": 49245
+      },
+      "充放电量": {
+        "shape": [
+          2005,
+          6
+        ],
+        "nonempty": 7688
+      },
+      "紧急购电量": {
+        "shape": [
+          856,
+          3
+        ],
+        "nonempty": 1882
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\dispatch_audit.csv",
+    "sha256": "8d25efd1a177a910343c7158ef8116eaeaae9e429e44bdd6d79cb239f30e1561",
+    "bytes": 15084531,
+    "columns": [
+      "strategy",
+      "date",
+      "interval_i",
+      "event_hour",
+      "horizon_slots",
+      "soc_before_kwh",
+      "soc_after_kwh",
+      "contract_kwh",
+      "forecast_net_kwh",
+      "dispatch_net_kwh",
+      "execution_mode",
+      "measurement_model",
+      "actual_net_kwh",
+      "forecast_residual_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "predicted_emergency_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "pv_curtail_kwh",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "terminal_shortfall_kwh"
+    ],
+    "rows": 52559
+  },
+  {
+    "path": "问题三\\code\\event_audit.csv",
+    "sha256": "c12534ebfbd791b236dd6c149e4390759caa5d874c6fe416d21a4c2240525f85",
+    "bytes": 252975,
+    "columns": [
+      "strategy",
+      "date",
+      "event_hour",
+      "soc_kwh",
+      "scenario_count",
+      "node_count",
+      "objective",
+      "solve_seconds",
+      "max_eq_residual",
+      "max_ub_violation",
+      "latest_history_day",
+      "continuation_first_time",
+      "terminal_time",
+      "scenario_weight_sum",
+      "clip_rate",
+      "terminal_shortfall_expected_kwh",
+      "terminal_shortfall_binding_scenarios"
+    ],
+    "rows": 1460
+  },
+  {
+    "path": "问题三\\code\\extended_experiments.json",
+    "sha256": "b553bc6046d30603f643057b801d398e5e52eb26a57a997c2734aa8f1823e0e6",
+    "bytes": 23325,
+    "top_keys": [
+      "protocol",
+      "load_forecast",
+      "scenario_structure",
+      "full_year_realized_policy_sensitivity",
+      "scenario_count",
+      "terminal_value_january_only"
+    ]
+  },
+  {
+    "path": "问题三\\code\\final_acceptance.json",
+    "sha256": "53ae69ce78b478e88a0a67d47835ae84dc052d97e109749bdd84237807691bdd",
+    "bytes": 2769,
+    "top_keys": [
+      "all_pass",
+      "pass_count",
+      "check_count",
+      "checks",
+      "evidence",
+      "artifact_hashes"
+    ]
+  },
+  {
+    "path": "问题三\\code\\five_ledger.csv",
+    "sha256": "7334443acea50fe91ff6aa226ffa1e920b66e1eab105186f4adab867b0ee868a",
+    "bytes": 6576435,
+    "columns": [
+      "date",
+      "natural_slot_i",
+      "contract_plan_date",
+      "contract_slot_j",
+      "price",
+      "B_kwh",
+      "A_final_kwh",
+      "retained_kwh",
+      "cancel_kwh",
+      "add_kwh",
+      "F_plan",
+      "F_cancel",
+      "F_add",
+      "F_emergency",
+      "F_total"
+    ],
+    "rows": 48096
+  },
+  {
+    "path": "问题三\\code\\forecast_vintage_alignment_audit.csv",
+    "sha256": "ed5372129fbf3e3bb8ec441c23e97e73f29fcc8eb80e43ec2b68f70afef85686",
+    "bytes": 2004760,
+    "columns": [
+      "old_issue",
+      "new_issue",
+      "target_time",
+      "old_lead_h",
+      "new_lead_h",
+      "target_unrealized_at_new_issue",
+      "pass"
+    ],
+    "rows": 26262
+  },
+  {
+    "path": "问题三\\code\\future_perturbation_audit.csv",
+    "sha256": "7c12e847c55b6fe7bb2936ba8ec93d7f4727b69de986d7a60aae3bb17c91db7d",
+    "bytes": 340,
+    "columns": [
+      "date",
+      "event_hour",
+      "max_contract_change_kwh"
+    ],
+    "rows": 16
+  },
+  {
+    "path": "问题三\\code\\leakage_audit.csv",
+    "sha256": "7d92378fe366f556fbc248c4c520a6bb790f08ccec45bab107d1e96190bd3ee1",
+    "bytes": 97769,
+    "columns": [
+      "date",
+      "event_hour",
+      "decision_time",
+      "max_forecast_issue_used",
+      "max_baseline_history_day",
+      "max_scenario_error_day",
+      "pass"
+    ],
+    "rows": 1460
+  },
+  {
+    "path": "问题三\\code\\marginal_deadzone_summary.json",
+    "sha256": "1ed7767cf9ebde6bfb567f369a7b5f99f32526cdfdf78fa7c29aef504c2d9d62",
+    "bytes": 4874,
+    "top_keys": [
+      "epsilon_kwh",
+      "rows",
+      "direction_match_count",
+      "within_deadzone_count",
+      "rows_data"
+    ]
+  },
+  {
+    "path": "问题三\\code\\marginal_value_audit.csv",
+    "sha256": "356bab084c3cb8c11c56f2a20bf3fef70627b2d55bf68a3f40ff78b64517dcd5",
+    "bytes": 1668,
+    "columns": [
+      "date",
+      "event_hour",
+      "target_offset_10min",
+      "slot_j",
+      "slot_label",
+      "price",
+      "mu_fd",
+      "deadzone_low_0.5p",
+      "deadzone_high_1.5p",
+      "B_kwh",
+      "A_event_kwh",
+      "A_minus_B_kwh",
+      "predicted_direction",
+      "actual_direction",
+      "direction_match",
+      "J_minus",
+      "J_plus"
+    ],
+    "rows": 8
+  },
+  {
+    "path": "问题三\\code\\metric_A.json",
+    "sha256": "f067266aa9c52c71cc97d84f3a3a9076882088e75fb0d22c14a2b9bbfa8c6dd9",
+    "bytes": 1929,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_B.json",
+    "sha256": "aa04dbcfb2c7781827dd1e067371faacee7e6392a8d1554e31534f46b2cf364a",
+    "bytes": 1917,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_C.json",
+    "sha256": "1865f41122d2f41c53a710df69ebe1b9acbd7e9078b141bf4d80d91a6b99f73b",
+    "bytes": 1960,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D.json",
+    "sha256": "b0e6fee319298c3f3e94377f38bf3c936da8ad4c3d5e6027286a327cfd111284",
+    "bytes": 1971,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_K5.json",
+    "sha256": "e013a6ac94254cd929766ef311d131a44a5537c54c0aa95946be4095b9b7d8ec",
+    "bytes": 1978,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_no12.json",
+    "sha256": "e42f494494e6c62352c02919bdcd97d137e2d2e359814303ef9e8a6b1f12cca3",
+    "bytes": 1991,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_no18.json",
+    "sha256": "a409e325fc851ba7d7e53b36eddda725171f4e564983404b35fc327f70428572",
+    "bytes": 1987,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_no6.json",
+    "sha256": "0a26031a51b66318f2dd0124ccd68e4b6d80773b5adb8ed9325ddb98ad6412e9",
+    "bytes": 1976,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_point.json",
+    "sha256": "6dc8d3c8060fe0f40d9d4dcfd32b0f74d64dc60518e45eeb6a615d485d2eefe3",
+    "bytes": 1961,
+    "top_keys": [
+      "execution_mode",
+      "measurement_model",
+      "curtail_semantics",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_stepwise.json",
+    "sha256": "17bf20b169ebdb0595fbba8ed0c779c31310bae825ab5e84f572ec0c7c18192d",
+    "bytes": 405,
+    "top_keys": [
+      "name",
+      "mode",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "emergency_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "changed_slot_count_formal",
+      "adjusted_event_count_formal",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metric_D_sunk.json",
+    "sha256": "c360aff42e8df23f97a1d09d11f54f47d43b8d84e2e6c571d26f00ff46ddf35b",
+    "bytes": 397,
+    "top_keys": [
+      "name",
+      "mode",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "emergency_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "changed_slot_count_formal",
+      "adjusted_event_count_formal",
+      "runtime_seconds"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metrics.json",
+    "sha256": "8a752621e361f4835b5677617698ab3b5b21559474de0970499b503d56fc6cfd",
+    "bytes": 11292,
+    "top_keys": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "D_point",
+      "factorial_effects",
+      "scenario_comparison"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metrics_final.json",
+    "sha256": "d3c6313c927cf54f446d0c9cf77b1567d5afff98587276f3ff8c7527bea32b24",
+    "bytes": 54793,
+    "top_keys": [
+      "main_semantics",
+      "formal_period",
+      "protocol",
+      "factorial",
+      "factorial_effects",
+      "scenario_comparison",
+      "extended_experiments",
+      "semantic_robustness",
+      "marginal_deadzone",
+      "validation_summary",
+      "main_D",
+      "physical_fix"
+    ]
+  },
+  {
+    "path": "问题三\\code\\metrics_partial.json",
+    "sha256": "8a5cedf80772f6392119f994fb211abfedba13fb7d67afa0d43adf1884986be9",
+    "bytes": 10317,
+    "top_keys": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "D_point"
+    ]
+  },
+  {
+    "path": "问题三\\code\\nonanticipativity_nodes.csv",
+    "sha256": "30ed7213d419de2a1188ee5abd1544e9bf646a515b3dbd27b6988cfe3c9e9b6a",
+    "bytes": 1904,
+    "columns": [
+      "date",
+      "root_event_hour",
+      "stage_hour",
+      "node_id",
+      "leaf_members",
+      "leaf_count"
+    ],
+    "rows": 76
+  },
+  {
+    "path": "问题三\\code\\physical_10min.csv",
+    "sha256": "8435301b49c7335c1252702952f4edffd2e0912bdca85140c0c4670418651aed",
+    "bytes": 10493850,
+    "columns": [
+      "date",
+      "slot_i",
+      "start",
+      "price",
+      "contract_kwh",
+      "net_actual_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_start",
+      "soc_end",
+      "soc_balance_residual",
+      "power_balance_slack",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "pv_curtail_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "physical_balance_residual",
+      "execution_mode"
+    ],
+    "rows": 48096
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\legacy_final_acceptance.json",
+    "sha256": "277c37d7e9a928c93e77b5b807156080a932717dcf83409f36fff93287ec841f",
+    "bytes": 2482,
+    "top_keys": [
+      "all_pass",
+      "pass_count",
+      "check_count",
+      "checks",
+      "evidence",
+      "artifact_hashes"
+    ]
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\legacy_metric_D.json",
+    "sha256": "b138d60094fac09231f0f64a57ebf75efdc57239c8573a82f2823e2372c4232e",
+    "bytes": 1778,
+    "top_keys": [
+      "name",
+      "use_new_vintage",
+      "allow_revision",
+      "scenario_count",
+      "disabled_vintage_hours",
+      "down_settlement",
+      "formal_days",
+      "total_cost_yuan",
+      "regular_cost_yuan",
+      "emergency_cost_yuan",
+      "planned_B_kwh",
+      "final_A_kwh",
+      "down_adjust_kwh",
+      "up_adjust_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "soc_min_kwh",
+      "soc_max_kwh",
+      "max_soc_continuity_error_kwh",
+      "event_count_total",
+      "warmup_event_count",
+      "formal_event_count",
+      "changed_slot_count_total",
+      "warmup_changed_slot_count",
+      "formal_changed_slot_count",
+      "warmup_adjusted_event_count",
+      "formal_adjusted_event_count",
+      "formal_adjusted_event_rate",
+      "dispatch_count_total",
+      "warmup_dispatch_count",
+      "formal_dispatch_count",
+      "solver_max_eq_residual",
+      "solver_max_ub_violation",
+      "max_tree_nodes",
+      "max_scenarios",
+      "scenario_weight_sum_max_error",
+      "scenario_clip_rate_mean",
+      "scenario_clip_rate_max",
+      "terminal_shortfall_binding_event_count",
+      "terminal_shortfall_binding_event_rate",
+      "terminal_shortfall_expected_kwh_mean",
+      "runtime_seconds",
+      "projection_soc_increment_max_error",
+      "max_simultaneous_charge_discharge_kwh"
+    ]
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\legacy_metrics_final.json",
+    "sha256": "b07f48416293d090839e84a4340632658e1bea67ee0c460a165cc5b57ef5ea38",
+    "bytes": 38427,
+    "top_keys": [
+      "main_semantics",
+      "formal_period",
+      "protocol",
+      "factorial",
+      "factorial_effects",
+      "scenario_comparison",
+      "extended_experiments",
+      "semantic_robustness",
+      "marginal_deadzone",
+      "validation_summary",
+      "main_D"
+    ]
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\legacy_physical_audit.json",
+    "sha256": "b327ed67f53b44c1fa8b387d3bf7ae71f3e908773c81276d73a6d4311e53b5bd",
+    "bytes": 603,
+    "top_keys": [
+      "source_commit",
+      "formal_slots",
+      "supply_surplus_kwh",
+      "w_above_pv_slots",
+      "sum_w_excess_above_pv",
+      "w_at_zero_pv",
+      "discharge_and_surplus_slots",
+      "sum_positive_pv_minus_load",
+      "battery_exceeds_all_demand_slots",
+      "battery_excess_over_load_kwh",
+      "judgment"
+    ]
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\legacy_run_D.npz",
+    "sha256": "9e30410d382107aa5e4864a14ebf867668643fe4ce9abd82c0342e943a0c9725",
+    "bytes": 1712952,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\legacy_validation.json",
+    "sha256": "07d012bd0989bbc7c043f3cd511dfacbdd6fdcc1861270df382443d18805dbe9",
+    "bytes": 4930,
+    "top_keys": [
+      "all_pass",
+      "checks",
+      "evidence",
+      "pass_count",
+      "check_count"
+    ]
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\physical_matrix_validation.json",
+    "sha256": "357c01bb37393eae651b3eece7402a26f80668028fa7d35dbf1f1522b72bd002",
+    "bytes": 13049,
+    "top_keys": [
+      "all_pass",
+      "strategy_count",
+      "check_count",
+      "pass_count",
+      "current_measurement_assumption",
+      "contract_scope",
+      "current_measurement_scope",
+      "legacy",
+      "strategies"
+    ]
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_00.log",
+    "sha256": "7a8757421dac4572224a5294846a2d5c34363a32a4ae960aab70280c78cc379b",
+    "bytes": 11294
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_01.log",
+    "sha256": "54e30c000440c836e16dc75d97983626e820790b684e6ee33f073cb4cbcd327e",
+    "bytes": 23384
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_02.log",
+    "sha256": "861a1c86073e61553739bc10924f7514cdb759b0f9ee981e9121b5a6977a67cd",
+    "bytes": 2927
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_03.log",
+    "sha256": "74531893ac7748cfc1c1aaed6cc8d0620bfae4850f8e040324764943eb3ca4c9",
+    "bytes": 4876
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_04.log",
+    "sha256": "55a1ba4d3ff9874db691dca344fb652a791ba9ee622f0fb40cb4cd41c220f185",
+    "bytes": 63
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_05.log",
+    "sha256": "9336ca1b03a396d5c2f8c05f31ee6533ed06035932097b3b8bfe072a9fa4fc29",
+    "bytes": 5912
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_06.log",
+    "sha256": "1e9447b3a86b7c532a49d29a027b0102b41189f5fe49a74bb66404522d5fe6ea",
+    "bytes": 13051
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_07.log",
+    "sha256": "f6a54ca99cebc3566d4db950c4fe05291f68e8507cc4147e20641fe31a54ae6b",
+    "bytes": 101
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_08.log",
+    "sha256": "fe9950b15734897403cc4c07768694c6806fa53c83ee992f13cb4eb5af8ce8d0",
+    "bytes": 166
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_09.log",
+    "sha256": "16aacdbbfee6e39a87f84f31a0d4089f7727dffc6059182a76ce1de147d3e0b4",
+    "bytes": 174
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_10.log",
+    "sha256": "17829f80ca7804a74075f8176f2fb238a2d4e88bf42bd8f9c29db511d59507e8",
+    "bytes": 517
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_11.log",
+    "sha256": "b5e06c4dd02ba815a0119fd24f73e8cffc9def89df9ee40372d907a74de3fe0a",
+    "bytes": 26
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_12.log",
+    "sha256": "24f1130a6bde860f22b59c2e824a1e41fa1b83acc6db6d96426b4bcffa978bb8",
+    "bytes": 2771
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\post_13.log",
+    "sha256": "96710af81bdf6a7aa7b83fdd9bca5b341be329ab0e107924ceffaccc232f331c",
+    "bytes": 2323
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\postprocess_status.json",
+    "sha256": "176f995aa6890b8b5af24b97bbf714049a6346bd6bf754297df23cca9b9fa88e",
+    "bytes": 3606,
+    "top_keys": 14
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_A.log",
+    "sha256": "7b13da1e9854a3e34794a258c3bcfdf7b28b6f921acaf90b5c91fda4bae0a651",
+    "bytes": 2978
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_B.log",
+    "sha256": "17ea20553eb77a3af1417cbb9a4aeb044c64bbe42abb9852ec12e767f5a5732b",
+    "bytes": 2963
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_C.log",
+    "sha256": "dd112c58cc5a0ea5c65a9ed587dbd856571d7a430aec647c325849062e4b0bb3",
+    "bytes": 2987
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D.log",
+    "sha256": "a7da5134b9700ec5158857e0e83e1139fe8ba694f196064123ee4cbc6aa9d339",
+    "bytes": 2995
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_K5.log",
+    "sha256": "23b47bfbfbb8e6376fd001c25bb8ec56f33314e7e952ab44e942dc6a14991f37",
+    "bytes": 3047
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_no12.log",
+    "sha256": "447febb3c799994fd90784bbac46d2c255cbc497e59956a214cd2a87a746f1ab",
+    "bytes": 3118
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_no18.log",
+    "sha256": "2979cf585d503992fc39751b78a3eb54331dec609fa8785fe9b55ac127b873e0",
+    "bytes": 3112
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_no6.log",
+    "sha256": "fde051f7e325b3c396b960d407965625a79e1d680947debadf8af65cece74203",
+    "bytes": 3090
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_point.log",
+    "sha256": "cf46ab6d111639a360bf808fee4e8c086cac02611f653edb67a3f38515d8c2bd",
+    "bytes": 3076
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_stepwise.log",
+    "sha256": "585b1262808a4d123712ed4cdaa1b2149c3275ef0724f47e4ae871238288f474",
+    "bytes": 1484
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_D_sunk.log",
+    "sha256": "3bd5d41b61160586a6abf0700eee80f3995ab49e33baa1a0a618461b47d6889b",
+    "bytes": 1420
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\replay_status.json",
+    "sha256": "a74a885e3130b16511618442259fc9409344d32bdd66b968a09efdd9430f0195",
+    "bytes": 3308,
+    "top_keys": 11
+  },
+  {
+    "path": "问题三\\code\\physical_fix_evidence\\targeted_pytest.xml",
+    "sha256": "cb78da681e236de92da8e97d5a76664d8685db0155b5ee593d595c6be1b80da7",
+    "bytes": 1568
+  },
+  {
+    "path": "问题三\\code\\q3_data.py",
+    "sha256": "c9b5813608b69e329e49409252e0edcb9d543f6eb1b10cd6da09cf8c19798090",
+    "bytes": 12166
+  },
+  {
+    "path": "问题三\\code\\q3_opt.py",
+    "sha256": "5958f593ccc506f80505f11dea7c0ad794f2d2e7cbe1ba544e7d349a4fd4ada0",
+    "bytes": 17923
+  },
+  {
+    "path": "问题三\\code\\q3_physical.py",
+    "sha256": "98b9d828efac9cb811706bf81301c57bc100d3b85fb67c21d596eaaac929cdd6",
+    "bytes": 3280
+  },
+  {
+    "path": "问题三\\code\\q3_sim.py",
+    "sha256": "d13c3528e5ecc9a9e63085cd6a382e6e2a82761dc50b3028d9d5159ed6ef4a8f",
+    "bytes": 8999
+  },
+  {
+    "path": "问题三\\code\\revision_log.csv",
+    "sha256": "6e9beb7b5c5911008e2134b87da0b49005ad77bfe7364e34612faf4d79a0c9bb",
+    "bytes": 3250813,
+    "columns": [
+      "strategy",
+      "date",
+      "event_hour",
+      "slot_j",
+      "slot_label",
+      "old_kwh",
+      "new_kwh",
+      "delta_kwh",
+      "legal"
+    ],
+    "rows": 41793
+  },
+  {
+    "path": "问题三\\code\\revision_time_milp_audit.csv",
+    "sha256": "c226031a20c7821a62ea403a1db8ad21ae8fbd8a8bf06932e1ae1fd703127a4b",
+    "bytes": 674,
+    "columns": [
+      "date",
+      "event_hour",
+      "objective",
+      "solve_seconds",
+      "nonconvex_delivery_slots",
+      "up_branch_slots",
+      "down_branch_slots",
+      "q_min",
+      "q_max",
+      "status"
+    ],
+    "rows": 4
+  },
+  {
+    "path": "问题三\\code\\run_A.npz",
+    "sha256": "1a477f97c38a28f3a050c9e78976166e45f28a7e1cd26fe3c7886b550da6dc1f",
+    "bytes": 1697433,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_B.npz",
+    "sha256": "9921eabc1a19a6bc0b4b9ba25bffb24507a95e442b70ada7d8efb5e374fe7eb2",
+    "bytes": 1693900,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_C.npz",
+    "sha256": "7ea329a580fd8bdefcdebf6e91c0468123b613873f6c87d9fd0921794775440a",
+    "bytes": 2041836,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D.npz",
+    "sha256": "1c053844d9cc1d20ab95dd034ab117b2d447f96145f1f44d241a958fe2bc6cab",
+    "bytes": 2041747,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_K5.npz",
+    "sha256": "88579c3e5d88d05d2719ebb1ece0912ce7c5fd64249359db1bd1674e4e166f27",
+    "bytes": 2046370,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_no12.npz",
+    "sha256": "8a39a90d5f283a8a02f9a5e58e9a010cf7dbfb8d211d70455d634b24a1d46b48",
+    "bytes": 2039413,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_no18.npz",
+    "sha256": "dbdb36a793cd7058bdc87ff33dec4815596b014a52adb9a8b12f25357428b92f",
+    "bytes": 2045330,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_no6.npz",
+    "sha256": "a66233411776a8293236fa11c2558644fa6b4abb4695a3b51ef044aa2e54becb",
+    "bytes": 2039163,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_point.npz",
+    "sha256": "068a96bc55a82a7db439ee0a962789adee7368aaec27224103c26b0542fa3e50",
+    "bytes": 1973556,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_stepwise.npz",
+    "sha256": "11bdc958e937c4665387bc9706c78d51bad7b5616129bb1b346fb57c5a4ecdda",
+    "bytes": 2032775,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\run_D_sunk.npz",
+    "sha256": "35275951436c7bcb2b448f524fdfeb7eb97cf1cc6108375b48cda8992621978e",
+    "bytes": 2011377,
+    "arrays": {
+      "B": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "A_stage": {
+        "shape": [
+          365,
+          4,
+          144
+        ],
+        "finite": true
+      },
+      "charge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "discharge": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "emergency": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "curtail": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "grid_import": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "unused_contract": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "supply_surplus": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "battery_dump": {
+        "shape": [
+          365,
+          144
+        ],
+        "finite": true
+      },
+      "execution_mode": {
+        "shape": [],
+        "finite": null
+      },
+      "physical_schema_version": {
+        "shape": [],
+        "finite": true
+      },
+      "soc00": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc24": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "soc_path": {
+        "shape": [
+          365,
+          145
+        ],
+        "finite": true
+      },
+      "plan_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "adjusted_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "natural_regular_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      },
+      "emergency_fee": {
+        "shape": [
+          365
+        ],
+        "finite": true
+      }
+    }
+  },
+  {
+    "path": "问题三\\code\\semantic_robustness.csv",
+    "sha256": "161c6e258ba6c6aff49b75fef5d7ecac7c8b1b6a87c7587c2750385879f9f53f",
+    "bytes": 369,
+    "columns": [
+      "semantics",
+      "total_cost_yuan",
+      "delta_vs_main_yuan",
+      "method"
+    ],
+    "rows": 4
+  },
+  {
+    "path": "问题三\\code\\semantic_robustness.json",
+    "sha256": "5d52d90f96dcae8d5203b6ab81f81e263ad56bfddcc18073cc158090787794cf",
+    "bytes": 2925,
+    "top_keys": [
+      "main_D_total_cost_yuan",
+      "sunk_plan_plus_penalty",
+      "stepwise_revision",
+      "revision_time",
+      "revision_time_exact_milp_audit",
+      "deltas_vs_main"
+    ]
+  },
+  {
+    "path": "问题三\\code\\test_physical_semantics.py",
+    "sha256": "e377f46a0831898059886c087dc7d29135cea1af95994a65193c3a23735d4ef8",
+    "bytes": 3834
+  },
+  {
+    "path": "问题三\\code\\validation.json",
+    "sha256": "3b94877e8521368a7ab96069a2532807fbaae2d2bb9de5568d126e24cfd54c9f",
+    "bytes": 5910,
+    "top_keys": [
+      "all_pass",
+      "checks",
+      "evidence",
+      "pass_count",
+      "check_count"
+    ]
+  },
+  {
+    "path": "问题三\\code\\写出result3.py",
+    "sha256": "49acef08a8af5439dc965dcf65eb49b603cb41b968fa17a7cb17e802be878a98",
+    "bytes": 4666
+  },
+  {
+    "path": "问题三\\code\\同步问题3图表.py",
+    "sha256": "0161efbfc387265a07bcb61a004b7fceba3c26d6cef6a6249ac030854963b5bf",
+    "bytes": 4553
+  },
+  {
+    "path": "问题三\\code\\同步问题3论文输出.py",
+    "sha256": "1580345396eab946830ac7ae06c083a018972677b2b4ec4f35c5173604ffbc8f",
+    "bytes": 27037
+  },
+  {
+    "path": "问题三\\code\\完成物理修复产物.py",
+    "sha256": "01769c39392de9d892f8cc20fe643ffcdbf8414204ae3e179703d8091fb36413",
+    "bytes": 2396
+  },
+  {
+    "path": "问题三\\code\\审计跨问题原始结果.py",
+    "sha256": "2713fd5f8c8623cd77e9b79a7def9c844f238184ee8b59b174dd85f2e0c36d49",
+    "bytes": 6174
+  },
+  {
+    "path": "问题三\\code\\扩展建议验证.py",
+    "sha256": "e099bcac2c78fac00fc226ea5636227e25a3b1e31e6b867f33ae3970e1b003f6",
+    "bytes": 4325
+  },
+  {
+    "path": "问题三\\code\\投影实跑充放电.py",
+    "sha256": "533d6135fd36a83f6c373433021db15a608a79b16d93c6217cdfd1e45805143b",
+    "bytes": 3274
+  },
+  {
+    "path": "问题三\\code\\最终总验收.py",
+    "sha256": "1e7f1e3caa48768469e7a931e253f5d94001389c2b5ec124ae26abc2f47081de",
+    "bytes": 4140
+  },
+  {
+    "path": "问题三\\code\\汇总主结果.py",
+    "sha256": "31eaaa3c29aa09ea739ec8ff4c572559342e73bd0c5d820da39b128ec8dd371b",
+    "bytes": 1250
+  },
+  {
+    "path": "问题三\\code\\汇总最终指标.py",
+    "sha256": "0e614053eab97b7319c96e56fd812c813063f4cc1004a2e3a39500242afd1fe8",
+    "bytes": 2824
+  },
+  {
+    "path": "问题三\\code\\生成问题3图表.py",
+    "sha256": "c962b656aca7e7ed6c95fddbe2b45e2aaddb652531e3f080033c3770aadeb2b7",
+    "bytes": 5427
+  },
+  {
+    "path": "问题三\\code\\语义鲁棒性.py",
+    "sha256": "762acfdba509a202b487bb5edc4afd5472c88e09bb1dfb32a5a510c6baec4822",
+    "bytes": 8667
+  },
+  {
+    "path": "问题三\\code\\边际价值审计.py",
+    "sha256": "0b025c5466a399e9746bb2657ec026889021fddaa57a417bed392135e91f13f9",
+    "bytes": 3548
+  },
+  {
+    "path": "问题三\\code\\运行单策略.py",
+    "sha256": "d1069026bedd87ef57777dec7a6af27eb83cdcc507aaf5c870b25dd843b47127",
+    "bytes": 5766
+  },
+  {
+    "path": "问题三\\code\\运行语义单策略.py",
+    "sha256": "b6fe052abff75bfd14555ba2e448ae779eba24e071da3d57c8c35bf7739ac41c",
+    "bytes": 2169
+  },
+  {
+    "path": "问题三\\code\\重跑物理修复验证.py",
+    "sha256": "56689f0494f5fbf5a4bf64016e0bf0379c019e91c2e6da7e84bc0b881e9f0897",
+    "bytes": 1886
+  },
+  {
+    "path": "问题三\\code\\问题3_对照与主回放.py",
+    "sha256": "eaeccac9c0b73fbabebfd0f9a62a083d61b73bbda82bef9adeaa4fb7a80403f3",
+    "bytes": 6155
+  },
+  {
+    "path": "问题三\\code\\验证物理修复矩阵.py",
+    "sha256": "4e396a2a142b52c9dcfd7c58c8df0fd39e0399caf36e68ca4171749487a21b35",
+    "bytes": 3505
+  },
+  {
+    "path": "问题三\\code\\验证问题3.py",
+    "sha256": "3f2ba1bde423258a6d09d3bf3bceb51464ad3c800e14bb5d88b060aa9baa540c",
+    "bytes": 14064
+  },
+  {
+    "path": "问题三\\code\\验证问题3论文输出.py",
+    "sha256": "9f6575d4dfc63056984807ef06031e6c7e19a34b912cf061df39c77648d23ede",
+    "bytes": 5230
+  },
+  {
+    "path": "问题三\\figures\\fig_q3_factorial_abcd.png",
+    "sha256": "114c3c231d8100afc36de7a34ebe0da6e16efc793dc6c4890bf4c37e2bc18953",
+    "bytes": 62386
+  },
+  {
+    "path": "问题三\\figures\\fig_q3_fee_decomposition.png",
+    "sha256": "806e548430f942aea4807ba0caf677e5b3573eae8abe7709cefbf1805183641c",
+    "bytes": 51773
+  },
+  {
+    "path": "问题三\\figures\\fig_q3_marginal_deadzone.png",
+    "sha256": "8cc3d48ee79cafbe443c36dc354970d67603fbec1465384aa4eede1be8c446c1",
+    "bytes": 160216
+  },
+  {
+    "path": "问题三\\figures\\fig_q3_representative_days.png",
+    "sha256": "8b8ff372d72b770405ff79ec99577c6b588667e1c13833170ee4ebfe5f16c0f8",
+    "bytes": 498865
+  },
+  {
+    "path": "问题三\\figures\\fig_q3_semantic_robustness.png",
+    "sha256": "316d8f43e9ee8c20a3c84c356d181fee82723ca16867783941f17c2d504096ba",
+    "bytes": 71827
+  },
+  {
+    "path": "问题三\\figures\\fig_q3_typical_day.png",
+    "sha256": "1e27124de1a8e0f54faa18be010d79e13111ddb039f70c4eb62167ca2cc9bfca",
+    "bytes": 186732
+  },
+  {
+    "path": "问题三\\output\\00_output目录与论文使用说明.md",
+    "sha256": "0a3b445e342571773eb9641788b94ce6aa76cc94130e2b55ab1e17cdc82c7725",
+    "bytes": 350
+  },
+  {
+    "path": "问题三\\output\\01_符号说明.md",
+    "sha256": "b689cdafd852bd3da19501cc7d762c7a792baae0350063aa2246e938b32b54b9",
+    "bytes": 1093
+  },
+  {
+    "path": "问题三\\output\\02_模型假设与数据口径.md",
+    "sha256": "d1176d40dd1974efe6ba47296eb721275a92f9c81838190b95386fdf32393f3b",
+    "bytes": 1024
+  },
+  {
+    "path": "问题三\\output\\03_问题3数学模型与公式.md",
+    "sha256": "0306698b245533b0aa3d128f31f5e8e0f0d1149f4ff8218a60894297ea80f03a",
+    "bytes": 1107
+  },
+  {
+    "path": "问题三\\output\\04_滚动预测与求解流程.md",
+    "sha256": "d2b9fbeb7104a729a1ca84df8303681aa1b456873e17d7ea3e9d446632ef27b8",
+    "bytes": 774
+  },
+  {
+    "path": "问题三\\output\\05_参数说明与评价指标.md",
+    "sha256": "680b65547dfc2e8bf7c14fe38e12318f7432d0d7a585ca7b029354b3a9136e80",
+    "bytes": 593
+  },
+  {
+    "path": "问题三\\output\\06_结果分析与对照实验.md",
+    "sha256": "f6af3306ffd0a0c63edadeb34a69c0639d57e36ed714b722663a039ca765031c",
+    "bytes": 574
+  },
+  {
+    "path": "问题三\\output\\07_模型评价与论文表述建议.md",
+    "sha256": "fc748b5634a154e925cefeada75fe463f74716d48a3e417dac8181435307521a",
+    "bytes": 742
+  },
+  {
+    "path": "问题三\\output\\08_图表索引与图注.md",
+    "sha256": "84650395dbd6f88da727ee00f417e26c3432fe9b93821a89c5947c7828c19683",
+    "bytes": 494
+  },
+  {
+    "path": "问题三\\output\\09_鲁棒性与消融验证.md",
+    "sha256": "a8dbd08c61858afc994ec63a2445205ccb170a34b75ed7ebee955374928158fd",
+    "bytes": 490
+  },
+  {
+    "path": "问题三\\output\\robustness\\dispatch_audit.csv",
+    "sha256": "8d25efd1a177a910343c7158ef8116eaeaae9e429e44bdd6d79cb239f30e1561",
+    "bytes": 15084531,
+    "columns": [
+      "strategy",
+      "date",
+      "interval_i",
+      "event_hour",
+      "horizon_slots",
+      "soc_before_kwh",
+      "soc_after_kwh",
+      "contract_kwh",
+      "forecast_net_kwh",
+      "dispatch_net_kwh",
+      "execution_mode",
+      "measurement_model",
+      "actual_net_kwh",
+      "forecast_residual_kwh",
+      "charge_kwh",
+      "discharge_kwh",
+      "predicted_emergency_kwh",
+      "emergency_kwh",
+      "curtail_kwh",
+      "pv_curtail_kwh",
+      "grid_import_kwh",
+      "unused_contract_kwh",
+      "supply_surplus_kwh",
+      "battery_dump_kwh",
+      "terminal_shortfall_kwh"
+    ],
+    "rows": 52559
+  },
+  {
+    "path": "问题三\\output\\robustness\\event_audit.csv",
+    "sha256": "c12534ebfbd791b236dd6c149e4390759caa5d874c6fe416d21a4c2240525f85",
+    "bytes": 252975,
+    "columns": [
+      "strategy",
+      "date",
+      "event_hour",
+      "soc_kwh",
+      "scenario_count",
+      "node_count",
+      "objective",
+      "solve_seconds",
+      "max_eq_residual",
+      "max_ub_violation",
+      "latest_history_day",
+      "continuation_first_time",
+      "terminal_time",
+      "scenario_weight_sum",
+      "clip_rate",
+      "terminal_shortfall_expected_kwh",
+      "terminal_shortfall_binding_scenarios"
+    ],
+    "rows": 1460
+  },
+  {
+    "path": "问题三\\output\\robustness\\extended_experiments.json",
+    "sha256": "b553bc6046d30603f643057b801d398e5e52eb26a57a997c2734aa8f1823e0e6",
+    "bytes": 23325,
+    "top_keys": [
+      "protocol",
+      "load_forecast",
+      "scenario_structure",
+      "full_year_realized_policy_sensitivity",
+      "scenario_count",
+      "terminal_value_january_only"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\final_acceptance.json",
+    "sha256": "53ae69ce78b478e88a0a67d47835ae84dc052d97e109749bdd84237807691bdd",
+    "bytes": 2769,
+    "top_keys": [
+      "all_pass",
+      "pass_count",
+      "check_count",
+      "checks",
+      "evidence",
+      "artifact_hashes"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\forecast_vintage_alignment_audit.csv",
+    "sha256": "ed5372129fbf3e3bb8ec441c23e97e73f29fcc8eb80e43ec2b68f70afef85686",
+    "bytes": 2004760,
+    "columns": [
+      "old_issue",
+      "new_issue",
+      "target_time",
+      "old_lead_h",
+      "new_lead_h",
+      "target_unrealized_at_new_issue",
+      "pass"
+    ],
+    "rows": 26262
+  },
+  {
+    "path": "问题三\\output\\robustness\\future_perturbation_audit.csv",
+    "sha256": "7c12e847c55b6fe7bb2936ba8ec93d7f4727b69de986d7a60aae3bb17c91db7d",
+    "bytes": 340,
+    "columns": [
+      "date",
+      "event_hour",
+      "max_contract_change_kwh"
+    ],
+    "rows": 16
+  },
+  {
+    "path": "问题三\\output\\robustness\\leakage_audit.csv",
+    "sha256": "7d92378fe366f556fbc248c4c520a6bb790f08ccec45bab107d1e96190bd3ee1",
+    "bytes": 97769,
+    "columns": [
+      "date",
+      "event_hour",
+      "decision_time",
+      "max_forecast_issue_used",
+      "max_baseline_history_day",
+      "max_scenario_error_day",
+      "pass"
+    ],
+    "rows": 1460
+  },
+  {
+    "path": "问题三\\output\\robustness\\legacy_physical_audit.json",
+    "sha256": "b327ed67f53b44c1fa8b387d3bf7ae71f3e908773c81276d73a6d4311e53b5bd",
+    "bytes": 603,
+    "top_keys": [
+      "source_commit",
+      "formal_slots",
+      "supply_surplus_kwh",
+      "w_above_pv_slots",
+      "sum_w_excess_above_pv",
+      "w_at_zero_pv",
+      "discharge_and_surplus_slots",
+      "sum_positive_pv_minus_load",
+      "battery_exceeds_all_demand_slots",
+      "battery_excess_over_load_kwh",
+      "judgment"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\marginal_deadzone_summary.json",
+    "sha256": "56eaa539d2b72822fc70935f26d8c98da7ec2555421b9b9b4bc9930142a87a63",
+    "bytes": 4871,
+    "top_keys": [
+      "epsilon_kwh",
+      "rows",
+      "direction_match_count",
+      "within_deadzone_count",
+      "rows_data"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\marginal_value_audit.csv",
+    "sha256": "356bab084c3cb8c11c56f2a20bf3fef70627b2d55bf68a3f40ff78b64517dcd5",
+    "bytes": 1668,
+    "columns": [
+      "date",
+      "event_hour",
+      "target_offset_10min",
+      "slot_j",
+      "slot_label",
+      "price",
+      "mu_fd",
+      "deadzone_low_0.5p",
+      "deadzone_high_1.5p",
+      "B_kwh",
+      "A_event_kwh",
+      "A_minus_B_kwh",
+      "predicted_direction",
+      "actual_direction",
+      "direction_match",
+      "J_minus",
+      "J_plus"
+    ],
+    "rows": 8
+  },
+  {
+    "path": "问题三\\output\\robustness\\nonanticipativity_nodes.csv",
+    "sha256": "30ed7213d419de2a1188ee5abd1544e9bf646a515b3dbd27b6988cfe3c9e9b6a",
+    "bytes": 1904,
+    "columns": [
+      "date",
+      "root_event_hour",
+      "stage_hour",
+      "node_id",
+      "leaf_members",
+      "leaf_count"
+    ],
+    "rows": 76
+  },
+  {
+    "path": "问题三\\output\\robustness\\physical_matrix_validation.json",
+    "sha256": "357c01bb37393eae651b3eece7402a26f80668028fa7d35dbf1f1522b72bd002",
+    "bytes": 13049,
+    "top_keys": [
+      "all_pass",
+      "strategy_count",
+      "check_count",
+      "pass_count",
+      "current_measurement_assumption",
+      "contract_scope",
+      "current_measurement_scope",
+      "legacy",
+      "strategies"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\revision_time_milp_audit.csv",
+    "sha256": "c226031a20c7821a62ea403a1db8ad21ae8fbd8a8bf06932e1ae1fd703127a4b",
+    "bytes": 674,
+    "columns": [
+      "date",
+      "event_hour",
+      "objective",
+      "solve_seconds",
+      "nonconvex_delivery_slots",
+      "up_branch_slots",
+      "down_branch_slots",
+      "q_min",
+      "q_max",
+      "status"
+    ],
+    "rows": 4
+  },
+  {
+    "path": "问题三\\output\\robustness\\semantic_robustness.csv",
+    "sha256": "dcdf260ff1c109f6ad7c2b41679e954fa55aaa4e232557d340b22be3b4575cae",
+    "bytes": 368,
+    "columns": [
+      "semantics",
+      "total_cost_yuan",
+      "delta_vs_main_yuan",
+      "method"
+    ],
+    "rows": 4
+  },
+  {
+    "path": "问题三\\output\\robustness\\semantic_robustness.json",
+    "sha256": "5d52d90f96dcae8d5203b6ab81f81e263ad56bfddcc18073cc158090787794cf",
+    "bytes": 2925,
+    "top_keys": [
+      "main_D_total_cost_yuan",
+      "sunk_plan_plus_penalty",
+      "stepwise_revision",
+      "revision_time",
+      "revision_time_exact_milp_audit",
+      "deltas_vs_main"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\targeted_pytest.xml",
+    "sha256": "cb78da681e236de92da8e97d5a76664d8685db0155b5ee593d595c6be1b80da7",
+    "bytes": 1568
+  },
+  {
+    "path": "问题三\\output\\robustness\\validation.json",
+    "sha256": "3b94877e8521368a7ab96069a2532807fbaae2d2bb9de5568d126e24cfd54c9f",
+    "bytes": 5910,
+    "top_keys": [
+      "all_pass",
+      "checks",
+      "evidence",
+      "pass_count",
+      "check_count"
+    ]
+  },
+  {
+    "path": "问题三\\output\\robustness\\图19_合同调整死区边际价值.png",
+    "sha256": "f4c7ae28573667ed7c94ae40ea1f3ffa3be19384e156d9c5a791781c290baf43",
+    "bytes": 174861
+  },
+  {
+    "path": "问题三\\output\\robustness\\图20_结算语义鲁棒性.png",
+    "sha256": "7a31a6e7e59424293fa0b1bca12e0f4f4ad552582453588f2d5a62f489ff8679",
+    "bytes": 64257
+  },
+  {
+    "path": "问题三\\output\\robustness\\鲁棒性验收报告.md",
+    "sha256": "a8dbd08c61858afc994ec63a2445205ccb170a34b75ed7ebee955374928158fd",
+    "bytes": 490
+  },
+  {
+    "path": "问题三\\output\\公式说明.md",
+    "sha256": "0306698b245533b0aa3d128f31f5e8e0f0d1149f4ff8218a60894297ea80f03a",
+    "bytes": 1107
+  },
+  {
+    "path": "问题三\\output\\分析报告.md",
+    "sha256": "981d22f1084ca28b9bd2f1d75206d28913f17c6924d2f093b0675cae107363c7",
+    "bytes": 10882
+  },
+  {
+    "path": "问题三\\output\\图表\\图14_问题3事件驱动滚动调度框架.png",
+    "sha256": "874ab29e82a021108cedd4177420d51261303815006b0ed34afa6a5897cd1d56",
+    "bytes": 229945
+  },
+  {
+    "path": "问题三\\output\\图表\\图15_问题3典型日合同滚动调整.png",
+    "sha256": "1e27124de1a8e0f54faa18be010d79e13111ddb039f70c4eb62167ca2cc9bfca",
+    "bytes": 186732
+  },
+  {
+    "path": "问题三\\output\\图表\\图16_问题3ABCD因子对照.png",
+    "sha256": "114c3c231d8100afc36de7a34ebe0da6e16efc793dc6c4890bf4c37e2bc18953",
+    "bytes": 62386
+  },
+  {
+    "path": "问题三\\output\\图表\\图17_问题3主模型费用分解.png",
+    "sha256": "806e548430f942aea4807ba0caf677e5b3573eae8abe7709cefbf1805183641c",
+    "bytes": 51773
+  },
+  {
+    "path": "问题三\\output\\图表\\图18_问题3四季代表日合同与净负荷.png",
+    "sha256": "8b8ff372d72b770405ff79ec99577c6b588667e1c13833170ee4ebfe5f16c0f8",
+    "bytes": 498865
+  },
+  {
+    "path": "问题三\\output\\图表\\图19_合同调整死区边际价值.png",
+    "sha256": "8cc3d48ee79cafbe443c36dc354970d67603fbec1465384aa4eede1be8c446c1",
+    "bytes": 160216
+  },
+  {
+    "path": "问题三\\output\\图表\\图20_问题3结算语义鲁棒性.png",
+    "sha256": "316d8f43e9ee8c20a3c84c356d181fee82723ca16867783941f17c2d504096ba",
+    "bytes": 71827
+  },
+  {
+    "path": "问题三\\output\\图表\\表7_指定日期原始与最终合同.png",
+    "sha256": "16ce4bd0a2edc6acdc05c714f0082a851fcf4cf2859f8875fa8d096c22b7ab2a",
+    "bytes": 87951
+  },
+  {
+    "path": "问题三\\output\\图表\\表8_指定日期储能充放电.png",
+    "sha256": "cf28c494e3dcd0ddc441f1b644e4545cb08a8681ef41a8d10ffe632344ad8704",
+    "bytes": 81270
+  },
+  {
+    "path": "问题三\\output\\图表\\表9_指定日期紧急购电.png",
+    "sha256": "ab6d369d87e71bf8dabb8640a5f5975be9b71f40c4b0b7db74b5603407c3dced",
+    "bytes": 79692
+  },
+  {
+    "path": "问题三\\output\\总结与说明.md",
+    "sha256": "e037cec7afb5b83accc8cd63469d58c6a290627de238b94a4f01236e221d64be",
+    "bytes": 376
+  },
+  {
+    "path": "问题三\\output\\指定日期论文表格.md",
+    "sha256": "1131650849508561eb2c83fa4545ff03f04a8df0a50b6aab2d6c8fca50c03570",
+    "bytes": 4078
+  },
+  {
+    "path": "问题三\\output\\指标汇总.md",
+    "sha256": "15223405d20b14aafcbb2bc4e1ccd69c19a5d9322182f3dd7469f455b28561a8",
+    "bytes": 1167
+  },
+  {
+    "path": "问题三\\output\\模型与结果说明.md",
+    "sha256": "c59263fd855c1766706a851269d7f9c96ee622cd06d2ffffbd064af66a03727c",
+    "bytes": 2455
+  },
+  {
+    "path": "问题三\\output\\模型选择.md",
+    "sha256": "35dab3c792ed930f2d495f0d2cb239af1c9da9a01d9080a5619e357091171f30",
+    "bytes": 1232
+  },
+  {
+    "path": "问题三\\output\\物理语义修复说明.md",
+    "sha256": "4215ee6ecc140f32fd5a4d6c4008f731689af449e9662e8682597b3bc1a58783",
+    "bytes": 3376
+  },
+  {
+    "path": "问题三\\output\\符号说明.md",
+    "sha256": "b689cdafd852bd3da19501cc7d762c7a792baae0350063aa2246e938b32b54b9",
+    "bytes": 1093
+  },
+  {
+    "path": "问题三\\output\\论文输出验收.json",
+    "sha256": "ece95227bf9b80e33d77153965453888dbed42db18d762e3d956dfaa32c8ba9d",
+    "bytes": 2321,
+    "top_keys": [
+      "all_pass",
+      "pass_count",
+      "check_count",
+      "checks",
+      "evidence"
+    ]
+  },
+  {
+    "path": "问题三\\result3.xlsx",
+    "sha256": "ef85dd76b9d7083242061d535b69983ed0b048aaa32d57a1f4ee8a956b7be267",
+    "bytes": 986521,
+    "sheets": {
+      "计划购电量": {
+        "shape": [
+          335,
+          147
+        ],
+        "nonempty": 49245
+      },
+      "调整购电量": {
+        "shape": [
+          335,
+          147
+        ],
+        "nonempty": 49245
+      },
+      "充放电量": {
+        "shape": [
+          2005,
+          6
+        ],
+        "nonempty": 7688
+      },
+      "紧急购电量": {
+        "shape": [
+          1377,
+          3
+        ],
+        "nonempty": 3064
+      }
+    }
+  },
+  {
+    "path": "问题三\\问题3论文材料.md",
+    "sha256": "1e579ea587ff94797e36b4010fcc8aa1de63b2d44030a164f7039d1fe75b6adc",
+    "bytes": 12063
+  }
+]

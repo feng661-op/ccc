@@ -34,7 +34,7 @@ for name in NAMES:
         'soc_continuity':float(np.max(np.abs(z['soc24'][:-1]-z['soc00'][1:])))<1e-6,
         'power_bound':max(float(x.max()),float(y.max()))<=XMAX+1e-6,
         'one_way':float(np.max(np.minimum(x,y)))<1e-6,
-        'execution_mode':str(z['execution_mode'])=='measured_current_mpc',
+        'execution_mode':str(z['execution_mode'])=='q2_reserve_feedback',
     }
     rows.append({'name':name,'all_pass':all(checks.values()),'checks':checks,
         'slots':int(e.size),'total_cost_yuan':float((z['natural_regular_fee'][sel]+z['emergency_fee'][sel]).sum()),

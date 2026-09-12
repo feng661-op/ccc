@@ -14,7 +14,7 @@ m['factorial_effects']={
  'flex_saving_A_minus_C':JA-JC,
  'joint_saving_A_minus_D':JA-JD,
  'interaction_saving':-(JD-JB-JC+JA),
- 'interpretation':'annual realized policy effects under a fixed predeclared protocol; not theoretical VOI',
+ 'interpretation':'annual realized policy effects under a Q2-inherited protocol after structural audit; not theoretical VOI',
 }
 m['scenario_comparison']={
  'interpretation':'realized-policy stability comparison only; K=1 is pure point forecast; not theoretical VSS/VOI',
@@ -22,7 +22,7 @@ m['scenario_comparison']={
  'D_total_cost_yuan':JD,
  'D_point_minus_D_realized_cost':m['D_point']['total_cost_yuan']-JD,
  'D_point_emergency_kwh':m['D_point']['emergency_kwh'],
- 'D_K3_emergency_kwh':m['D']['emergency_kwh'],
+ 'D_K9_emergency_kwh':m['D']['emergency_kwh'],
 }
 (HERE/'metrics.json').write_text(json.dumps(m,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps(m,ensure_ascii=False,indent=2))
